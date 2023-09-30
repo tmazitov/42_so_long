@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 18:20:48 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/09/30 18:57:54 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/09/30 22:32:44 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,12 @@ t_anime_tile	*make_anime_tile(t_anime *anime, char *tile_path)
 
 t_anime_tile	*get_next_tile(t_anime *anime)
 {
-	if (anime->counter > TILE_LIFE_TIME)
+	if (anime->tile_counter > anime->tile_life_time)
 	{
 		anime->render = anime->render->next;
-		anime->counter = 0;
-		printf("new anime tile!\n");
+		anime->tile_counter = 0;
 	}
 	else
-		anime->counter++;
+		anime->tile_counter++;
 	return (anime->render);
 }

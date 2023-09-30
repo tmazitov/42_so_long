@@ -6,7 +6,7 @@
 #    By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/30 14:16:32 by tmazitov          #+#    #+#              #
-#    Updated: 2023/09/30 18:37:30 by tmazitov         ###   ########.fr        #
+#    Updated: 2023/09/30 22:23:52 by tmazitov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,10 @@ NAME = so_long
 
 SRC =	cmd/main.c \
 		game/game.c \
+		game/player/task.c \
 		game/player/anime.c \
 		game/player/player.c \
+		game/player/movement.c \
 		game/render/render.c \
 		utils/anime/anime.c \
 		utils/anime/anime_tile.c \

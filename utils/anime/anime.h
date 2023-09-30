@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:45:01 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/09/30 19:00:19 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/09/30 22:39:14 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 # include <stdio.h>
 # include <math.h>
 
-# define TILE_LIFE_TIME 15
-
 typedef struct s_anime_tile
 {
 	void				*image;
@@ -29,16 +27,19 @@ typedef struct s_anime_tile
 typedef struct s_anime
 {
 	void			*mlx;
-	int				counter;
+	int				tile_count;
+	int				tile_counter;
+	int				tile_life_time;
 	int				height;
 	int				width;
 	t_anime_tile	*render;
-	t_anime_tile	*top;
+	t_anime_tile	*init;
 }		t_anime;
 
-t_anime 		*make_anime(void *mlx, char **tilePaths, int height, int width);
+t_anime			*make_anime(void *mlx, char **tile_paths, int height, int width, int life_time);
 int				fill_anime(t_anime *anime, char **tilePaths);
 void			*free_anime(t_anime *anime);
+void			refresh_anime(t_anime *anime);
 
 t_anime_tile	*get_next_tile(t_anime *anime);
 t_anime_tile	*make_anime_tile(t_anime *anime, char *tilePath);

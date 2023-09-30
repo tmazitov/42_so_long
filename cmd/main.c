@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:08:01 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/09/30 18:36:36 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/09/30 22:23:33 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int	main(void)
 		return (1);
 	game->player = make_player(game->mlx, 128, 128);
 	mlx_loop_hook(game->mlx, render_hook, game);
-	// mlx_key_hook(game->window, key_hook, game);
+	mlx_key_hook(game->window, player_control_hook, game->player);
 	mlx_loop(game->mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:51:46 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/09/30 18:54:07 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/09/30 22:19:41 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,13 @@ int render_player(t_game *game)
 	int		x;
 	int		y;
 	t_anime_tile	*tile;
-	t_player_anime	*anime;
+	t_anime			*anime;
 
-	anime = game->player->anime;
-	tile = get_next_tile(anime->idle);
+	if (game->player->current_task)
+		anime = task_proccess(game->player);
+	else
+		anime = game->player->anime->idle;
+	tile = get_next_tile(anime);
 	x = game->player->x;
 	y = game->player->y;
 	mlx_put_image_to_window(game->mlx, game->window, tile->image, x, y);

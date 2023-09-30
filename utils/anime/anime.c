@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:44:53 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/09/30 18:43:34 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/09/30 22:38:46 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*free_anime(t_anime *anime)
 	t_anime_tile *tile;
 	t_anime_tile *next;
 
-	tile = anime->top;
+	tile = anime->init;
 	while(tile)
 	{
 		next = tile->next;
@@ -52,11 +52,11 @@ int	fill_anime(t_anime *anime, char **tile_paths)
 	}
 	if (tile != init)
 		tile->next = init;
-	anime->top = init;
+	anime->init = init;
 	return (0);
 }
 
-t_anime *make_anime(void *mlx, char **tile_paths, int height, int width)
+t_anime *make_anime(void *mlx, char **tile_paths, int height, int width, int life_time)
 {
 	t_anime	*anime;
 	int		tile_count;
@@ -66,13 +66,20 @@ t_anime *make_anime(void *mlx, char **tile_paths, int height, int width)
 		return (NULL);
 	tile_count = 0;
 	while(tile_paths[tile_count++])
-	anime->top = NULL;
+	anime->init = NULL;
 	anime->height = height;
 	anime->width = width;
 	anime->mlx = mlx;
-	anime->counter = 0;
+	anime->tile_counter = 0;
+	anime->tile_count = tile_count;
+	anime->tile_life_time = life_time;
 	if (fill_anime(anime, tile_paths) != 0)
 		return (free(anime), NULL);
-	anime->render = anime->top;
+	anime->render = anime->init;
 	return (anime);
+}
+
+void	refresh_anime(t_anime *anime)
+{
+	anime->render = anime->init;
 }
