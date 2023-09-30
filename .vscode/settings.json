@@ -1,0 +1,19 @@
+{
+	"files.associations": {
+		"mlx42.h": "c",
+		"player.h": "c",
+		"fcntl.h": "c",
+		"lodepng.h": "c",
+		"__bit_reference": "c",
+		"algorithm": "c",
+		"bitset": "c",
+		"chrono": "c",
+		"unordered_map": "c",
+		"setup_sprites.h": "c",
+		"unistd.h": "c",
+		"mlx.h": "c",
+		"stdio.h": "c",
+		"locale": "c",
+		"main.h": "c"
+	}
+}
