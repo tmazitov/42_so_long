@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:07:26 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/09/30 23:07:45 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/10/02 18:50:12 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@
 
 // Player movement buttons
 enum t_move_keycode {
-	BUTTON_UP = 1,
-	BUTTON_DOWN = 13,
+	BUTTON_UP 		= 1,
+	BUTTON_DOWN 	= 13,
 	BUTTON_STRAIGHT = 2,
-	BUTTON_BACK	= 0
+	BUTTON_BACK		= 0,
+	BUTTON_SPACE 	= 49,
 };
 
 // Task action
@@ -32,6 +33,9 @@ typedef enum s_action {
 	MOVE_BACK 		= 2,
 	MOVE_UP 		= 3,
 	MOVE_DOWN 		= 4,
+	ATTACK_1		= 5,
+	ATTACK_2		= 6,
+	ATTACK_3		= 7,
 } 		t_action;
 
 // Task target
@@ -53,6 +57,9 @@ typedef struct s_player_anime
 {
 	t_anime		*idle;
 	t_anime		*walk;
+	t_anime		*attack_1;
+	t_anime		*attack_2;
+	t_anime		*attack_3;
 }		t_player_anime;
 
 // Player structure
@@ -63,6 +70,7 @@ typedef struct s_player
 	int					y;
 	int					width;
 	int					height;
+	int					attack_combo;
 	t_player_task		*current_task;
 	t_player_anime		*anime;
 }		t_player;
@@ -76,6 +84,7 @@ void			*free_player(t_player *player);
 
 t_player_anime	*make_player_anime(t_player *player);
 void			*free_player_anime(t_player_anime *anime);
+int				setup_attack_anime(t_player *player, t_player_anime *player_anime);
 
 // Player movement
 

@@ -6,7 +6,7 @@
 #    By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/30 14:16:32 by tmazitov          #+#    #+#              #
-#    Updated: 2023/10/02 15:56:03 by tmazitov         ###   ########.fr        #
+#    Updated: 2023/10/02 18:38:20 by tmazitov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRC =	cmd/main.c \
 		game/game.c \
 		game/player/task.c \
 		game/player/anime.c \
+		game/player/anime_attack.c \
 		game/player/player.c \
 		game/player/movement.c \
 		game/render/render.c \

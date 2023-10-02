@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:44:53 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/09/30 22:38:46 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/10/02 18:18:32 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ t_anime *make_anime(void *mlx, char **tile_paths, int height, int width, int lif
 	if (!anime)
 		return (NULL);
 	tile_count = 0;
-	while(tile_paths[tile_count++])
+	while(tile_paths[tile_count])
+		tile_count++;
 	anime->init = NULL;
 	anime->height = height;
 	anime->width = width;

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:10:20 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/02 16:12:09 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/10/02 18:39:13 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*free_player_anime(t_player_anime *anime)
 		free_anime(anime->idle);
 	if (anime->walk)
 		free_anime(anime->walk);
+	if (anime->attack_1)
+		free_anime(anime->attack_1);
 	free(anime);
 	return (NULL);
 }
@@ -55,6 +57,7 @@ static t_anime	*make_walk_anime(void *mlx, int height, int width)
 	return make_anime(mlx, tilePaths, height, width, 6);
 }
 
+
 t_player_anime	*make_player_anime(t_player *player)
 {
 	t_player_anime	*player_anime;
@@ -74,6 +77,9 @@ t_player_anime	*make_player_anime(t_player *player)
 	player_anime->walk = make_walk_anime(mlx, height, width);
 	if (!player_anime->walk)
 		return (free_player_anime(player_anime), NULL);
+	if (setup_attack_anime(player, player_anime) != 0)
+		return (free_player_anime(player_anime), NULL);
+	printf("tile count: %d\n", player_anime->attack_1->tile_count);
 	return (player_anime);
 }
 

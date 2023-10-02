@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:07:19 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/09/30 22:04:36 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/10/02 18:41:29 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_player *make_player(void *mlx, int height, int width)
 	player->mlx = mlx;
 	player->anime = make_player_anime(player);
 	player->current_task = NULL;
+	player->attack_combo = 0;
 	if (!player->anime)
 		return (free_player(player));
 	printf("success created player!\n");
