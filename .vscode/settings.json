@@ -16,6 +16,7 @@
 		"locale": "c",
 		"main.h": "c",
 		"__functional_03": "c",
-		"functional": "c"
+		"functional": "c",
+		"scene.h": "c"
 	}
 }

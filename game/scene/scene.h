@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.h                                             :+:      :+:    :+:   */
+/*   scene.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 14:52:22 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/02 15:38:07 by tmazitov         ###   ########.fr       */
+/*   Created: 2023/10/02 15:32:11 by tmazitov          #+#    #+#             */
+/*   Updated: 2023/10/02 15:53:06 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GAME_H
-# define GAME_H
+#ifndef SCENE_H
+# define SCENE_H
 
 #include <stdlib.h>
-#include "../mlx/mlx.h"
-#include "player/player.h"
-#include "scene/scene.h"
+#include "../../mlx/mlx.h"
 
-typedef struct s_game
+typedef struct s_scene_textures
 {
-	void		*mlx;
-	void		*window;
-	t_player	*player;
-	t_scene		*scene;
-}		t_game;
+	void	*grass;
+}		t_scene_textures;
 
-// GAME
 
-void	*free_game(t_game *game);
-t_game	*make_game(int height, int width, char *title);
+typedef struct s_scene
+{
+	char				**raw;
+	t_scene_textures	*textures;
+	int					width;
+	int					height;
+}		t_scene;
 
-#endif // GAME_H
+t_scene *make_scene(void *mlx, int height, int width);
+
+#endif 

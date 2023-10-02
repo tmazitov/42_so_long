@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:08:01 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/09/30 22:23:33 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/10/02 17:57:48 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,18 @@
 int	main(void)
 {
 	t_game	*game;
+	int		screen_height;
+	int		screen_width;
 
-	game = make_game(512, 512, "so_long");
+	screen_height = 768;
+	screen_width = 1024;
+
+	game = make_game(screen_height, screen_width, "so_long");
 	if (!game)
 		return (1);
 	game->player = make_player(game->mlx, 128, 128);
+	game->scene = make_scene(game->mlx, screen_height, screen_width);
+	
 	mlx_loop_hook(game->mlx, render_hook, game);
 	mlx_key_hook(game->window, player_control_hook, game->player);
 	mlx_loop(game->mlx);
