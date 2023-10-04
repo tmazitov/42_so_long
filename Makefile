@@ -6,7 +6,7 @@
 #    By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/30 14:16:32 by tmazitov          #+#    #+#              #
-#    Updated: 2023/10/02 18:38:20 by tmazitov         ###   ########.fr        #
+#    Updated: 2023/10/04 13:44:38 by tmazitov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC =	cmd/main.c \
 		game/player/movement.c \
 		game/render/render.c \
 		game/scene/scene.c \
+		game/scene/tree.c \
 		utils/anime/anime.c \
 		utils/anime/anime_tile.c \
 		

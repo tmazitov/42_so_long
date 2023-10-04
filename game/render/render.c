@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:51:46 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/02 19:09:59 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/10/04 13:44:55 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,37 @@ int	render_scene(t_game *game)
 		}
 		x += 128;	
 	}
+	
 	return (0);
+}
+
+int render_trees(t_game *game)
+{
+	int 	counter;
+	int 	x;
+	int 	y;
+	t_tree	**trees;
+	t_tree	*tree;
+
+	counter = 0;
+	trees = game->scene->trees;
+	while (trees[counter])
+	{
+		tree = trees[counter];
+		x = tree->x;
+		y = tree->y;
+		mlx_put_image_to_window(game->mlx, game->window, tree->image, x, y);
+		counter++;
+	}
+
+	return 0;
 }
 
 int	render_hook(t_game *game)
 {
 	mlx_clear_window(game->mlx, game->window);
 	render_scene(game);
+	render_trees(game);
 	render_player(game);
 	return (0);
 }

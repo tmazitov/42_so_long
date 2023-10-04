@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:08:01 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/02 17:57:48 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/10/04 13:46:50 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,17 @@ int	main(void)
 	if (!game)
 		return (1);
 	game->player = make_player(game->mlx, 128, 128);
+	if (!game->player)
+	{
+		printf("wrong player\n");
+		return (1);
+	}
 	game->scene = make_scene(game->mlx, screen_height, screen_width);
-	
+	if (!game->scene)
+	{
+		printf("wrong scene\n");
+		return (1);
+	}
 	mlx_loop_hook(game->mlx, render_hook, game);
 	mlx_key_hook(game->window, player_control_hook, game->player);
 	mlx_loop(game->mlx);
