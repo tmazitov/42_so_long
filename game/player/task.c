@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 21:44:50 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/02 19:31:57 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/10/07 23:11:47 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,20 +89,62 @@ int	execute_action(t_player *player, t_player_task *task)
 	return (1);
 }
 
-int isAttack(t_action action){
+int is_attack(t_action action){
 	return (action == ATTACK_1 ||
 			action == ATTACK_2 ||
 			action == ATTACK_3);
 }
 
+int is_movement(t_action action){
+	return (action == MOVE_BACK ||
+			action == MOVE_DOWN || 
+			action == MOVE_STRAIGHT ||
+			action == MOVE_UP);
+}
 
-
-t_anime	*task_proccess(t_player *player)
+int	is_able_to_proccess(t_scene *scene, t_player *player)
 {
 	t_player_task	*task;
+	t_collider		*coll;
+	int				tree_ctn;
+	int				inter;
 	
 	task = player->current_task;
-	if (task->duration > 0)
+	if (is_attack(task->action))
+		return (1);
+	if (is_movement(task->action))
+	{
+		tree_ctn = 0;
+		while (scene->trees[tree_ctn])
+		{
+			coll = scene->trees[tree_ctn]->coll;
+			inter = check_intersection(player->coll, coll, task->action, PLAYER_SPEED);
+			if (inter == -1)
+			{
+				tree_ctn++;
+				continue;
+			}
+			if (inter)
+				return (0);
+			printf("\ttree: x=%d y=%d\n", *coll->x, *coll->y);
+			printf("\tintersection : %d\t task: %d\n", inter, task->action);
+			// if (inter && inter == (int)task->action)
+			// 	return (0);
+			tree_ctn++;
+		}
+	}
+	return (1);
+}
+
+t_anime	*task_proccess(t_scene *scene, t_player *player)
+{
+	t_player_task	*task;
+	int				is_intersection;
+
+	task = player->current_task;
+	is_intersection = is_able_to_proccess(scene, player);
+	printf("player : x=%d y=%d dur=%d\n",player->x, player->y, task->duration);
+	if (task->duration > 0 && is_intersection)
 		task->duration -= execute_action(player, task);
 	else
 	{
@@ -111,10 +153,12 @@ t_anime	*task_proccess(t_player *player)
 			refresh_anime(task->anime);
 		else if (!task->next)
 			refresh_anime(task->anime);
-		if (isAttack(task->action) && !task->next)
+		if (is_attack(task->action) && !task->next)
 			player->attack_combo = 0;
 		free_task(task);
 	}
+	if (is_intersection && is_movement(task->action))
+		return (NULL);
 
 	return task->anime;
 }

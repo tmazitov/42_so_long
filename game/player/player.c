@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:07:19 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/02 18:41:29 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/10/07 18:09:07 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	*free_player(t_player *player)
 {
 	if (player->anime)
 		free_player_anime(player->anime);
+	if (player->coll)
+		free_collider(player->coll);
 	free(player);
 	return (NULL);
 }
@@ -36,6 +38,9 @@ t_player *make_player(void *mlx, int height, int width)
 	player->current_task = NULL;
 	player->attack_combo = 0;
 	if (!player->anime)
+		return (free_player(player));
+	player->coll = make_collider(64, 64, &player->x, &player->y);
+	if (!player->coll)
 		return (free_player(player));
 	printf("success created player!\n");
 	return (player);

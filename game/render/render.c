@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:51:46 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/04 13:44:55 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/10/07 23:12:49 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,16 @@ int render_player(t_game *game)
 	t_anime			*anime;
 
 	if (game->player->current_task)
-		anime = task_proccess(game->player);
+	{
+		anime = task_proccess(game->scene, game->player);
+		if (!anime)
+			anime = game->player->anime->idle;
+	}
 	else
 		anime = game->player->anime->idle;
 	tile = get_next_tile(anime);
-	x = game->player->x;
-	y = game->player->y;
+	x = game->player->x - (game->player->coll->width / 2);
+	y = game->player->y - game->player->coll->height;
 	mlx_put_image_to_window(game->mlx, game->window, tile->image, x, y);
 	return (0);
 }
@@ -65,8 +69,8 @@ int render_trees(t_game *game)
 	while (trees[counter])
 	{
 		tree = trees[counter];
-		x = tree->x;
-		y = tree->y;
+		x = tree->x - (tree->width - tree->coll->width) / 2;
+		y = tree->y - tree->height + (tree->coll->height / 2) + 8;
 		mlx_put_image_to_window(game->mlx, game->window, tree->image, x, y);
 		counter++;
 	}
@@ -74,11 +78,59 @@ int render_trees(t_game *game)
 	return 0;
 }
 
+int	draw_collider(t_game *game, t_collider *coll)
+{
+	int	x;
+	int	y;
+	int x_b;
+	int y_b;
+
+	x = 0;
+	y = 0;
+	while (x < coll->width)
+	{
+		y = 0;
+		while (y < coll->height)
+		{
+			if (x != 0 && x != coll->width - 1 && y != 0 && y != coll->height - 1)
+			{
+				y++;
+				continue;
+			}
+			x_b = *coll->x + x;
+			y_b = *coll->y + y;
+			mlx_pixel_put(game->mlx, game->window, x_b, y_b, 0b111100001111000000111110);
+			y++;
+		}
+		x++;
+	}
+	return (0);
+}
+
+int render_colliders(t_game	*game)
+{
+	t_scene *scene;
+	int		coll_ctn;
+	
+	scene = game->scene;
+	coll_ctn = 0;
+	while(scene->trees[coll_ctn])
+	{
+		draw_collider(game, scene->trees[coll_ctn]->coll);
+		coll_ctn++;
+	}
+	draw_collider(game, game->player->coll);
+	return (0);
+}
+
+
+
 int	render_hook(t_game *game)
 {
 	mlx_clear_window(game->mlx, game->window);
 	render_scene(game);
 	render_trees(game);
 	render_player(game);
+	render_colliders(game);
 	return (0);
 }

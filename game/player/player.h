@@ -6,15 +6,17 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:07:26 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/02 18:50:12 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/10/07 20:25:46 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLAYER_H
 # define PLAYER_H
 # include <stdlib.h>
+# include "../scene/scene.h"
 # include "../../mlx/mlx.h"
 # include "../../utils/anime/anime.h"
+# include "../../utils/collider/collider.h"
 
 # define PLAYER_SPEED 2
 
@@ -71,6 +73,7 @@ typedef struct s_player
 	int					width;
 	int					height;
 	int					attack_combo;
+	t_collider			*coll;
 	t_player_task		*current_task;
 	t_player_anime		*anime;
 }		t_player;
@@ -93,5 +96,5 @@ int				player_control_hook(int keycode, t_player *player);
 // Player tasks
 
 void	add_task(t_player *player, t_action action, t_anime *anime, int target);
-t_anime	*task_proccess(t_player *player);
+t_anime	*task_proccess(t_scene *scene, t_player *player);
 #endif // !PLAYER_H

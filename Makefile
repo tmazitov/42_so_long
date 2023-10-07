@@ -6,7 +6,7 @@
 #    By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/30 14:16:32 by tmazitov          #+#    #+#              #
-#    Updated: 2023/10/04 13:44:38 by tmazitov         ###   ########.fr        #
+#    Updated: 2023/10/07 22:53:05 by tmazitov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,9 @@ SRC =	cmd/main.c \
 		game/scene/tree.c \
 		utils/anime/anime.c \
 		utils/anime/anime_tile.c \
+		utils/collider/point.c \
+		utils/collider/collider.c \
+		utils/collider/intersection.c \
 		
 
 OBJ = $(SRC:.c=.o)

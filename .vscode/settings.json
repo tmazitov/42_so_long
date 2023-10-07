@@ -17,6 +17,7 @@
 		"main.h": "c",
 		"__functional_03": "c",
 		"functional": "c",
-		"scene.h": "c"
+		"scene.h": "c",
+		"collider.h": "c"
 	}
 }

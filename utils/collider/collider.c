@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.h                                             :+:      :+:    :+:   */
+/*   collider.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 14:52:22 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/07 20:19:21 by tmazitov         ###   ########.fr       */
+/*   Created: 2023/10/07 17:53:23 by tmazitov          #+#    #+#             */
+/*   Updated: 2023/10/07 18:08:31 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GAME_H
-# define GAME_H
+#include "collider.h"
 
-#include <stdlib.h>
-#include "../mlx/mlx.h"
-#include "player/player.h"
-#include "scene/scene.h"
-
-typedef struct s_game
+t_collider	*make_collider(int height, int width, int *x, int *y)
 {
-	void		*mlx;
-	void		*window;
-	t_player	*player;
-	t_scene		*scene;
-}		t_game;
+	t_collider	*collider; 
 
-// GAME
+	collider = malloc(sizeof(t_collider));
+	if (!collider)
+		return (NULL);
+	collider->x = x;	
+	collider->y = y;	
+	collider->width = width;
+	collider->height = height;
+	return (collider);	
+}
 
-void	*free_game(t_game *game);
-t_game	*make_game(int height, int width, char *title);
-
-#endif // GAME_H
+void	free_collider(t_collider *collider)
+{
+	free(collider);
+}

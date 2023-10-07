@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:32:11 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/04 13:48:37 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/10/07 19:03:57 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../../mlx/mlx.h"
+#include "../../utils/collider/collider.h"
 
 typedef struct s_scene_textures
 {
@@ -24,9 +25,12 @@ typedef struct s_scene_textures
 
 typedef struct s_tree 
 {
-	int		x;
-	int		y;
-	void	*image;
+	int			x;
+	int			y;
+	int			height;
+	int			width;
+	void		*image;
+	t_collider	*coll;
 }		t_tree;
 
 typedef struct s_scene
