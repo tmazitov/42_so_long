@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 14:37:45 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/08 22:10:28 by tmazitov         ###   ########.fr       */
+/*   Created: 2023/10/08 20:32:59 by tmazitov          #+#    #+#             */
+/*   Updated: 2023/10/08 23:10:16 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#ifndef PARSER_H
+# define PARSER_H
 
-# include "../mlx/mlx.h"
-# include "../game/game.h"
-# include "../game/render/render.h"
-# include "../game/player/player.h"
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
+# include "../../utils/gnl/get_next_line.h"
 
+typedef struct s_raw_node
+{
+	char				*data;
+	struct s_raw_node	*next;
+}		t_raw_node;
 
-#endif // MAIN_H
+char	**parse(char *filePath);
+void	free_parse(char	**result);
+int		count_of_trees(char	**map);
+#endif

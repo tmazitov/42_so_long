@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:08:01 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/08 19:23:01 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/10/08 22:54:48 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,15 @@ int	main(void)
 		printf("wrong player\n");
 		return (1);
 	}
-	game->scene = make_scene(game->mlx, screen_height, screen_width);
+	game->scene = make_scene(game->mlx, "maps/map1.ber", screen_height, screen_width);
 	if (!game->scene)
 	{
 		printf("wrong scene\n");
 		return (1);
 	}
+	printf("player: %d %d\n", game->scene->player_x, game->scene->player_y);
+	game->player->x = game->scene->player_x;
+	game->player->y = game->scene->player_y;
 	mlx_loop_hook(game->mlx, render_hook, game);
 	mlx_key_hook(game->window, player_control_hook, game->player);
 	mlx_loop(game->mlx);

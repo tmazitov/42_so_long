@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 21:44:50 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/08 17:11:03 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/10/08 19:58:41 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,8 @@ int	is_able_to_proccess(t_scene *scene, t_player *player)
 		return (1);
 	if (is_movement(task->action))
 	{
+		if (task->duration != 64)
+			return (1);
 		tree_ctn = 0;
 		while (scene->trees[tree_ctn])
 		{
@@ -126,8 +128,6 @@ int	is_able_to_proccess(t_scene *scene, t_player *player)
 			}
 			if (inter)
 				return (0);
-			printf("\ttree: x=%d y=%d\n", *coll->x, *coll->y);
-			printf("\tintersection : %d\t task: %d\n", inter, task->action);
 			// if (inter && inter == (int)task->action)
 			// 	return (0);
 			tree_ctn++;
@@ -141,9 +141,10 @@ t_anime	*task_proccess(t_scene *scene, t_player *player)
 	t_player_task	*task;
 	int				is_able_to_proc;
 
+	(void)scene;
 	task = player->current_task;
 	is_able_to_proc = is_able_to_proccess(scene, player);
-	printf("player : x=%d y=%d dur=%d\n",player->x, player->y, task->duration);
+	// printf("player : x=%d y=%d dur=%d\n",player->x, player->y, task->duration);
 	if (task->duration > 0 && is_able_to_proc)
 		task->duration -= execute_action(player, task);
 	else
@@ -157,6 +158,7 @@ t_anime	*task_proccess(t_scene *scene, t_player *player)
 			player->attack_combo = 0;
 		free_task(task);
 	}
+
 	if (!is_able_to_proc)
 		return (NULL);
 	return task->anime;
