@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:51:46 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/07 23:12:49 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/10/08 19:11:00 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,12 @@ int render_player(t_game *game)
 	t_anime_tile	*tile;
 	t_anime			*anime;
 
+	anime = NULL;
 	if (game->player->current_task)
-	{
 		anime = task_proccess(game->scene, game->player);
-		if (!anime)
-			anime = game->player->anime->idle;
-	}
-	else
+	if (!anime)
 		anime = game->player->anime->idle;
+	// printf("anime: %p\n", anime);
 	tile = get_next_tile(anime);
 	x = game->player->x - (game->player->coll->width / 2);
 	y = game->player->y - game->player->coll->height;
@@ -129,8 +127,8 @@ int	render_hook(t_game *game)
 {
 	mlx_clear_window(game->mlx, game->window);
 	render_scene(game);
-	render_trees(game);
 	render_player(game);
+	render_trees(game);
 	render_colliders(game);
-	return (0);
+	return (0);	
 }

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:32:02 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/04 13:48:31 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/10/08 19:30:12 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_scene *make_scene(void *mlx, int height, int width)
 	scene->height = height;
 	scene->width = width;
 	printf("feel tree :%d\n",feel_tree(mlx, scene, 1));
-	if (feel_tree(mlx, scene, 1) != 0)
+	if (feel_tree(mlx, scene, 2) != 0)
 		return (free_scene(scene), NULL);
 	return (scene);
 }

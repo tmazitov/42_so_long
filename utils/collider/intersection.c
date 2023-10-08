@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:13:16 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/07 23:08:37 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/10/08 19:26:55 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,24 +68,81 @@ int doLineSegmentsIntersect(t_point p1, t_point p2, t_point q1, t_point q2) {
 
 int	check_intersection(t_collider *col1, t_collider *col2, int target, int speed)
 {
-	t_point *line1x;
-	t_point *line1y;
-	t_point *line2x;
-	t_point *line2y;
-	t_point *line3x;
-	t_point *line3y;
+	t_point *p1_1;
+	t_point *p1_2;
+	t_point *p2_1;
+	t_point *p2_2;
+	t_point *target_p1;
+	t_point *target_p2;
+	
+	p1_1 = coll_upd_top_left(col1, *col1->x, *col1->y);
+	p1_2 = coll_upd_bot_right(col1, *col1->x + col1->width, *col1->y + col1->height);
+	p2_1 = coll_upd_top_right(col1, *col1->x + col1->width, *col1->y);
+	p2_2 = coll_upd_bot_left(col1, *col1->x, *col1->y + col1->height);
 
 	if (target == INTER_STRAIGHT)
 	{
-		line1x = make_point(*col1->x + speed, *col1->y);
-		line1y = make_point(*col1->x + col1->width + speed, *col1->y + col2->height);
-		line2x = make_point(*col2->x, *col2->y);
-		line2y = make_point(*col2->x, *col2->y + col2->height);
-		line3x = make_point(*col1->x + speed, *col1->y + col1->height);
-		line3y = make_point(*col1->x + col1->width + speed, *col1->y);
-		return (doLineSegmentsIntersect(*line1x, *line1y, *line2x, *line2y) &&
-				doLineSegmentsIntersect(*line3x, *line3y, *line2x, *line2y));
+		p1_1 = coll_upd_top_left(col1,  p1_1->x + speed, p1_1->y);
+		p1_2 = coll_upd_bot_right(col1, p1_2->x + speed, p1_2->y);
+		p2_1 = coll_upd_top_right(col1, p2_1->x + speed, p2_1->y);
+		p2_2 = coll_upd_bot_left(col1,  p2_2->x + speed, p2_2->y);
+		target_p1 = coll_upd_top_left(col2, *col2->x, *col2->y);
+		target_p2 = coll_upd_bot_left(col2, *col2->x, *col2->y + col2->height);
+		return (doLineSegmentsIntersect(*p1_1, *p1_2, *target_p1, *target_p2) &&
+				doLineSegmentsIntersect(*p2_1, *p2_2, *target_p1, *target_p2));
 	}
+	if (target == INTER_BACK)
+	{
+		p1_1 = coll_upd_top_left(col1,  p1_1->x - speed, p1_1->y);
+		p1_2 = coll_upd_bot_right(col1, p1_2->x - speed, p1_2->y);
+		p2_1 = coll_upd_top_right(col1, p2_1->x - speed, p2_1->y);
+		p2_2 = coll_upd_bot_left(col1,  p2_2->x - speed, p2_2->y);
+		target_p1 = coll_upd_top_right(col2, *col2->x + col2->width, *col2->y);
+		target_p2 = coll_upd_bot_right(col2, *col2->x + col2->width, *col2->y + col2->height);
+		return (doLineSegmentsIntersect(*p1_1, *p1_2, *target_p1, *target_p2) &&
+				doLineSegmentsIntersect(*p2_1, *p2_2, *target_p1, *target_p2));
+	}
+	if (target == INTER_UP)
+	{
+		p1_1 = coll_upd_top_left(col1,  p1_1->x, p1_1->y + speed);
+		p1_2 = coll_upd_bot_right(col1, p1_2->x, p1_2->y + speed);
+		p2_1 = coll_upd_top_right(col1, p2_1->x, p2_1->y + speed);
+		p2_2 = coll_upd_bot_left(col1,  p2_2->x, p2_2->y + speed);
+		target_p1 = coll_upd_top_left(col2, *col2->x, *col2->y);
+		target_p2 = coll_upd_top_right(col2, *col2->x + col2->width, *col2->y);
+		return (doLineSegmentsIntersect(*p1_1, *p1_2, *target_p1, *target_p2) &&
+				doLineSegmentsIntersect(*p2_1, *p2_2, *target_p1, *target_p2));
+	}
+	if (target == INTER_DOWN)
+	{
+		p1_1 = coll_upd_top_left(col1,  p1_1->x, p1_1->y - speed);
+		p1_2 = coll_upd_bot_right(col1, p1_2->x, p1_2->y - speed);
+		p2_1 = coll_upd_top_right(col1, p2_1->x, p2_1->y - speed);
+		p2_2 = coll_upd_bot_left(col1,  p2_2->x, p2_2->y - speed);
+		target_p1 = coll_upd_bot_left(col2, *col2->x, *col2->y + col2->height);
+		target_p2 = coll_upd_bot_right(col2, *col2->x + col2->width, *col2->y + col2->height);
+		return (doLineSegmentsIntersect(*p1_1, *p1_2, *target_p1, *target_p2) &&
+				doLineSegmentsIntersect(*p2_1, *p2_2, *target_p1, *target_p2));
+	}
+	// if (target == INTER_UP)
+	// {
+	// 	p1_1 = coll_upd_top_left(col1,  p1_1->x, p1_1->y + speed);
+	// 	p1_2 = coll_upd_bot_right(col1, p1_2->x, p1_2->y + speed);
+	// 	p2_1 = coll_upd_top_right(col1, p2_1->x, p2_1->y + speed);
+	// 	p2_2 = coll_upd_bot_left(col1,  p2_2->x, p2_2->y + speed);
+	// 	target_p1 = coll_upd_top_right(col2, *col2->x + col2->width, *col2->y);
+	// 	target_p2 = coll_upd_bot_right(col2, *col2->x + col2->width, *col2->y + col2->height);
+	// 	return (doLineSegmentsIntersect(*p1_1, *p1_2, *target_p1, *target_p2) &&
+	// 			doLineSegmentsIntersect(*p2_1, *p2_2, *target_p1, *target_p2));
+	// }
+	// if (target == INTER_DOWN)
+	// {
+	// 	target_p1 = coll_upd_top_left(col1, *col1->x + speed, *col1->y + col1->height);
+	// 	target_p2 = coll_upd_top_left(col1, *col1->x + col1->width + speed, *col1->y);
+	// 	return (doLineSegmentsIntersect(*p1_1, *p1_2, *target_p1, *target_p2) &&
+	// 			doLineSegmentsIntersect(*p2_1, *p2_2, *target_p1, *target_p2));
+	// }
+
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 21:44:50 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/07 23:11:47 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/10/08 17:11:03 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,12 +139,12 @@ int	is_able_to_proccess(t_scene *scene, t_player *player)
 t_anime	*task_proccess(t_scene *scene, t_player *player)
 {
 	t_player_task	*task;
-	int				is_intersection;
+	int				is_able_to_proc;
 
 	task = player->current_task;
-	is_intersection = is_able_to_proccess(scene, player);
+	is_able_to_proc = is_able_to_proccess(scene, player);
 	printf("player : x=%d y=%d dur=%d\n",player->x, player->y, task->duration);
-	if (task->duration > 0 && is_intersection)
+	if (task->duration > 0 && is_able_to_proc)
 		task->duration -= execute_action(player, task);
 	else
 	{
@@ -157,8 +157,7 @@ t_anime	*task_proccess(t_scene *scene, t_player *player)
 			player->attack_combo = 0;
 		free_task(task);
 	}
-	if (is_intersection && is_movement(task->action))
+	if (!is_able_to_proc)
 		return (NULL);
-
 	return task->anime;
-}
+}		

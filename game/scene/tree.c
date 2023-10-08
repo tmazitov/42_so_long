@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:20:36 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/07 19:43:41 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/10/08 19:31:36 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ int feel_tree(void *mlx, t_scene *scene, int count)
 		return (3);
 	scene->trees[0]->height = height;
 	scene->trees[0]->width = width;
+	scene->trees[1] = make_tree(image, 320, 192);
+	if (!scene->trees[1])
+		return (3);
+	scene->trees[1]->height = height;
+	scene->trees[1]->width = width;
 	scene->trees[count] = NULL;
 	return (0);
 }
