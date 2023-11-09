@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 18:20:48 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/09/30 22:32:44 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/10/30 18:36:18 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 void	*free_anime_tile(t_anime_tile *tile)
 {	
-	free(tile->image);
-	free(tile);
+	if (tile && tile->image)
+		free(tile->image);
+	if (tile)
+		free(tile);
 	return (NULL);
 }	
 

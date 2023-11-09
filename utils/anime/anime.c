@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:44:53 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/02 18:18:32 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/10/30 18:35:36 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	*free_anime(t_anime *anime)
 	t_anime_tile *tile;
 	t_anime_tile *next;
 
+	if (!anime)
+		return (NULL);
 	tile = anime->init;
 	while(tile)
 	{

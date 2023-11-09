@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:08:01 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/08 22:54:48 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/10/14 06:39:53 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	main(void)
 	int		screen_height;
 	int		screen_width;
 
-	screen_height = 768;
-	screen_width = 1024;
+	screen_height = 1080;
+	screen_width = 1920;
 
 	game = make_game(screen_height, screen_width, "so_long");
 	if (!game)

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:51:46 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/08 23:07:26 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/09 09:52:43 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,20 @@ int render_player(t_game *game)
 	if (game->player->current_task)
 		anime = task_proccess(game->scene, game->player);
 	if (!anime)
-		anime = game->player->anime->idle;
+	{
+		if (game->player->last_movement == MOVE_DOWN)
+			anime = game->player->anime->idle_up;
+		else if (game->player->last_movement == MOVE_UP)
+			anime = game->player->anime->idle_down;
+		else if (game->player->last_movement == MOVE_STRAIGHT)
+			anime = game->player->anime->idle_right;
+		else if (game->player->last_movement == MOVE_BACK)
+			anime = game->player->anime->idle_left;	
+	}
 	// printf("anime: %p\n", anime);
 	tile = get_next_tile(anime);
-	x = game->player->x - (game->player->coll->width / 2);
-	y = game->player->y - game->player->coll->height;
+	x = game->player->x ;
+	y = game->player->y - (game->player->coll->height / 2);
 	mlx_put_image_to_window(game->mlx, game->window, tile->image, x, y);
 	return (0);
 }
@@ -59,17 +68,25 @@ int render_trees(t_game *game)
 	int 	counter;
 	int 	x;
 	int 	y;
-	t_tree	**trees;
-	t_tree	*tree;
+	t_scene_obj	**objs;
+	t_scene_obj	*obj;
 
 	counter = 0;
-	trees = game->scene->trees;
-	while (trees[counter])
+	objs = game->scene->objs;
+	while (objs[counter])
 	{
-		tree = trees[counter];
-		x = tree->x - (tree->width - tree->coll->width) / 2;
-		y = tree->y - tree->height + tree->coll->height;
-		mlx_put_image_to_window(game->mlx, game->window, tree->image, x, y);
+		obj = objs[counter];
+		if (obj->type == OBJ_TREE)
+		{
+			x = obj->x - (obj->width - obj->coll->width) / 2;
+			y = obj->y - (obj->height - obj->coll->height) / 2 - 28;
+		}
+		else if (obj->type == OBJ_STONE)
+		{
+			x = obj->x;
+			y = obj->y;
+		}
+		mlx_put_image_to_window(game->mlx, game->window, obj->image, x, y);
 		counter++;
 	}
 
@@ -112,9 +129,9 @@ int render_colliders(t_game	*game)
 	
 	scene = game->scene;
 	coll_ctn = 0;
-	while(scene->trees[coll_ctn])
+	while(scene->objs[coll_ctn])
 	{
-		draw_collider(game, scene->trees[coll_ctn]->coll);
+		draw_collider(game, scene->objs[coll_ctn]->coll);
 		coll_ctn++;
 	}
 	draw_collider(game, game->player->coll);
@@ -127,8 +144,8 @@ int	render_hook(t_game *game)
 {
 	mlx_clear_window(game->mlx, game->window);
 	render_scene(game);
-	render_player(game);
 	render_trees(game);
+	render_player(game);
 	render_colliders(game);
 	return (0);
 }

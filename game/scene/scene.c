@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:32:02 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/08 21:47:50 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/09 07:11:22 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_scene_textures	*make_scene_textures(void *mlx)
 	textures = malloc(sizeof(t_scene_textures));
 	if (!textures)
 		return (NULL);
-	textures->grass = mlx_xpm_file_to_image(mlx, "textures/grass_3.xpm", &width, &height);
+	textures->grass = mlx_xpm_file_to_image(mlx, "textures/grass.xpm", &width, &height);
 	if (!textures->grass)
 		return (free(textures), NULL);
 	return (textures);

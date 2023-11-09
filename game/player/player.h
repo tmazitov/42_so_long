@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:07:26 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/07 20:25:46 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/09 08:49:27 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,20 @@ typedef struct s_player_task
 // Player animation storage
 typedef struct s_player_anime
 {
-	t_anime		*idle;
-	t_anime		*walk;
-	t_anime		*attack_1;
-	t_anime		*attack_2;
-	t_anime		*attack_3;
+	t_anime		*idle_down;
+	t_anime		*idle_right;
+	t_anime		*idle_left;
+	t_anime		*idle_up;
+	
+	t_anime		*walk_right;
+	t_anime		*walk_left;
+	t_anime		*walk_down;	
+	t_anime		*walk_up;
+	
+	t_anime		*attack_down;
+	t_anime		*attack_right;
+	t_anime		*attack_up;
+	t_anime		*attack_left;
 }		t_player_anime;
 
 // Player structure
@@ -73,6 +82,7 @@ typedef struct s_player
 	int					width;
 	int					height;
 	int					attack_combo;
+	t_action			last_movement;
 	t_collider			*coll;
 	t_player_task		*current_task;
 	t_player_anime		*anime;

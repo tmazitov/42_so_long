@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 21:44:50 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/08 19:58:41 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/09 07:03:17 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,19 @@ void	*free_task(t_player_task *task)
 {
 	free(task);
 	return (NULL);
+}
+
+int is_attack(t_action action){
+	return (action == ATTACK_1 ||
+			action == ATTACK_2 ||
+			action == ATTACK_3);
+}
+
+int is_movement(t_action action){
+	return (action == MOVE_BACK ||
+			action == MOVE_DOWN || 
+			action == MOVE_STRAIGHT ||
+			action == MOVE_UP);
 }
 
 int task_count(t_player_task *task)
@@ -54,7 +67,8 @@ void	add_task(t_player *player, t_action action, t_anime *anime, int target)
 		task->duration = target;
 	else	
 		task->duration = anime->tile_life_time * anime->tile_count;
-	// printf("task duration: %d\n",task->duration);
+	if (is_movement(action))
+		player->last_movement = action;
 	temp = player->current_task;
 	while (temp && temp->next)
 		temp = temp->next;
@@ -89,18 +103,7 @@ int	execute_action(t_player *player, t_player_task *task)
 	return (1);
 }
 
-int is_attack(t_action action){
-	return (action == ATTACK_1 ||
-			action == ATTACK_2 ||
-			action == ATTACK_3);
-}
 
-int is_movement(t_action action){
-	return (action == MOVE_BACK ||
-			action == MOVE_DOWN || 
-			action == MOVE_STRAIGHT ||
-			action == MOVE_UP);
-}
 
 int	is_able_to_proccess(t_scene *scene, t_player *player)
 {
@@ -117,9 +120,9 @@ int	is_able_to_proccess(t_scene *scene, t_player *player)
 		if (task->duration != 64)
 			return (1);
 		tree_ctn = 0;
-		while (scene->trees[tree_ctn])
+		while (scene->objs[tree_ctn])
 		{
-			coll = scene->trees[tree_ctn]->coll;
+			coll = scene->objs[tree_ctn]->coll;
 			inter = check_intersection(player->coll, coll, task->action, PLAYER_SPEED);
 			if (inter == -1)
 			{

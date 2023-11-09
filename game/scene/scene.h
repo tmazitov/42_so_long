@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:32:11 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/08 22:45:44 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/10/13 19:01:25 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,27 @@
 #include "../../mlx/mlx.h"
 #include "../../utils/collider/collider.h"
 
+typedef enum s_obj_type{
+	OBJ_TREE	= 1,
+	OBJ_STONE	= 2,
+}		t_obj_type;
+
 typedef struct s_scene_textures
 {
 	void	*grass;
 }		t_scene_textures;
 
-typedef struct s_tree 
+typedef struct s_scene_obj 
 {
 	int			x;
 	int			y;
 	int			height;
 	int			width;
 	void		*image;
+	t_obj_type	type;
 	t_collider	*coll;
-}		t_tree;
+}		t_scene_obj;
+
 
 typedef struct s_scene
 {
@@ -40,13 +47,14 @@ typedef struct s_scene
 	t_scene_textures	*textures;
 	int					width;
 	int					height;
-	t_tree				**trees;
+	t_scene_obj 		**objs;
 	int					player_x;
 	int					player_y;
 }		t_scene;
 
 t_scene *make_scene(void *mlx, char *mapPath, int height, int width);
 
-t_tree	*make_tree(void *image, int x, int y);
+
+t_scene_obj	*make_scene_obj(t_obj_type t, void *image, int x, int y);
 int 	feel_tree(void *mlx, char **map, t_scene *scene);
 #endif 

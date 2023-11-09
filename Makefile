@@ -6,7 +6,7 @@
 #    By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/30 14:16:32 by tmazitov          #+#    #+#              #
-#    Updated: 2023/10/08 21:27:55 by tmazitov         ###   ########.fr        #
+#    Updated: 2023/10/30 18:32:39 by tmazitov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,8 @@ SRC =	cmd/main.c \
 		utils/collider/point.c \
 		utils/collider/collider.c \
 		utils/collider/intersection.c \
-		utils/42_get_next_line/get_next_line.c \
-		utils/42_get_next_line/get_next_line_utils.c \
+		utils/gnl/get_next_line.c \
+		utils/gnl/get_next_line_utils.c \
 		
 
 OBJ = $(SRC:.c=.o)
@@ -53,6 +53,7 @@ MLX = cd mlx && make
 $(NAME): $(OBJ) 
 		$(MLX)
 		gcc $(CFLAGS) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME) -fsanitize=address
+# 
 # -Lmlx -lmlx
 # libft/libft.a printf42/libftprintf.a
 # -framework OpenGL -framework AppKit
