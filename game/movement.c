@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:43:53 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/09 13:44:09 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/12 22:27:09 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,19 @@ void	player_attack_handler(t_player *player)
 
 void	player_open_chest_handler(t_game *game)
 {
-	if (game->scene->chest)
+	int	counter;
+	t_chest		*chest;
+	t_player	*player;
+
+	player = game->player;
+	counter = 0;
+	while (game->scene->chests[counter])
 	{
-		toggle_chest(game->scene->chest);
+		chest = game->scene->chests[counter];
+		printf("intersect: %d\n", check_intersection(chest->obj->coll, player->coll, OPEN_CHEST, 0));
+		if (check_intersection(chest->obj->coll, player->coll, OPEN_CHEST, 0))
+			toggle_chest(chest);
+		counter++;
 	}
 }
 

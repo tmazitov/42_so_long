@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:07:26 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/09 13:49:43 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/12 22:16:20 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef enum s_action {
 	ATTACK_1		= 5,
 	ATTACK_2		= 6,
 	ATTACK_3		= 7,
+	OPEN_CHEST		= 8,	
 } 		t_action;
 
 // Task target

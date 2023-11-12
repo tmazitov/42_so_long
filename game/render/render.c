@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:51:46 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/09 12:46:56 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/12 22:06:39 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,11 @@ int render_trees(t_game *game)
 	objs = game->scene->objs;
 	while (objs[counter])
 	{
+		if (!objs[counter]->is_render)
+		{
+			counter++;
+			continue;
+		}
 		obj = objs[counter];
 		if (obj->type == OBJ_TREE)
 		{
@@ -95,12 +100,20 @@ int render_trees(t_game *game)
 
 int	render_chests(t_game *game)
 {
-	t_chest	*chest;
 	void	*chest_image;
+	t_chest	**chests;
+	t_chest	*chest;
+	int		counter;
 
-	chest = game->scene->chest;
-	chest_image = render_chest(chest);
-	mlx_put_image_to_window(game->mlx, game->window, chest_image, chest->obj->x, chest->obj->y);
+	counter = 0;
+	chests = game->scene->chests;
+	while (chests[counter])
+	{
+		chest = chests[counter];
+		chest_image = render_chest(chest);
+		mlx_put_image_to_window(game->mlx, game->window, chest_image, chest->obj->x, chest->obj->y);
+		counter++;
+	} 
 	return (0);
 }
 

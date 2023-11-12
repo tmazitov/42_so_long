@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:32:11 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/09 12:39:02 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/12 21:18:24 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_scene_obj
 	int			height;
 	int			width;
 	void		*image;
+	int			is_render;
 	t_obj_type	type;
 	t_collider	*coll;
 }		t_scene_obj;
@@ -59,7 +60,7 @@ typedef struct s_scene
 	t_scene_textures	*textures;
 	int					width;
 	int					height;
-	t_chest				*chest;
+	t_chest				**chests;
 	t_scene_obj 		**objs;
 	int					player_x;
 	int					player_y;
@@ -71,7 +72,7 @@ t_scene *make_scene(void *mlx, char *mapPath, int height, int width);
 t_scene_obj	*make_scene_obj(t_obj_type t, void *image, int x, int y);
 int 		feel_tree(void *mlx, char **map, t_scene *scene);
 
-t_chest		*make_chest(unsigned int money, t_anime *open, t_anime *close, int x, int y);
+t_chest		*make_chest(void *mlx, unsigned int money, int x, int y);
 void		*free_chest(t_chest *chest);
 void		*render_chest(t_chest *chest);
 int			toggle_chest(t_chest *chest);

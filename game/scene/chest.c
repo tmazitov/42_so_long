@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:44:56 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/09 13:33:58 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/12 22:06:03 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,23 @@ void	*free_chest(t_chest *chest)
 	return (NULL);
 }
 
-t_chest	*make_chest(unsigned int money, t_anime *open, t_anime *close, int x, int y)
+t_chest	*make_chest(void *mlx, unsigned int money, int x, int y)
 {
 	t_chest	*chest;
 
-	if (!open || !close)
-		return (NULL);
-	chest = malloc(sizeof(t_chest *));
+	chest = malloc(sizeof(t_chest));
 	if (!chest)
 		return (chest);
-	chest->obj = make_scene_obj(OBJ_CHEST,open->init->image, x, y);
+	chest->open_anime = make_chest_open_anime(mlx, 32, 32);	
+	if (!chest->open_anime)
+		return (free_chest(chest));
+	
+	chest->close_anime = make_chest_close_anime(mlx, 32, 32);	
+	if (!chest->close_anime)
+		return (free_chest(chest));
+	chest->obj = make_scene_obj(OBJ_CHEST, NULL, x, y);
 	if (!chest->obj)
 		return (free_chest(chest));
-	chest->open_anime = open;
-	chest->close_anime = close;
 	chest->is_open = 0;
 	chest->open_in_proc = 0;
 	chest->anime_in_proc = 0;

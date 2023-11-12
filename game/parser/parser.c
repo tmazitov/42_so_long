@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:32:54 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/08 22:36:29 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/12 19:34:28 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	free_parse(char	**result)
 	free(result);
 }
 
-int	count_of_trees(char	**map)
+int	count_of_char(char	**map, char ch)
 {
 	int	x;
 	int	y;
@@ -91,7 +91,7 @@ int	count_of_trees(char	**map)
 		x = 0;
 		while (map[y][x])
 		{
-			if (map[y][x] == '1')
+			if (map[y][x] == ch)
 				count++;
 			x++;
 		}

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:44:53 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/09 13:25:39 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/12 21:58:22 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	fill_anime(t_anime *anime, char **tile_paths)
 		if (!tile->next)
 			return (1);
 		printf("anime tile loaded: %s\n", *tile_paths);
+		printf("\t%p\n", tile->next->image);
 		tile = tile->next;
 		tile_paths++;
 	}
@@ -79,6 +80,7 @@ t_anime *make_anime(void *mlx, char **tile_paths, int height, int width, int lif
 	if (fill_anime(anime, tile_paths) != 0)
 		return (free(anime), NULL);
 	anime->render = anime->init;
+	printf("complete anime! %p\n", anime->render);
 	return (anime);
 }
 

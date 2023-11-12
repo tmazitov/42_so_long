@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:32:59 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/08 23:10:16 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/12 19:34:55 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ typedef struct s_raw_node
 
 char	**parse(char *filePath);
 void	free_parse(char	**result);
-int		count_of_trees(char	**map);
+int		count_of_char(char	**map, char ch);
 #endif
