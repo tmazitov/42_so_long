@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:07:26 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/09 08:49:27 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:49:43 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ enum t_move_keycode {
 	BUTTON_STRAIGHT = 2,
 	BUTTON_BACK		= 0,
 	BUTTON_SPACE 	= 49,
+	BUTTON_SHIFT 	= 257,
 };
 
 // Task action
@@ -99,12 +100,10 @@ t_player_anime	*make_player_anime(t_player *player);
 void			*free_player_anime(t_player_anime *anime);
 int				setup_attack_anime(t_player *player, t_player_anime *player_anime);
 
-// Player movement
-
-int				player_control_hook(int keycode, t_player *player);
 
 // Player tasks
 
 void	add_task(t_player *player, t_action action, t_anime *anime, int target);
 t_anime	*task_proccess(t_scene *scene, t_player *player);
+
 #endif // !PLAYER_H

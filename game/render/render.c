@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:51:46 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/09 09:52:43 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:46:56 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,17 @@ int render_trees(t_game *game)
 	return 0;
 }
 
+int	render_chests(t_game *game)
+{
+	t_chest	*chest;
+	void	*chest_image;
+
+	chest = game->scene->chest;
+	chest_image = render_chest(chest);
+	mlx_put_image_to_window(game->mlx, game->window, chest_image, chest->obj->x, chest->obj->y);
+	return (0);
+}
+
 int	draw_collider(t_game *game, t_collider *coll)
 {
 	int	x;
@@ -145,6 +156,7 @@ int	render_hook(t_game *game)
 	mlx_clear_window(game->mlx, game->window);
 	render_scene(game);
 	render_trees(game);
+	render_chests(game);
 	render_player(game);
 	render_colliders(game);
 	return (0);

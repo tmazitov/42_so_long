@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:08:01 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/14 06:39:53 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:50:41 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ int	main(void)
 	game->player->x = game->scene->player_x;
 	game->player->y = game->scene->player_y;
 	mlx_loop_hook(game->mlx, render_hook, game);
-	mlx_key_hook(game->window, player_control_hook, game->player);
+	mlx_key_hook(game->window, player_control_hook, game);
 	mlx_loop(game->mlx);
 }

@@ -5,12 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/30 19:41:45 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/09 09:37:29 by tmazitov         ###   ########.fr       */
+/*   Created: 2023/11/09 13:43:53 by tmazitov          #+#    #+#             */
+/*   Updated: 2023/11/09 13:44:09 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "player.h"
+#include "game.h"
+
 void	player_attack_handler(t_player *player)
 {
 
@@ -25,10 +26,20 @@ void	player_attack_handler(t_player *player)
 
 }
 
-int	player_control_hook(int keycode, t_player *player)
+void	player_open_chest_handler(t_game *game)
+{
+	if (game->scene->chest)
+	{
+		toggle_chest(game->scene->chest);
+	}
+}
+
+int	player_control_hook(int keycode, t_game *game)
 {
 	printf("keycode: %d\n", keycode);
+	t_player	*player;
 
+	player = game->player;
 	if (keycode == BUTTON_STRAIGHT)
 		add_task(player, MOVE_STRAIGHT, player->anime->walk_right, 64);
 	if (keycode == BUTTON_BACK)
@@ -39,5 +50,7 @@ int	player_control_hook(int keycode, t_player *player)
 		add_task(player, MOVE_DOWN, player->anime->walk_up, 64);
 	if (keycode == BUTTON_SPACE)
 		player_attack_handler(player);
+	if (keycode == BUTTON_SHIFT)
+		player_open_chest_handler(game);
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:20:36 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/09 07:22:39 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:39:00 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int feel_tree(void *mlx, char **map, t_scene *scene)
 	int		counter;
 	int		x;
 	int		y;
+	t_anime	*open_chest;
+	t_anime	*close_chest;
 
 	height = 237;
 	width = 105;
@@ -37,6 +39,13 @@ int feel_tree(void *mlx, char **map, t_scene *scene)
 	stone_image = mlx_xpm_file_to_image(mlx, "textures/tree/tree_2.xpm", &width_stone, &height_stone);
 	if (!stone_image)
 		return (2);
+	open_chest = make_chest_open_anime(mlx, 64, 64);
+	if (!open_chest)
+		return (2);
+	close_chest = make_chest_close_anime(mlx, 64, 64);
+	if (!close_chest)
+		return (2);
+	scene->chest = NULL;
 	y = 0;
 	counter = 0;
 	
@@ -69,6 +78,12 @@ int feel_tree(void *mlx, char **map, t_scene *scene)
 			{
 				scene->player_x = x * 64;
 				scene->player_y = y * 64;
+			}
+			if (map[y][x] == 'C')
+			{
+				scene->chest = make_chest(2, open_chest, close_chest,  64*x, 64*y + 64);
+				if (!scene->chest)
+					return (2);
 			}
 			x++;
 		}
