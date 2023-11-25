@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:51:46 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/12 22:06:39 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/25 21:44:32 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,25 @@ int render_player(t_game *game)
 	x = game->player->x ;
 	y = game->player->y - (game->player->coll->height / 2);
 	mlx_put_image_to_window(game->mlx, game->window, tile->image, x, y);
+	return (0);
+}
+
+int render_enemy(t_game	*game)
+{
+	t_anime_tile	*enemy_tile;
+	t_enemy	**enemies;
+	t_enemy	*enemy;
+	int		counter;
+
+	counter = 0;
+	enemies = game->scene->enemies;
+	while (enemies[counter])
+	{
+		enemy = enemies[counter];
+		enemy_tile = get_next_tile(enemy->anime->idle_left);
+		mlx_put_image_to_window(game->mlx, game->window, enemy_tile->image, enemy->x, enemy->y);
+		counter++;
+	} 
 	return (0);
 }
 
@@ -158,6 +177,12 @@ int render_colliders(t_game	*game)
 		draw_collider(game, scene->objs[coll_ctn]->coll);
 		coll_ctn++;
 	}
+	coll_ctn = 0;
+	while(scene->enemies[coll_ctn])
+	{
+		draw_collider(game, scene->enemies[coll_ctn]->coll);
+		coll_ctn++;
+	}
 	draw_collider(game, game->player->coll);
 	return (0);
 }
@@ -170,6 +195,7 @@ int	render_hook(t_game *game)
 	render_scene(game);
 	render_trees(game);
 	render_chests(game);
+	render_enemy(game);
 	render_player(game);
 	render_colliders(game);
 	return (0);

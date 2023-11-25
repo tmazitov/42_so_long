@@ -6,12 +6,12 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 17:53:23 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/08 18:53:20 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/25 19:38:31 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "collider.h"
-
+#include <stdio.h>
 int 	feel_collider(t_collider *collider)
 {
 	int	x;
@@ -25,21 +25,21 @@ int 	feel_collider(t_collider *collider)
 	height = collider->height;
 	collider->points = malloc(sizeof(t_point *) * 5);
 	if (!collider->points)
-		return (0);
+		return (1);
 	collider->points[0] = make_point(x, y);
 	if (!collider->points[0])
-		return (0);
+		return (1);
 	collider->points[1] = make_point(x + width, y);
 	if (!collider->points[1])
-		return (0);
+		return (1);
 	collider->points[2] = make_point(x + width, y + height);
 	if (!collider->points[2])
-		return (0);
+		return (1);
 	collider->points[3] = make_point(x, y + height);
 	if (!collider->points[3])
-		return (0);
+		return (1);
 	collider->points[4] = NULL;
-	return (1);
+	return (0);
 }
 
 t_collider	*make_collider(int height, int width, int *x, int *y)
@@ -53,25 +53,31 @@ t_collider	*make_collider(int height, int width, int *x, int *y)
 	collider->y = y;	
 	collider->width = width;
 	collider->height = height;
-	if (!feel_collider(collider))
+	collider->points = NULL;
+	if (feel_collider(collider) != 0)
 		return (free_collider(collider), NULL);
 	return (collider);	
 }
 
 
-
-void	free_collider(t_collider *collider)
+void	free_collider(t_collider *coll)
 {
 	int counter;
 
-	if (collider->points)
+	if (!coll)
+		return ;
+	counter = 0;
+	if (coll->points)
 	{	
-		counter = 0;
-		while(collider->points[counter])
-			free_point(collider->points[counter]);
-		free(collider->points);
+		while(coll->points[counter])
+		{	
+			free_point(coll->points[counter]);
+			counter++;
+		}
+		free(coll->points);
 	}
-	free(collider);
+	if (coll)
+		free(coll);
 }
 
 t_point	*coll_upd_top_left(t_collider *collider, int x, int y)
