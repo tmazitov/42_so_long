@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 15:39:17 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/25 19:41:14 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/25 22:04:12 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_enemy	*make_enemy(void *mlx, int x, int y)
 	enemy->anime = make_enemy_anime(mlx);
 	if (!enemy->anime)
 		return (free_enemy(enemy));
+	enemy->last_action = E_MOVE_BACK;
 	printf("success enemy create\n");
 	return (enemy);
 }

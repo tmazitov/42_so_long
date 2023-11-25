@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:51:46 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/25 21:44:32 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/25 21:59:01 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int render_enemy(t_game	*game)
 	while (enemies[counter])
 	{
 		enemy = enemies[counter];
-		enemy_tile = get_next_tile(enemy->anime->idle_left);
+		enemy_tile = enemy_next_tile(enemy);
 		mlx_put_image_to_window(game->mlx, game->window, enemy_tile->image, enemy->x, enemy->y);
 		counter++;
 	} 
