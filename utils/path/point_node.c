@@ -1,22 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemy_render.c                                     :+:      :+:    :+:   */
+/*   point_node.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/25 21:49:35 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/26 19:12:25 by tmazitov         ###   ########.fr       */
+/*   Created: 2023/11/26 16:34:30 by tmazitov          #+#    #+#             */
+/*   Updated: 2023/11/26 21:07:31 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "enemy.h"
+#include "path.h"
 
-t_anime_tile *enemy_next_tile(t_enemy *enemy)
+t_point_node	*make_point_node(t_a_point *point)
 {
-	if (enemy->last_action == E_MOVE_BACK) 
-		return get_next_tile(enemy->anime->idle_left);
-	if (enemy->last_action == E_MOVE_STRAIGHT)
-		return get_next_tile(enemy->anime->idle_right);
+	t_point_node	*node;
+
+	if (!point)
+		return (NULL);
+	node = malloc(sizeof(t_point_node));
+	if (!node)
+		return (NULL);
+	node->point = point;
+	node->next = NULL;
+	return (node);
+}
+
+void	*free_point_node(t_point_node *node)
+{
+	if (!node)
+		return (NULL);
+	if (node->point)
+		free_a_point(node->point);
+	free(node);
 	return (NULL);
 }

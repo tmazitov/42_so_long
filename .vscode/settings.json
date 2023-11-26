@@ -25,6 +25,7 @@
 		"string_view": "c",
 		"vector": "c",
 		"iterator": "c",
-		"anime.h": "c"
+		"anime.h": "c",
+		"__locale": "c"
 	}
 }

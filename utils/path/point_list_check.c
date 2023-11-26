@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemy_render.c                                     :+:      :+:    :+:   */
+/*   point_list_check.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/25 21:49:35 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/26 19:12:25 by tmazitov         ###   ########.fr       */
+/*   Created: 2023/11/26 17:50:13 by tmazitov          #+#    #+#             */
+/*   Updated: 2023/11/26 19:50:28 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "enemy.h"
+#include "path.h"
 
-t_anime_tile *enemy_next_tile(t_enemy *enemy)
+t_a_point	*lst_check_by_coord(t_point_list *list, int x, int y)
 {
-	if (enemy->last_action == E_MOVE_BACK) 
-		return get_next_tile(enemy->anime->idle_left);
-	if (enemy->last_action == E_MOVE_STRAIGHT)
-		return get_next_tile(enemy->anime->idle_right);
+	t_point_node	*node;
+
+	node = list->points;
+	while (node) 
+	{
+		if (node->point->x == x && node->point->y == y)
+			return (node->point);
+		node = node->next;
+	}
 	return (NULL);
 }

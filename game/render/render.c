@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:51:46 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/25 21:59:01 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/26 22:29:58 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,47 @@ int render_player(t_game *game)
 	return (0);
 }
 
+int render_enemy_path(t_game *game, t_enemy *enemy)
+{
+	int	x;
+	int	y;
+	int x_b;
+	int y_b;
+	t_point_node	*node;
+
+	if (!enemy->path)
+		return (0);
+
+	x = 0;
+	y = 0;
+	node = enemy->path->points;
+	while (node)
+	{
+		printf("\t-- node : %d %d\n", node->point->x, node->point->y);
+		while (x < 64)
+		{
+			y = 0;
+			while (y < 64)
+			{
+				if (x <= 27 || x >= 37 || y <= 27 || y >= 37)
+				{
+					y++;
+					continue;
+				}
+				x_b = node->point->x + x;
+				y_b = node->point->y + y;
+				mlx_pixel_put(game->mlx, game->window, x_b, y_b, 0xdb5c62);
+				y++;
+			}
+			x++;
+		}
+		x = 0;
+		node = node->next;
+	}
+
+	return (0);
+}
+
 int render_enemy(t_game	*game)
 {
 	t_anime_tile	*enemy_tile;
@@ -53,12 +94,16 @@ int render_enemy(t_game	*game)
 	while (enemies[counter])
 	{
 		enemy = enemies[counter];
+		exec_enemy_behavior(game->player, game->scene, enemy);
+		// render_enemy_path(game, enemy);
 		enemy_tile = enemy_next_tile(enemy);
 		mlx_put_image_to_window(game->mlx, game->window, enemy_tile->image, enemy->x, enemy->y);
 		counter++;
 	} 
 	return (0);
 }
+
+
 
 int	render_scene(t_game *game)
 {

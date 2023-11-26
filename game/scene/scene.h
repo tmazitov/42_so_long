@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:32:11 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/25 18:55:04 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/26 20:27:07 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include "../../mlx/mlx.h"
 #include "../../utils/collider/collider.h"
 #include "../../utils/anime/anime.h"
+#include "../../utils/path/path.h"
 
 typedef enum s_obj_type{
 	OBJ_TREE	= 1,
@@ -68,6 +69,7 @@ typedef struct s_scene
 	t_scene_obj 		**objs;
 	int					player_x;
 	int					player_y;
+	t_point_list		*game_objs_points;
 }		t_scene;
 
 t_scene *make_scene(void *mlx, char *mapPath, int height, int width);
@@ -83,4 +85,5 @@ int			toggle_chest(t_chest *chest);
 
 t_anime	*make_chest_close_anime(void *mlx, int height, int width);
 t_anime	*make_chest_open_anime(void *mlx, int height, int width);
+
 #endif 

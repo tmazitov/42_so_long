@@ -6,18 +6,19 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 15:39:24 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/25 18:28:03 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/26 21:57:45 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENUMY_H
-# define ENUMY_H
+#ifndef ENEMY_H
+# define ENEMY_H
 
 #include <stdlib.h>
 #include "../../utils/collider/collider.h"
 #include "../../utils/anime/anime.h"
-#include "../scene/scene.h"
-#include "../player/player.h"
+#include "../../utils/path/path.h"
+
+# define PATH_FOUND_CALLDOWN 64
 
 typedef enum s_enemy_actions {
 	E_MOVE_STRAIGHT	= 1,
@@ -37,9 +38,11 @@ typedef struct s_enemy
 	int				x;
 	int				y;
 	int				health;
+	t_point_list	*path;
 	t_enemy_action	last_action;
 	t_collider		*coll;
 	t_enemy_anime	*anime;
+	int				path_counter;
 }		t_enemy;
 
 // INSTANCE
@@ -52,8 +55,5 @@ void			*free_enemy_anime(t_enemy_anime	*anime);
 t_anime			*make_right_idle_anime(void *mlx, int height, int width);
 t_anime			*make_left_idle_anime(void *mlx, int height, int width);
 t_anime_tile	*enemy_next_tile(t_enemy *enemy);
-
-// BEHAVIOR
-void			exec_enemy_behavior(t_player *player, t_scene* scene, t_enemy *enemy);
 
 #endif 

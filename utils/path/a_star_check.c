@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enemy_render.c                                     :+:      :+:    :+:   */
+/*   a_star_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/25 21:49:35 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/26 19:12:25 by tmazitov         ###   ########.fr       */
+/*   Created: 2023/11/26 17:57:56 by tmazitov          #+#    #+#             */
+/*   Updated: 2023/11/26 19:19:55 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "enemy.h"
+#include "path.h"
 
-t_anime_tile *enemy_next_tile(t_enemy *enemy)
+t_a_point	*a_check_by_coords(t_a_store *store, int x, int y)
 {
-	if (enemy->last_action == E_MOVE_BACK) 
-		return get_next_tile(enemy->anime->idle_left);
-	if (enemy->last_action == E_MOVE_STRAIGHT)
-		return get_next_tile(enemy->anime->idle_right);
-	return (NULL);
+	t_a_point	*result;
+
+	result = lst_check_by_coord(store->game_objs, x, y);
+	if (result)
+		return (result);
+	result = lst_check_by_coord(store->opened, x, y);
+	if (result)
+		return (result);
+	result = lst_check_by_coord(store->closed, x, y);
+	return (result);
 }
