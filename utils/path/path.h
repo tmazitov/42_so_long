@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 15:59:35 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/26 20:56:33 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/28 10:41:50 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int				lst_add_point(t_point_list *list, t_a_point *point);
 t_a_point		*lst_get_min_point(t_point_list *list);
 void			lst_rem_point(t_point_list *list, t_a_point *point);
 t_a_point		*lst_check_by_coord(t_point_list *list, int x, int y);
+int				lst_length(t_point_list *list);
 void			*free_point_list(t_point_list *list);
 
 // A* ALG STORAGE

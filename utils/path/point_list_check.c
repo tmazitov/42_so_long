@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 17:50:13 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/26 19:50:28 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/28 10:57:58 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_a_point	*lst_check_by_coord(t_point_list *list, int x, int y)
 	t_point_node	*node;
 
 	node = list->points;
-	while (node) 
+	while (node && node->point) 
 	{
 		if (node->point->x == x && node->point->y == y)
 			return (node->point);

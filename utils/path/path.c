@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 15:59:26 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/26 22:26:36 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/28 11:03:49 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ static t_point_list	*prepare_result(t_a_point *active)
 	t_a_point		*new;
 	t_a_point		*last;
 
+	if (!active)
+		return (NULL);
 	result = make_point_list();
 	if (!result)
 		return (NULL);
@@ -96,14 +98,16 @@ t_point_list	*calc_path(t_a_point *src, t_a_point *dest, t_point_list *g_objs)
 	active = lst_get_min_point(store->opened);
 	while (1)
 	{
+
 		if (make_neighbours(active, store) != 0)
 			return (free_a_store(store));
 		lst_rem_point(store->opened, active);
 		lst_add_point(store->closed, active);
 		if (active->heuristic_approxim == 0)
 			break ;
+		if (lst_length(store->opened) == 0)
+			break ;
 		active = lst_get_min_point(store->opened);
-		// printf("\t   new active : %d %d\n", active->x, active->y);
 	}
 	path = prepare_result(active);
 	free_point_list(store->opened);

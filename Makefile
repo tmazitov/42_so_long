@@ -6,7 +6,7 @@
 #    By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/30 14:16:32 by tmazitov          #+#    #+#              #
-#    Updated: 2023/11/26 20:33:51 by tmazitov         ###   ########.fr        #
+#    Updated: 2023/11/28 10:58:57 by tmazitov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRC =	cmd/main.c \
 		utils/path/point.c \
 		utils/path/point_node.c \
 		utils/path/point_list.c \
+		utils/path/point_list_utils.c \
 		utils/path/point_list_check.c \
 		utils/anime/anime.c \
 		utils/anime/anime_tile.c \
@@ -66,7 +67,7 @@ MLX = cd mlx && make
 
 $(NAME): $(OBJ) 
 		$(MLX)
-		gcc $(CFLAGS) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME) -fsanitize=address
+		gcc $(CFLAGS) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME) -fsanitize=address -g
 # 
 # -Lmlx -lmlx
 # libft/libft.a printf42/libftprintf.a
