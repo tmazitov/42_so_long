@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 15:59:26 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/28 11:03:49 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/28 13:37:10 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,12 @@ t_point_list	*calc_path(t_a_point *src, t_a_point *dest, t_point_list *g_objs)
 	t_a_point		*active;
 
 	// printf("calc path:\n\tscr: %d %d\n\tdest: %d %d\n", src->x, src->y, dest->x, dest->y);
+	src = make_a_point(src->x, src->y, NULL);
+	if (!src)
+		return (NULL);
 	store = make_a_store(src, dest, g_objs);
 	if (!store)
-		return (NULL);
+		return (free_a_point(src));
 	active = lst_get_min_point(store->opened);
 	while (1)
 	{

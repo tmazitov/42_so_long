@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:52:22 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/26 19:48:42 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/28 13:24:08 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ t_game	*make_game(int height, int width, char *title);
 int		player_control_hook(int keycode, t_game *game);
 
 
-void	exec_enemy_behavior(t_player *player, t_scene *scene, t_enemy *enemy);
+t_anime	*exec_enemy_behavior(t_player *player, t_scene *scene, t_enemy *enemy);
 
 #endif // GAME_H

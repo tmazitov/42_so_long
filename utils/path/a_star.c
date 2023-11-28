@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 17:00:02 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/26 20:29:44 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/28 13:35:47 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ t_a_store	*make_a_store(t_a_point *src, t_a_point *dest, t_point_list *g_objs)
 	store->closed = make_point_list();	
 	if (!store->closed)
 		return (free_a_store(store));
-	store->dest = dest;
+	store->dest = make_a_point(dest->x, dest->y, NULL);
+	if (!store->dest)
+		return (free_a_store(store));
 	return (store); 
 }
 
 void	*free_a_store(t_a_store	*store)
 {
-	if (store->game_objs)
-		free_point_list(store->game_objs);
 	if (store->opened)
 		free_point_list(store->opened);
 	if (store->closed)

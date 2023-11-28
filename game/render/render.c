@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:51:46 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/26 22:29:58 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/28 14:02:39 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,24 @@ int render_player(t_game *game)
 	return (0);
 }
 
+// int render_enemy_path(t_game *game, t_enemy *enemy)
+// {
+// 	t_point_node	*node;
+
+// 	if (!enemy->path)
+// 		return (0);
+		
+// 	node = enemy->path->points;
+// 	printf("\tenemy move : %d %d\n", node->point->x, node->point->y);
+// 	while (node)
+// 	{
+// 		mlx_pixel_put(game->mlx, game->window, node->point->x, node->point->y, 0x163894);
+// 		node = node->next;
+// 	}
+
+// 	return (0);
+// }
+
 int render_enemy_path(t_game *game, t_enemy *enemy)
 {
 	int	x;
@@ -57,7 +75,6 @@ int render_enemy_path(t_game *game, t_enemy *enemy)
 	node = enemy->path->points;
 	while (node)
 	{
-		printf("\t-- node : %d %d\n", node->point->x, node->point->y);
 		while (x < 64)
 		{
 			y = 0;
@@ -85,18 +102,21 @@ int render_enemy_path(t_game *game, t_enemy *enemy)
 int render_enemy(t_game	*game)
 {
 	t_anime_tile	*enemy_tile;
-	t_enemy	**enemies;
-	t_enemy	*enemy;
-	int		counter;
+	t_enemy			**enemies;
+	t_enemy			*enemy;
+	t_anime			*anime;
+	int				counter;
 
 	counter = 0;
 	enemies = game->scene->enemies;
 	while (enemies[counter])
 	{
 		enemy = enemies[counter];
-		exec_enemy_behavior(game->player, game->scene, enemy);
-		// render_enemy_path(game, enemy);
-		enemy_tile = enemy_next_tile(enemy);
+		render_enemy_path(game, enemy);
+		anime = exec_enemy_behavior(game->player, game->scene, enemy);
+		if (!anime)
+			return (1);
+		enemy_tile = get_next_tile(anime);
 		mlx_put_image_to_window(game->mlx, game->window, enemy_tile->image, enemy->x, enemy->y);
 		counter++;
 	} 
@@ -242,6 +262,6 @@ int	render_hook(t_game *game)
 	render_chests(game);
 	render_enemy(game);
 	render_player(game);
-	render_colliders(game);
+	// render_colliders(game);
 	return (0);
 }
