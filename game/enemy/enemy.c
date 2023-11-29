@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 15:39:17 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/28 12:09:46 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/29 14:34:26 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ t_enemy	*make_enemy(void *mlx, int x, int y)
 	enemy->last_action = E_MOVE_BACK;
 	enemy->path = NULL;
 	printf("success enemy create\n");
-	enemy->path_counter = 0;
+	enemy->path_counter = PATH_FOUND_CALLDOWN / 2;
 	enemy->current_task = NULL;
+	enemy->player_score = 0;
 	return (enemy);
 }
 

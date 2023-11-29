@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:07:26 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/12 22:16:20 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:27:42 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,13 @@ typedef struct s_player
 {
 	void				*mlx;
 	int					x;
+	int					last_x;
 	int					y;
+	int					last_y;
 	int					width;
 	int					height;
 	int					attack_combo;
+	int					score;
 	t_action			last_movement;
 	t_collider			*coll;
 	t_player_task		*current_task;
@@ -104,7 +107,7 @@ int				setup_attack_anime(t_player *player, t_player_anime *player_anime);
 
 // Player tasks
 
-void	add_task(t_player *player, t_action action, t_anime *anime, int target);
-t_anime	*task_proccess(t_scene *scene, t_player *player);
+void			add_task(t_player *player, t_action action, t_anime *anime, int target);
+t_anime			*task_proccess(t_scene *scene, t_player *player);
 
 #endif // !PLAYER_H

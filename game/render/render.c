@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:51:46 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/28 14:02:39 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:49:10 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int render_player(t_game *game)
 	t_anime			*anime;
 
 	anime = NULL;
+	// printf("task %p\n", game->player->current_task);
 	if (game->player->current_task)
 		anime = task_proccess(game->scene, game->player);
 	if (!anime)
@@ -72,7 +73,7 @@ int render_enemy_path(t_game *game, t_enemy *enemy)
 
 	x = 0;
 	y = 0;
-	node = enemy->path->points;
+	node = enemy->path->point_list->points;
 	while (node)
 	{
 		while (x < 64)

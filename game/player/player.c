@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:07:19 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/25 19:38:23 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:14:02 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ t_player *make_player(void *mlx, int height, int width)
 		return (NULL);
 	player->x = 0;
 	player->y = 0;
+	player->last_x = 0;
+	player->last_y = 0;
+	player->score = 0;
 	player->height = height;
 	player->width = width;
 	player->mlx = mlx;

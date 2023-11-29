@@ -6,7 +6,7 @@
 #    By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/30 14:16:32 by tmazitov          #+#    #+#              #
-#    Updated: 2023/11/28 13:24:39 by tmazitov         ###   ########.fr        #
+#    Updated: 2023/11/29 11:55:15 by tmazitov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRC =	cmd/main.c \
 		utils/path/path.c \
 		utils/path/point.c \
 		utils/path/point_node.c \
+		utils/path/point_path.c \
 		utils/path/point_list.c \
 		utils/path/point_list_utils.c \
 		utils/path/point_list_check.c \

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 21:44:50 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/09 07:03:17 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:48:06 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,11 @@ int	is_able_to_proccess(t_scene *scene, t_player *player)
 	int				tree_ctn;
 	int				inter;
 	
+	if (!player || !scene)
+		return (1);
 	task = player->current_task;
+	if (!task)
+		return (1);
 	if (is_attack(task->action))
 		return (1);
 	if (is_movement(task->action))
@@ -144,7 +148,6 @@ t_anime	*task_proccess(t_scene *scene, t_player *player)
 	t_player_task	*task;
 	int				is_able_to_proc;
 
-	(void)scene;
 	task = player->current_task;
 	is_able_to_proc = is_able_to_proccess(scene, player);
 	// printf("player : x=%d y=%d dur=%d\n",player->x, player->y, task->duration);
@@ -159,6 +162,12 @@ t_anime	*task_proccess(t_scene *scene, t_player *player)
 			refresh_anime(task->anime);
 		if (is_attack(task->action) && !task->next)
 			player->attack_combo = 0;
+		if (task && is_movement(task->action)) 
+		{
+			player->score += 1;
+			player->last_x = player->x;
+			player->last_y = player->y;
+		}
 		free_task(task);
 	}
 

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 15:59:35 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/28 10:41:50 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/29 13:57:03 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,16 @@ typedef struct s_a_store
 	t_point_list	*closed;
 }		t_a_store;
 
+typedef struct s_path
+{
+	t_point_list	*point_list;
+	int				counter;
+	int				length;
+}		t_path;
+
+
 // cacl_path return the path from enemy to the player
-t_point_list	*calc_path(t_a_point *src, t_a_point *dest, t_point_list *g_objs);
+t_path	*calc_path(t_a_point *src, t_a_point *dest, t_point_list *g_objs);
 
 // POINT
 
@@ -72,6 +80,7 @@ t_a_point		*lst_get_min_point(t_point_list *list);
 void			lst_rem_point(t_point_list *list, t_a_point *point);
 t_a_point		*lst_check_by_coord(t_point_list *list, int x, int y);
 int				lst_length(t_point_list *list);
+t_point_list	*lst_reverse(t_point_list *list);
 void			*free_point_list(t_point_list *list);
 
 // A* ALG STORAGE
@@ -80,4 +89,9 @@ t_a_store		*make_a_store(t_a_point *src, t_a_point *dest, t_point_list *g_objs);
 void			*free_a_store(t_a_store	*store);
 t_a_point		*a_check_by_coords(t_a_store *store, int x, int y);
 
+// PATH
+
+t_path			*make_path(t_point_list *list);
+void			*free_path(t_path *path);
+t_a_point		*get_next_point(t_path *path);
 #endif // !PATH_H
