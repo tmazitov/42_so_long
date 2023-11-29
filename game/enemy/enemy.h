@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 15:39:24 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/29 14:32:14 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/29 22:28:18 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef	struct s_enemy_anime
 {
 	t_anime	*idle_right;
 	t_anime	*idle_left;
+	t_anime *move_right;
+	t_anime *move_left;
 }		t_enemy_anime;
 
 typedef struct s_enemy_task
@@ -67,7 +69,9 @@ void			*free_enemy(t_enemy *enemy);
 t_enemy_anime	*make_enemy_anime(void *mlx);
 void			*free_enemy_anime(t_enemy_anime	*anime);
 t_anime			*make_right_idle_anime(void *mlx, int height, int width);
+t_anime			*make_right_move_anime(void *mlx, int height, int width);
 t_anime			*make_left_idle_anime(void *mlx, int height, int width);
+t_anime			*make_left_move_anime(void *mlx, int height, int width);
 t_anime_tile	*enemy_next_tile(t_enemy *enemy);
 
 // TASK

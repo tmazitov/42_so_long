@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:07:10 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/29 13:32:43 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/29 22:41:48 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ t_anime	*proc_enemy_task(t_enemy *enemy)
 	task->duration -= 1;
 	if (task->duration == 0)
 	{
+		refresh_anime(anime);
 		free_enemy_task(task);
 		enemy->current_task = NULL;
 	}

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:53:47 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/29 13:34:08 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/29 22:31:04 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,16 @@ void	add_enemy_task(t_enemy *enemy, t_a_point *target)
 	if (act == E_MOVE_BACK || act == E_MOVE_STRAIGHT)
 		enemy->last_action = act;
 	if (act == E_MOVE_BACK) 
-		anime = enemy->anime->idle_left;	
+		anime = enemy->anime->move_left;	
 	else if (act == E_MOVE_STRAIGHT) 
-		anime = enemy->anime->idle_right;
-	else if (act == E_MOVE_UP) 
-		anime = enemy->anime->idle_right;
-	else if (act == E_MOVE_DOWN) 
-		anime = enemy->anime->idle_right;
+		anime = enemy->anime->move_right;
+	else if (act == E_MOVE_UP && enemy->last_action == E_MOVE_STRAIGHT) 
+		anime = enemy->anime->move_right;
+	else if (act == E_MOVE_UP && enemy->last_action == E_MOVE_BACK) 
+		anime = enemy->anime->move_left;
+	else if (act == E_MOVE_DOWN && enemy->last_action == E_MOVE_STRAIGHT) 
+		anime = enemy->anime->move_right;
+	else if (act == E_MOVE_DOWN && enemy->last_action == E_MOVE_BACK) 
+		anime = enemy->anime->move_left;
 	enemy->current_task = make_enemy_task(anime, act, 64, target);
 }
