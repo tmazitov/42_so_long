@@ -6,11 +6,47 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:51:46 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/29 12:49:10 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:25:49 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
+
+int render_player_health_bar(t_game *game)
+{
+	int		x;
+	int		y;
+	t_image *image;
+
+
+	image = game->player->health->image;	
+	x = game->player->x;
+	y = game->player->y - image->height;
+	mlx_put_image_to_window(game->mlx, game->window, image->content, x, y);
+	return (0);
+}
+int render_enemy_health_bar(t_game *game)
+{
+	t_enemy			**enemies;
+	t_enemy			*enemy;
+	int				counter;
+	t_image			*image;
+	int				x;
+	int				y;
+
+	counter = 0;
+	enemies = game->scene->enemies;
+	while (enemies[counter])
+	{
+		enemy = enemies[counter];
+		image = enemy->health->image;	
+		x = enemy->x;
+		y = enemy->y - image->height;
+		mlx_put_image_to_window(game->mlx, game->window, image->content, x, y);
+		counter++;
+	} 
+	return (0);
+}
 
 int render_player(t_game *game)
 {
@@ -36,29 +72,11 @@ int render_player(t_game *game)
 	}
 	// printf("anime: %p\n", anime);
 	tile = get_next_tile(anime);
-	x = game->player->x ;
+	x = game->player->x - (game->player->coll->width / 2) + 16;
 	y = game->player->y - (game->player->coll->height / 2);
 	mlx_put_image_to_window(game->mlx, game->window, tile->image, x, y);
 	return (0);
 }
-
-// int render_enemy_path(t_game *game, t_enemy *enemy)
-// {
-// 	t_point_node	*node;
-
-// 	if (!enemy->path)
-// 		return (0);
-		
-// 	node = enemy->path->points;
-// 	printf("\tenemy move : %d %d\n", node->point->x, node->point->y);
-// 	while (node)
-// 	{
-// 		mlx_pixel_put(game->mlx, game->window, node->point->x, node->point->y, 0x163894);
-// 		node = node->next;
-// 	}
-
-// 	return (0);
-// }
 
 int render_enemy_path(t_game *game, t_enemy *enemy)
 {
@@ -253,16 +271,16 @@ int render_colliders(t_game	*game)
 	return (0);
 }
 
-
-
 int	render_hook(t_game *game)
 {
 	mlx_clear_window(game->mlx, game->window);
 	render_scene(game);
-	render_trees(game);
 	render_chests(game);
 	render_enemy(game);
 	render_player(game);
+	render_trees(game);
+	render_player_health_bar(game);
+	render_enemy_health_bar(game);
 	// render_colliders(game);
 	return (0);
 }

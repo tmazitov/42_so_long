@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:07:19 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/29 12:14:02 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:06:41 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ t_player *make_player(void *mlx, int height, int width)
 	player->coll = make_collider(64, 64, &player->x, &player->y);
 	if (!player->coll)
 		return (free_player(player));
-	player->last_movement = MOVE_DOWN; 
+	player->last_movement = MOVE_DOWN;
+	player->health = make_health_bar(mlx, 5);
+	if (!player->health)
+		return (free_player(player));
 	printf("success created player!\n");
 	return (player);
 }

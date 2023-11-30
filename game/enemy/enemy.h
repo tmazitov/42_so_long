@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 15:39:24 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/29 22:28:18 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:26:17 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define ENEMY_H
 
 #include <stdlib.h>
+#include "../health_bar/health_bar.h"
 #include "../../utils/collider/collider.h"
 #include "../../utils/anime/anime.h"
 #include "../../utils/path/path.h"
@@ -48,8 +49,8 @@ typedef struct s_enemy
 {
 	int				x;
 	int				y;
-	int				health;
 	t_path			*path;
+	t_health_bar	*health;
 	t_enemy_action	last_action;
 	t_collider		*coll;
 	t_enemy_anime	*anime;

@@ -6,7 +6,7 @@
 #    By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/30 14:16:32 by tmazitov          #+#    #+#              #
-#    Updated: 2023/11/29 22:38:30 by tmazitov         ###   ########.fr        #
+#    Updated: 2023/11/30 16:05:42 by tmazitov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,12 +28,16 @@ SRC =	cmd/main.c \
 		game/player/anime_attack.c \
 		game/player/player.c \
 		game/player/task.c \
+		game/health_bar/health_bar.c \
+		game/health_bar/health_bar_image.c \
+		game/health_bar/health_bar_update.c \
 		game/render/render.c \
 		game/scene/scene.c \
 		game/scene/tree.c \
 		game/scene/chest.c \
 		game/scene/chest_anime.c \
 		game/parser/parser.c \
+		utils/image/image.c \
 		utils/path/a_star.c \
 		utils/path/a_star_check.c \
 		utils/path/path.c \
@@ -48,6 +52,7 @@ SRC =	cmd/main.c \
 		utils/collider/point.c \
 		utils/collider/collider.c \
 		utils/collider/intersection.c \
+		utils/collider/intersection_variants.c \
 		utils/gnl/get_next_line.c \
 		utils/gnl/get_next_line_utils.c \
 		
