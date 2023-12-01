@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:51:46 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/30 17:25:49 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/01 13:06:27 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,6 +248,34 @@ int	draw_collider(t_game *game, t_collider *coll)
 	}
 	return (0);
 }
+int	draw_hit_box(t_game *game, t_collider *hit_box)
+{
+	int	x;
+	int	y;
+	int x_b;
+	int y_b;
+
+	x = 0;
+	y = 0;
+	while (x < hit_box->width)
+	{
+		y = 0;
+		while (y < hit_box->height)
+		{
+			if (x != 0 && x != hit_box->width - 1 && y != 0 && y != hit_box->height - 1)
+			{
+				y++;
+				continue;
+			}
+			x_b = *hit_box->x + hit_box->align_top + x;
+			y_b = *hit_box->y + hit_box->align_left + y;
+			mlx_pixel_put(game->mlx, game->window, x_b, y_b, 0xa6130c);
+			y++;
+		}
+		x++;
+	}
+	return (0);
+}
 
 int render_colliders(t_game	*game)
 {
@@ -270,6 +298,21 @@ int render_colliders(t_game	*game)
 	draw_collider(game, game->player->coll);
 	return (0);
 }
+int render_hit_box(t_game *game)
+{
+	t_scene *scene;
+	int		coll_ctn;
+	
+	scene = game->scene;
+	coll_ctn = 0;
+	while(scene->enemies[coll_ctn])
+	{
+		draw_hit_box(game, scene->enemies[coll_ctn]->hit_box);
+		coll_ctn++;
+	}
+	draw_hit_box(game, game->player->hit_box);
+	return (0);
+}
 
 int	render_hook(t_game *game)
 {
@@ -282,5 +325,6 @@ int	render_hook(t_game *game)
 	render_player_health_bar(game);
 	render_enemy_health_bar(game);
 	// render_colliders(game);
+	render_hit_box(game);
 	return (0);
 }

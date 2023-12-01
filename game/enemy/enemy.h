@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 15:39:24 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/30 17:26:17 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/01 13:05:53 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,12 @@ typedef struct s_enemy
 	t_health_bar	*health;
 	t_enemy_action	last_action;
 	t_collider		*coll;
+	t_collider		*hit_box;
 	t_enemy_anime	*anime;
 	t_enemy_task	*current_task;
 	int				path_counter;
 	int				player_score;
 }		t_enemy;
-
-
 
 
 // INSTANCE
@@ -80,5 +79,7 @@ t_anime_tile	*enemy_next_tile(t_enemy *enemy);
 t_enemy_task	*make_enemy_task(t_anime *a, t_enemy_action act, int dur, t_a_point *t);
 void			*free_enemy_task(t_enemy_task *task);
 void			add_enemy_task(t_enemy *enemy, t_a_point *target);
+
 t_anime			*proc_enemy_task(t_enemy *enemy);
+t_anime 		*enemy_idle_anime(t_enemy *enemy);
 #endif 

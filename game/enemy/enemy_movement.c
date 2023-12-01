@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:07:10 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/29 22:41:48 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/01 13:00:56 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,19 @@ static void	enemy_move_handler(t_enemy *enemy)
 		enemy->y -= ENEMY_MOVE_SPEED;
 }
 
-static int is_movement(t_enemy_task	*task) 
+static int enemy_is_movement(t_enemy_task *task) 
 {
 	return (task->action == E_MOVE_BACK ||
 		task->action == E_MOVE_STRAIGHT ||
 		task->action == E_MOVE_DOWN ||
 		task->action == E_MOVE_UP) ;
+}
+
+t_anime *enemy_idle_anime(t_enemy *enemy)
+{
+	if (enemy->last_action == E_MOVE_BACK)
+		return (enemy->anime->idle_left);
+	return (enemy->anime->idle_right);
 }
 
 t_anime	*proc_enemy_task(t_enemy *enemy)
@@ -44,15 +51,9 @@ t_anime	*proc_enemy_task(t_enemy *enemy)
 		return (NULL);
 	task = enemy->current_task;
 	if (!task || !enemy->path) 
-	{
-		if (enemy->last_action == E_MOVE_BACK)
-			return (enemy->anime->idle_left);
-		else if (enemy->last_action == E_MOVE_STRAIGHT)
-			return (enemy->anime->idle_right);
-		return (NULL);	
-	}
+		return (enemy_idle_anime(enemy));
 	anime = task->anime;
-	if (is_movement(task))
+	if (enemy_is_movement(task))
 		enemy_move_handler(enemy);
 	task->duration -= 1;
 	if (task->duration == 0)

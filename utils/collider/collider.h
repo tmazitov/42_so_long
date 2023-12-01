@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 17:59:04 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/30 12:49:33 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/01 12:11:09 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef struct s_collider
 	int		*y;
 	int		height;
 	int		width;
+	int		align_top;
+	int		align_left;
 	t_point	**points;
 }		t_collider;
 
@@ -49,6 +51,7 @@ void		free_point(t_point *point);
 t_collider	*make_collider(int height, int width, int *x, int *y);
 void		free_collider(t_collider *collider);
 int			check_intersection(t_collider *col1, t_collider *col2, int target, int speed);
+t_collider	*coll_set_align(t_collider *coll, int top, int left);
 
 int			inter_straight(t_collider *col1, t_collider *col2, int speed);
 int			inter_back(t_collider *col1, t_collider *col2, int speed);

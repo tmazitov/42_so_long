@@ -6,12 +6,13 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 17:53:23 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/25 19:38:31 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/01 12:24:47 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "collider.h"
 #include <stdio.h>
+
 int 	feel_collider(t_collider *collider)
 {
 	int	x;
@@ -19,8 +20,8 @@ int 	feel_collider(t_collider *collider)
 	int	width;
 	int	height;
 
-	x = *collider->x;
-	y = *collider->y;
+	x = *collider->x + collider->align_top;
+	y = *collider->y + collider->align_left;
 	width = collider->width;
 	height = collider->height;
 	collider->points = malloc(sizeof(t_point *) * 5);
@@ -49,14 +50,36 @@ t_collider	*make_collider(int height, int width, int *x, int *y)
 	collider = malloc(sizeof(t_collider));
 	if (!collider)
 		return (NULL);
-	collider->x = x;	
-	collider->y = y;	
+	collider->x = x;
+	collider->y = y;
+	collider->align_left = 0;	
+	collider->align_top = 0;
 	collider->width = width;
 	collider->height = height;
 	collider->points = NULL;
 	if (feel_collider(collider) != 0)
 		return (free_collider(collider), NULL);
-	return (collider);	
+	return (collider);
+}
+
+t_collider	*coll_set_align(t_collider *coll, int top, int left)
+{
+	int		counter;
+
+	if (!coll)
+		return (NULL);
+	coll->align_top = top;
+	coll->align_left = left;
+	counter = 0;
+	while (counter < 4)
+	{
+		free_point(coll->points[counter]);
+		counter++;
+	}
+	free(coll->points);
+	if (feel_collider(coll) != 0)
+		return (free_collider(coll), NULL);
+	return (coll);
 }
 
 

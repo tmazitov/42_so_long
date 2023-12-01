@@ -6,7 +6,7 @@
 #    By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/30 14:16:32 by tmazitov          #+#    #+#              #
-#    Updated: 2023/11/30 16:05:42 by tmazitov         ###   ########.fr        #
+#    Updated: 2023/12/01 12:56:14 by tmazitov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRC =	cmd/main.c \
 		game/game.c \
 		game/movement.c \
 		game/enemy_behavior.c \
+		game/enemy_move_check.c \
 		game/enemy/enemy.c \
 		game/enemy/enemy_anime.c \
 		game/enemy/enemy_render.c \
@@ -28,6 +29,9 @@ SRC =	cmd/main.c \
 		game/player/anime_attack.c \
 		game/player/player.c \
 		game/player/task.c \
+		game/player/task_action.c \
+		game/player/task_utils.c \
+		game/player/task_check.c \
 		game/health_bar/health_bar.c \
 		game/health_bar/health_bar_image.c \
 		game/health_bar/health_bar_update.c \

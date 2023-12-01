@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 19:48:34 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/29 14:30:34 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/01 13:02:10 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ t_anime	*exec_enemy_behavior(t_player *player, t_scene *scene, t_enemy *enemy)
 	
 	if (!player || !scene || !enemy)
 		return (NULL);
+	if (enemy_is_able_to_move(enemy, player) != 1)
+		return (enemy_idle_anime(enemy));
 	if (enemy_delay(enemy) != 0 || (enemy->x == player->last_x && enemy->y == player->last_y))
 		return (proc_enemy_task(enemy));
 	if (enemy->player_score != player->score)
