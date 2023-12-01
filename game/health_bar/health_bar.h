@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 14:53:15 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/30 16:18:36 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/01 21:34:05 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@ typedef	struct s_health_bar
 {
 	int		max;
 	int		current;
-	t_image	*image;
+	t_image	**images;
 }		t_health_bar;
 
 t_health_bar	*make_health_bar(void *mlx, int max);
+t_image	*hb_get_image(t_health_bar *bar);
 void			*free_health_bar(t_health_bar *bar);
 void			update_health_bar(t_health_bar *bar, int value);
-void			feel_health_bar_image(t_health_bar *bar);
+t_image			*make_health_bar_image(void *mlx , t_health_bar *bar, int count);
 #endif // !HEALTH_BAR_H

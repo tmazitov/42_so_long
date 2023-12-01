@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 15:39:24 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/01 13:05:53 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/01 21:54:11 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_enemy
 	t_enemy_task	*current_task;
 	int				path_counter;
 	int				player_score;
+	int				is_died;
 }		t_enemy;
 
 

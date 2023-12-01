@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:07:26 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/01 13:06:16 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/01 13:38:09 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,4 +117,5 @@ int				is_able_to_proccess(t_scene *scene, t_player *player);
 int 			is_movement(t_action action);
 int 			is_attack(t_action action);
 int 			task_count(t_player_task *task);
+int				handle_player_attack(t_player *player, t_scene *scene);
 #endif // !PLAYER_H

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:51:46 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/01 13:06:27 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/01 22:01:48 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int render_player_health_bar(t_game *game)
 	t_image *image;
 
 
-	image = game->player->health->image;	
+	image = hb_get_image(game->player->health);	
 	x = game->player->x;
 	y = game->player->y - image->height;
 	mlx_put_image_to_window(game->mlx, game->window, image->content, x, y);
@@ -39,7 +39,7 @@ int render_enemy_health_bar(t_game *game)
 	while (enemies[counter])
 	{
 		enemy = enemies[counter];
-		image = enemy->health->image;	
+		image = hb_get_image(enemy->health);	
 		x = enemy->x;
 		y = enemy->y - image->height;
 		mlx_put_image_to_window(game->mlx, game->window, image->content, x, y);
@@ -131,7 +131,6 @@ int render_enemy(t_game	*game)
 	while (enemies[counter])
 	{
 		enemy = enemies[counter];
-		render_enemy_path(game, enemy);
 		anime = exec_enemy_behavior(game->player, game->scene, enemy);
 		if (!anime)
 			return (1);
@@ -325,6 +324,6 @@ int	render_hook(t_game *game)
 	render_player_health_bar(game);
 	render_enemy_health_bar(game);
 	// render_colliders(game);
-	render_hit_box(game);
+	// render_hit_box(game);
 	return (0);
 }

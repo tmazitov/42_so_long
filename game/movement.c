@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 13:43:53 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/12 22:27:09 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/01 13:25:37 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	player_attack_handler(t_player *player)
 		add_task(player, ATTACK_1, player->anime->attack_right, 0);
 	else if (player->last_movement == MOVE_BACK)
 		add_task(player, ATTACK_1, player->anime->attack_left, 0);
-
 }
 
 void	player_open_chest_handler(t_game *game)

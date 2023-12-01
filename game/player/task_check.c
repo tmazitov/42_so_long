@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:30:15 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/01 12:41:56 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/01 22:05:44 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,13 @@ static	int	check_enemy_intersect(t_player *player, t_enemy **enemies)
 	task = player->current_task;
 	while (enemies[counter])
 	{
-		coll = enemies[counter]->coll;
-		inter = check_intersection(player->coll, coll, task->action, PLAYER_SPEED);
-		if (inter && inter != -1)
-			return (0);
+		if (enemies[counter]->is_died == 0)
+		{
+			coll = enemies[counter]->coll;
+			inter = check_intersection(player->coll, coll, task->action, PLAYER_SPEED);
+			if (inter && inter != -1)
+				return (0);
+		}
 		counter++;
 	}
 	return (1);

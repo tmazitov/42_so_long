@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:34:10 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/01 12:34:33 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/01 21:52:17 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	add_task(t_player *player, t_action action, t_anime *anime, int target)
 		player->current_task = task;
 }
 
-int	execute_action(t_player *player, t_player_task *task)
+int	execute_action(t_scene *scene, t_player *player, t_player_task *task)
 {
 	if (task->action == MOVE_STRAIGHT)
 	{
@@ -59,6 +59,9 @@ int	execute_action(t_player *player, t_player_task *task)
 		player->y -= PLAYER_SPEED;
 		return (PLAYER_SPEED);
 	}
+	else if (task->action == ATTACK_1 && 
+		task->duration == task->anime->tile_life_time * task->anime->tile_count)
+		return (handle_player_attack(player, scene));
 	return (1);
 }
 
@@ -71,7 +74,7 @@ t_anime	*task_proccess(t_scene *scene, t_player *player)
 	is_able_to_proc = is_able_to_proccess(scene, player);
 	// printf("player : x=%d y=%d dur=%d\n",player->x, player->y, task->duration);
 	if (task->duration > 0 && is_able_to_proc)
-		task->duration -= execute_action(player, task);
+		task->duration -= execute_action(scene, player, task);
 	else
 	{
 		player->current_task = task->next;
