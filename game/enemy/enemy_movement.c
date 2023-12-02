@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:07:10 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/02 16:35:13 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/02 19:44:09 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,30 @@ static int enemy_is_movement(t_enemy_task *task)
 		task->action == E_MOVE_UP) ;
 }
 
+void proc_enemy_task_rev(t_enemy *enemy)
+{
+	t_enemy_task	*task;
+	t_anime			*anime;
+	int				new_dur;
+
+	task = enemy->current_task;
+	if (task) 
+	{
+		anime = task->anime;
+		new_dur = anime->tile_count * anime->tile_life_time - task->duration;
+		task->duration = new_dur;
+		if (task->action == E_MOVE_BACK)
+			task->action = E_MOVE_STRAIGHT;
+		else if (task->action == E_MOVE_STRAIGHT)
+			task->action = E_MOVE_BACK;
+		else if (task->action == E_MOVE_UP)
+			task->action = E_MOVE_DOWN;
+		else if (task->action == E_MOVE_DOWN)
+			task->action = E_MOVE_UP;
+		enemy->is_go_back = 1;
+	}
+}
+
 t_anime	*proc_enemy_task(t_enemy *enemy)
 {
 	t_anime			*anime;
@@ -53,9 +77,10 @@ t_anime	*proc_enemy_task(t_enemy *enemy)
 	{
 		if (task->action == E_DIE)
 			enemy->anime->die_anime_done = 1;
+		if (enemy->is_go_back)
+			enemy->is_go_back = 0;
 		refresh_anime(anime);
-		free_enemy_task(task);
-		enemy->current_task = NULL;
+		enemy->current_task = free_enemy_task(task);
 		if (enemy->is_died)
 			return (enemy->anime->died);
 		return (enemy_idle_anime(enemy));

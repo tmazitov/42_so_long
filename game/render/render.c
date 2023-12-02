@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:51:46 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/02 16:42:17 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/02 20:06:31 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,12 @@ int render_player(t_game *game)
 	t_anime			*anime;
 
 	anime = NULL;
-	// printf("task %p\n", game->player->current_task);
 	if (game->player->current_task)
 		anime = task_proccess(game->scene, game->player);
 	if (!anime)
 		anime = pl_idle_anime(game->player);
-	// printf("anime: %p\n", anime);
+	if (game->player->attack_call_down)
+		game->player->attack_call_down -= 1;
 	tile = get_next_tile(anime);
 	x = game->player->x - (game->player->coll->width / 2) + 16;
 	y = game->player->y - (game->player->coll->height / 2);
@@ -130,7 +130,10 @@ int render_enemy(t_game	*game)
 		anime = exec_enemy_behavior(game->player, game->scene, enemy);
 		if (!anime)
 			return (1);
-		enemy_tile = get_next_tile(anime);
+		if (enemy->is_go_back)
+			enemy_tile = get_next_tile_rev(anime);
+		else
+			enemy_tile = get_next_tile(anime);
 		mlx_put_image_to_window(game->mlx, game->window, enemy_tile->image, enemy->x, enemy->y);
 		counter++;
 	} 
@@ -320,6 +323,6 @@ int	render_hook(t_game *game)
 	render_player_health_bar(game);
 	render_enemy_health_bar(game);
 	// render_colliders(game);
-	// render_hit_box(game);
+	render_hit_box(game);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 15:39:17 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/01 21:54:27 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/02 19:31:22 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static	void	set_default_values(t_enemy *enemy)
 	enemy->current_task = NULL;
 	enemy->player_score = 0;
 	enemy->is_died = 0;
+	enemy->is_go_back = 0;
 	enemy->last_action = E_MOVE_BACK;
 	enemy->path_counter = PATH_FOUND_CALLDOWN / 2 ;
 }

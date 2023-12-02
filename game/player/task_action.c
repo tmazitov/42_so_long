@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:34:10 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/02 16:48:39 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/02 20:03:02 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	add_task(t_player *player, t_action action, t_anime *anime, int target)
 		task->duration = anime->tile_life_time * anime->tile_count;
 	if (is_movement(action))
 		player->last_movement = action;
+	if (is_attack(action))
+		player->attack_call_down = ATTACK_CALL_DOWN;
 	temp = player->current_task;
 	while (temp && temp->next)
 		temp = temp->next;
@@ -91,7 +93,6 @@ t_anime	*task_proccess(t_scene *scene, t_player *player)
 		if (!player->current_task)
 			return (pl_idle_anime(player));
 	}
-
 	if (!is_able_to_proc)
 		return (NULL);
 	return task->anime;

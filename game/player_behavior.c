@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movement.c                                         :+:      :+:    :+:   */
+/*   player_behavior.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 13:43:53 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/01 13:25:37 by tmazitov         ###   ########.fr       */
+/*   Created: 2023/12/02 19:58:47 by tmazitov          #+#    #+#             */
+/*   Updated: 2023/12/02 19:59:31 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	player_attack_handler(t_player *player)
 {
-
+	if (player->attack_call_down != 0)
+		return ;
 	if (player->last_movement == MOVE_DOWN)
 		add_task(player, ATTACK_1, player->anime->attack_up, 0);
 	else if (player->last_movement == MOVE_UP)

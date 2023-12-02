@@ -6,18 +6,11 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:43:30 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/02 15:35:29 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/02 19:09:19 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
-
-// int is_attack(t_action action)
-// {
-// 	return (action == ATTACK_1 ||
-// 			action == ATTACK_2 ||
-// 			action == ATTACK_3);
-// }
 
 static int enemy_is_movement(t_enemy_action action)
 {
@@ -41,9 +34,9 @@ int	enemy_is_able_to_move(t_enemy *enemy, t_scene *scene, t_player *player)
 	task = enemy->current_task;
 	if (enemy_is_movement(task->action))
 	{	
-		inter = check_intersection(enemy->coll, player->coll, task->action, ENEMY_MOVE_SPEED);
-		if (inter && inter != -1)
-			return (0);
+		// inter = check_intersection(enemy->coll, player->coll, task->action, ENEMY_MOVE_SPEED);
+		// if (inter && inter != -1)
+		// 	return (0);
 		counter = 0;
 		while (scene->enemies[counter])
 		{

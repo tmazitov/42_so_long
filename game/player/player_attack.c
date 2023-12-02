@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:26:55 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/02 15:36:57 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/02 19:24:59 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	handle_player_attack(t_player *player, t_scene *scene)
 	enemy = get_enemy_to_hit(player, scene);
 	if (!enemy)
 		return (1);
-	update_health_bar(enemy->health, enemy->health->current - 1);
+	hb_update(enemy->health, enemy->health->current - 1);
 	if (enemy->health->current == 0)
 		enemy->is_died = 1;
 	return (1);
