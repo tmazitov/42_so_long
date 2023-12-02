@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:51:46 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/01 22:01:48 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/02 16:42:17 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int render_player_health_bar(t_game *game)
 
 
 	image = hb_get_image(game->player->health);	
+	if (!image)
+		return (0);
 	x = game->player->x;
 	y = game->player->y - image->height;
 	mlx_put_image_to_window(game->mlx, game->window, image->content, x, y);
@@ -39,10 +41,13 @@ int render_enemy_health_bar(t_game *game)
 	while (enemies[counter])
 	{
 		enemy = enemies[counter];
-		image = hb_get_image(enemy->health);	
-		x = enemy->x;
-		y = enemy->y - image->height;
-		mlx_put_image_to_window(game->mlx, game->window, image->content, x, y);
+		image = hb_get_image(enemy->health);
+		if (image)
+		{
+			x = enemy->x;
+			y = enemy->y - image->height;
+			mlx_put_image_to_window(game->mlx, game->window, image->content, x, y);
+		}
 		counter++;
 	} 
 	return (0);
@@ -60,16 +65,7 @@ int render_player(t_game *game)
 	if (game->player->current_task)
 		anime = task_proccess(game->scene, game->player);
 	if (!anime)
-	{
-		if (game->player->last_movement == MOVE_DOWN)
-			anime = game->player->anime->idle_up;
-		else if (game->player->last_movement == MOVE_UP)
-			anime = game->player->anime->idle_down;
-		else if (game->player->last_movement == MOVE_STRAIGHT)
-			anime = game->player->anime->idle_right;
-		else if (game->player->last_movement == MOVE_BACK)
-			anime = game->player->anime->idle_left;	
-	}
+		anime = pl_idle_anime(game->player);
 	// printf("anime: %p\n", anime);
 	tile = get_next_tile(anime);
 	x = game->player->x - (game->player->coll->width / 2) + 16;

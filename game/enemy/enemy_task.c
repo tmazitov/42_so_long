@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:53:47 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/29 22:31:04 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/02 16:33:31 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ static t_enemy_action	calc_enemy_action(t_enemy *enemy, t_a_point *target)
 {
 	if (!enemy->path)
 		return (0);
-	if (target->x > enemy->x) 
+	if (enemy->is_died)
+		return (E_DIE);
+	else if (target->x > enemy->x) 
 		return (E_MOVE_STRAIGHT);
 	else if (target->x < enemy->x) 
 		return (E_MOVE_BACK);
@@ -27,7 +29,7 @@ static t_enemy_action	calc_enemy_action(t_enemy *enemy, t_a_point *target)
 	return (0);
 }
 
-t_enemy_task	*make_enemy_task(t_anime *a, t_enemy_action act, int dur, t_a_point *t)
+t_enemy_task	*make_enemy_task(t_anime *a, t_enemy_action act, t_a_point *t)
 {
 	t_enemy_task	*task;
 
@@ -36,7 +38,7 @@ t_enemy_task	*make_enemy_task(t_anime *a, t_enemy_action act, int dur, t_a_point
 		return (NULL);
 	task->anime = a;
 	task->action = act;
-	task->duration = dur;
+	task->duration = a->tile_count * a->tile_life_time;
 	task->target = t;
 	return (task);
 }
@@ -53,8 +55,6 @@ void	add_enemy_task(t_enemy *enemy, t_a_point *target)
 	t_enemy_action	act;
 	t_anime			*anime;
 	
-	printf("enemy : %d %d\n", enemy->x, enemy->y);
-	printf("target: %d %d\n",target->x, target->y);
 	if (enemy->current_task)
 		return ;
 	anime = NULL;
@@ -75,5 +75,7 @@ void	add_enemy_task(t_enemy *enemy, t_a_point *target)
 		anime = enemy->anime->move_right;
 	else if (act == E_MOVE_DOWN && enemy->last_action == E_MOVE_BACK) 
 		anime = enemy->anime->move_left;
-	enemy->current_task = make_enemy_task(anime, act, 64, target);
+	else if (act == E_DIE)
+		anime = enemy->anime->die;
+	enemy->current_task = make_enemy_task(anime, act, target);
 }

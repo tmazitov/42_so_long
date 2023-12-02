@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:32:07 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/01 12:44:00 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/02 16:37:28 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,3 @@ int task_count(t_player_task *task)
 		return (task_count(task->next) + 1);
 	return (1);
 }
-

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:34:10 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/01 21:52:17 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/02 16:48:39 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ t_anime	*task_proccess(t_scene *scene, t_player *player)
 
 	task = player->current_task;
 	is_able_to_proc = is_able_to_proccess(scene, player);
-	// printf("player : x=%d y=%d dur=%d\n",player->x, player->y, task->duration);
 	if (task->duration > 0 && is_able_to_proc)
 		task->duration -= execute_action(scene, player, task);
 	else
@@ -82,8 +81,6 @@ t_anime	*task_proccess(t_scene *scene, t_player *player)
 			refresh_anime(task->anime);
 		else if (!task->next)
 			refresh_anime(task->anime);
-		if (is_attack(task->action) && !task->next)
-			player->attack_combo = 0;
 		if (task && is_movement(task->action)) 
 		{
 			player->score += 1;
@@ -91,6 +88,8 @@ t_anime	*task_proccess(t_scene *scene, t_player *player)
 			player->last_y = player->y;
 		}
 		free_task(task);
+		if (!player->current_task)
+			return (pl_idle_anime(player));
 	}
 
 	if (!is_able_to_proc)

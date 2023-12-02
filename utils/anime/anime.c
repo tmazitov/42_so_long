@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:44:53 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/25 19:39:03 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/02 15:02:04 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,7 @@ int	fill_anime(t_anime *anime, char **tile_paths)
 		tile = tile->next;
 		tile_paths++;
 	}
-	if (tile != init)
-		tile->next = init;
-	
+	tile->next = init;
 	return (0);
 }
 

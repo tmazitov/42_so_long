@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:07:26 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/01 13:38:09 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/02 16:43:52 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,19 +96,23 @@ typedef struct s_player
 	t_player_anime		*anime;
 }		t_player;
 
-// Player
+// INSTANCE
 
 t_player		*make_player(void *mlx, int height, int width);
 void			*free_player(t_player *player);
 
-// Player animation
+// ANIME
 
 t_player_anime	*make_player_anime(t_player *player);
 void			*free_player_anime(t_player_anime *anime);
 int				setup_attack_anime(t_player *player, t_player_anime *player_anime);
+t_anime			*pl_idle_anime(t_player *player);
+t_anime			*make_idle_down_anime(void *mlx, int height, int width);
+t_anime			*make_idle_up_anime(void *mlx, int height, int width);
+t_anime			*make_idle_right_anime(void *mlx, int height, int width);
+t_anime			*make_idle_left_anime(void *mlx, int height, int width);
+// TASK
 
-
-// Player tasks
 t_player_task	*make_task(t_action action, t_anime *anime);
 void			*free_task(t_player_task *task);
 void			add_task(t_player *player, t_action action, t_anime *anime, int target);

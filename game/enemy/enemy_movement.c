@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 13:07:10 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/01 13:00:56 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/02 16:35:13 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,6 @@ static int enemy_is_movement(t_enemy_task *task)
 		task->action == E_MOVE_UP) ;
 }
 
-t_anime *enemy_idle_anime(t_enemy *enemy)
-{
-	if (enemy->last_action == E_MOVE_BACK)
-		return (enemy->anime->idle_left);
-	return (enemy->anime->idle_right);
-}
-
 t_anime	*proc_enemy_task(t_enemy *enemy)
 {
 	t_anime			*anime;
@@ -58,9 +51,14 @@ t_anime	*proc_enemy_task(t_enemy *enemy)
 	task->duration -= 1;
 	if (task->duration == 0)
 	{
+		if (task->action == E_DIE)
+			enemy->anime->die_anime_done = 1;
 		refresh_anime(anime);
 		free_enemy_task(task);
 		enemy->current_task = NULL;
+		if (enemy->is_died)
+			return (enemy->anime->died);
+		return (enemy_idle_anime(enemy));
 	}
 	return (anime);
 }
