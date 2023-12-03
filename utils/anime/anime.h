@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:45:01 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/09/30 22:39:14 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/02 19:07:34 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_anime_tile
 {
 	void				*image;
 	struct s_anime_tile	*next;
+	struct s_anime_tile	*prev;
 }		t_anime_tile;
 
 typedef struct s_anime
@@ -42,7 +43,7 @@ void			*free_anime(t_anime *anime);
 void			refresh_anime(t_anime *anime);
 
 t_anime_tile	*get_next_tile(t_anime *anime);
+t_anime_tile	*get_next_tile_rev(t_anime *anime);
 t_anime_tile	*make_anime_tile(t_anime *anime, char *tilePath);
-void			*free_anime_tile(t_anime_tile *tile);
-
+void			*free_anime_tile(void *mlx, t_anime_tile *tile);
 #endif

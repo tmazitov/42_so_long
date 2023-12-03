@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:44:53 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/12 21:58:22 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/02 19:05:47 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*free_anime(t_anime *anime)
 	while(tile)
 	{
 		next = tile->next;
-		free_anime_tile(tile);
+		free_anime_tile(anime->mlx, tile);
 		tile = next;
 	}
 	free(anime);
@@ -40,6 +40,7 @@ int	fill_anime(t_anime *anime, char **tile_paths)
 	init = make_anime_tile(anime, *tile_paths);
 	if (!init)
 		return (1);
+	anime->init = init;
 	printf("anime tile loaded: %s\n", *tile_paths);
 	tile_paths++;
 	tile = init;
@@ -48,14 +49,13 @@ int	fill_anime(t_anime *anime, char **tile_paths)
 		tile->next = make_anime_tile(anime, *tile_paths);
 		if (!tile->next)
 			return (1);
+		tile->next->prev = tile;
 		printf("anime tile loaded: %s\n", *tile_paths);
-		printf("\t%p\n", tile->next->image);
 		tile = tile->next;
 		tile_paths++;
 	}
-	if (tile != init)
-		tile->next = init;
-	anime->init = init;
+	tile->next = init;
+	init->prev = tile;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:20:36 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/12 22:25:59 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/25 21:38:12 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int feel_tree(void *mlx, char **map, t_scene *scene)
 	int		width;
 	int		counter;
 	int		chest_counter;
+	int		enemy_counter;
 	int		x;
 	int		y;
 
@@ -40,6 +41,9 @@ int feel_tree(void *mlx, char **map, t_scene *scene)
 	scene->chests = malloc(sizeof(t_chest *) * ((count_of_char(map, 'C') + 1)));
 	if (!scene->chests)
 		return (1);
+	scene->enemies = malloc(sizeof(t_enemy *) * ((count_of_char(map, 'S') + 1)));
+	if (!scene->enemies)
+		return (1);
 	tree_image = mlx_xpm_file_to_image(mlx, "textures/tree/tree_4.xpm", &width, &height);
 	if (!tree_image)
 		return (2);
@@ -49,6 +53,7 @@ int feel_tree(void *mlx, char **map, t_scene *scene)
 	y = 0;
 	counter = 0;
 	chest_counter = 0;
+	enemy_counter = 0;
 	while (map[y])
 	{
 		x = 0;
@@ -61,7 +66,6 @@ int feel_tree(void *mlx, char **map, t_scene *scene)
 					return (3);
 				scene->objs[counter]->height = height;
 				scene->objs[counter]->width = width;
-				// printf("tree : %d %d\n", scene->trees[counter]->x, scene->trees[counter]->y);
 				counter++;
 			}
 			else if (map[y][x] == '1' && (y > 0 && x > 0))
@@ -86,13 +90,21 @@ int feel_tree(void *mlx, char **map, t_scene *scene)
 				scene->chests[chest_counter]->obj->is_render = 0;
 				chest_counter++;
 			}
+			if (map[y][x] == 'S')
+			{
+				scene->enemies[enemy_counter] = make_enemy(mlx, 64*x, 64*y + 64);
+				
+				if (!scene->enemies[enemy_counter])
+					return (3);
+				enemy_counter++;
+			}
 			x++;
 		}
 		y++;
 	}
-	printf("chest_counter %d\n", chest_counter);
 	scene->objs[counter] = NULL;
 	scene->chests[chest_counter] = NULL;
+	scene->enemies[enemy_counter] = NULL;
 	return (0);
 }
 

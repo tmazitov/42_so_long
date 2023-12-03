@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:08:01 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/09 13:50:41 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/29 12:14:29 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int	main(void)
 	printf("player: %d %d\n", game->scene->player_x, game->scene->player_y);
 	game->player->x = game->scene->player_x;
 	game->player->y = game->scene->player_y;
+	game->player->last_x = game->player->x;
+	game->player->last_y = game->player->y;
 	mlx_loop_hook(game->mlx, render_hook, game);
 	mlx_key_hook(game->window, player_control_hook, game);
 	mlx_loop(game->mlx);

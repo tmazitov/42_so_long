@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 10:44:56 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/12 22:06:03 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/25 18:55:22 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,15 @@ t_chest	*make_chest(void *mlx, unsigned int money, int x, int y)
 	chest = malloc(sizeof(t_chest));
 	if (!chest)
 		return (chest);
+	chest->x = x;
+	chest->y = y;
 	chest->open_anime = make_chest_open_anime(mlx, 32, 32);	
 	if (!chest->open_anime)
 		return (free_chest(chest));
-	
 	chest->close_anime = make_chest_close_anime(mlx, 32, 32);	
 	if (!chest->close_anime)
 		return (free_chest(chest));
-	chest->obj = make_scene_obj(OBJ_CHEST, NULL, x, y);
+	chest->obj = make_scene_obj(OBJ_CHEST, NULL, chest->x, chest->y);
 	if (!chest->obj)
 		return (free_chest(chest));
 	chest->is_open = 0;

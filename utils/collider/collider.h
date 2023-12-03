@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 17:59:04 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/08 18:29:28 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/01 12:11:09 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ typedef struct s_collider
 	int		*y;
 	int		height;
 	int		width;
+	int		align_top;
+	int		align_left;
 	t_point	**points;
 }		t_collider;
 
@@ -49,13 +51,22 @@ void		free_point(t_point *point);
 t_collider	*make_collider(int height, int width, int *x, int *y);
 void		free_collider(t_collider *collider);
 int			check_intersection(t_collider *col1, t_collider *col2, int target, int speed);
+t_collider	*coll_set_align(t_collider *coll, int top, int left);
 
-t_point *coll_get_top_left(t_collider *collider);
-t_point *coll_get_top_right(t_collider *collider);
-t_point *coll_get_bot_right(t_collider *collider);
-t_point *coll_get_bot_left(t_collider *collider);
-t_point *coll_upd_top_left(t_collider *collider, int x, int y);
-t_point *coll_upd_top_right(t_collider *collider, int x, int y);
-t_point *coll_upd_bot_right(t_collider *collider, int x, int y);
-t_point *coll_upd_bot_left(t_collider *collider, int x, int y);
+int			inter_straight(t_collider *col1, t_collider *col2, int speed);
+int			inter_back(t_collider *col1, t_collider *col2, int speed);
+int			inter_up(t_collider *col1, t_collider *col2, int speed);
+int			inter_down(t_collider *col1, t_collider *col2, int speed);
+int			inter_here(t_collider *col1, t_collider *col2);
+
+t_point 	*coll_get_top_left(t_collider *collider);
+t_point 	*coll_get_top_right(t_collider *collider);
+t_point 	*coll_get_bot_right(t_collider *collider);
+t_point 	*coll_get_bot_left(t_collider *collider);
+t_point 	*coll_upd_top_left(t_collider *collider, int x, int y);
+t_point 	*coll_upd_top_right(t_collider *collider, int x, int y);
+t_point 	*coll_upd_bot_right(t_collider *collider, int x, int y);
+t_point 	*coll_upd_bot_left(t_collider *collider, int x, int y);
+
+int		do_line_intersect_segment(t_point p1, t_point p2, t_point q1, t_point q2);
 #endif // !COLLAIDER_H

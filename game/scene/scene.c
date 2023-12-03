@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:32:02 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/09 07:11:22 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/26 20:28:01 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,28 @@ void	*free_scene(t_scene *scene)
 	return (NULL);
 }
 
+static t_point_list	*make_game_points(t_scene *scene)
+{
+	t_point_list	*result;
+	t_a_point		*point;
+	t_scene_obj		**objs;
+	
+	if (!scene)
+		return (NULL);
+	result = make_point_list();
+	if (!result)
+		return (NULL);
+	objs = scene->objs;
+	while (*objs) 
+	{
+		point = make_a_point((*objs)->x, (*objs)->y, NULL);
+		if (lst_add_point(result, point) != 0)
+			return (NULL);
+		objs++;
+	}
+	return (result);
+}
+
 t_scene *make_scene(void *mlx, char *mapPath, int height, int width)
 {
 	t_scene	*scene;
@@ -54,6 +76,10 @@ t_scene *make_scene(void *mlx, char *mapPath, int height, int width)
 	// printf("feel tree :%d\n", feel_tree(mlx, scene, 1));
 	if (feel_tree(mlx, map, scene) != 0)
 		return (free_scene(scene), NULL);
+	scene->game_objs_points = make_game_points(scene);
+	if (!scene->game_objs_points)
+		return (free_scene(scene), NULL);
 	printf("success map\n");
 	return (scene);
 }
+

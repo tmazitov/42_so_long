@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 22:48:54 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/10/08 17:45:21 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/11/25 19:17:16 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ void	update_point(t_point *point, int x, int y)
 
 void	free_point(t_point *point)
 {
-	free(point);
+	if (point)
+		free(point);
 }

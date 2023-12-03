@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:07:26 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/12 22:16:20 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/02 20:18:04 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 # define PLAYER_H
 # include <stdlib.h>
 # include "../scene/scene.h"
+# include "../health_bar/health_bar.h"
 # include "../../mlx/mlx.h"
 # include "../../utils/anime/anime.h"
 # include "../../utils/collider/collider.h"
 
-# define PLAYER_SPEED 2
+# define PLAYER_SPEED 		2
+# define ATTACK_CALL_DOWN	40
 
 // Player movement buttons
 enum t_move_keycode {
@@ -80,31 +82,45 @@ typedef struct s_player
 {
 	void				*mlx;
 	int					x;
+	int					last_x;
 	int					y;
+	int					last_y;
 	int					width;
 	int					height;
-	int					attack_combo;
+	int					attack_call_down;
+	int					score;
+	t_collider			*hit_box;
+	t_health_bar		*health;
 	t_action			last_movement;
 	t_collider			*coll;
 	t_player_task		*current_task;
 	t_player_anime		*anime;
 }		t_player;
 
-// Player
+// INSTANCE
 
 t_player		*make_player(void *mlx, int height, int width);
 void			*free_player(t_player *player);
 
-// Player animation
+// ANIME
 
 t_player_anime	*make_player_anime(t_player *player);
 void			*free_player_anime(t_player_anime *anime);
 int				setup_attack_anime(t_player *player, t_player_anime *player_anime);
+t_anime			*pl_idle_anime(t_player *player);
+t_anime			*make_idle_down_anime(void *mlx, int height, int width);
+t_anime			*make_idle_up_anime(void *mlx, int height, int width);
+t_anime			*make_idle_right_anime(void *mlx, int height, int width);
+t_anime			*make_idle_left_anime(void *mlx, int height, int width);
+// TASK
 
-
-// Player tasks
-
-void	add_task(t_player *player, t_action action, t_anime *anime, int target);
-t_anime	*task_proccess(t_scene *scene, t_player *player);
-
+t_player_task	*make_task(t_action action, t_anime *anime);
+void			*free_task(t_player_task *task);
+void			add_task(t_player *player, t_action action, t_anime *anime, int target);
+t_anime			*task_proccess(t_scene *scene, t_player *player);
+int				is_able_to_proccess(t_scene *scene, t_player *player);
+int 			is_movement(t_action action);
+int 			is_attack(t_action action);
+int 			task_count(t_player_task *task);
+int				handle_player_attack(t_player *player, t_scene *scene);
 #endif // !PLAYER_H
