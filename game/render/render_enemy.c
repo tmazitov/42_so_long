@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 14:33:13 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/03 14:42:09 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/03 15:16:30 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	render_enemy(t_game	*game)
 		mlx_put_image_to_window(game->mlx, game->window, enemy_tile->image, enemy->x, enemy->y);
 		counter++;
 	} 
-	return ;
 }
 
 // int render_enemy_path(t_game *game, t_enemy *enemy)
