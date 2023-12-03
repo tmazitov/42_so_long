@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:44:53 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/02 19:05:47 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/03 17:00:12 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,9 @@ t_anime *make_anime(void *mlx, char **tile_paths, int height, int width, int lif
 	anime->tile_counter = 0;
 	anime->tile_count = tile_count;
 	anime->tile_life_time = life_time;
+	anime->render = NULL;
 	if (fill_anime(anime, tile_paths) != 0)
-		return (free(anime), NULL);
+		return (free_anime(anime), NULL);
 	anime->render = anime->init;
 	printf("complete anime! %p\n", anime->render);
 	return (anime);

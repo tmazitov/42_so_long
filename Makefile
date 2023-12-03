@@ -6,7 +6,7 @@
 #    By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/30 14:16:32 by tmazitov          #+#    #+#              #
-#    Updated: 2023/12/03 15:08:23 by tmazitov         ###   ########.fr        #
+#    Updated: 2023/12/03 19:21:32 by tmazitov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,11 @@ SRC =	cmd/main.c \
 		game/render/render_player.c \
 		game/render/render_support.c \
 		game/scene/scene.c \
+		game/scene/scene_free.c \
+		game/scene/scene_feel.c \
+		game/scene/scene_obj.c \
+		game/scene/scene_textures.c \
+		game/scene/scene_tree.c \
 		game/scene/tree.c \
 		game/scene/chest.c \
 		game/scene/chest_anime.c \

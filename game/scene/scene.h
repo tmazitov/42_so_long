@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:32:11 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/26 20:27:07 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/03 18:35:30 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,19 @@
 #include "../../utils/collider/collider.h"
 #include "../../utils/anime/anime.h"
 #include "../../utils/path/path.h"
+#include "../../utils/image/image.h"
 
 typedef enum s_obj_type{
 	OBJ_TREE	= 1,
-	OBJ_STONE	= 2,
+	OBJ_SHRUB	= 2,
 	OBJ_CHEST	= 3,
 }		t_obj_type;
 
 typedef struct s_scene_textures
 {
-	void	*grass;
+	t_image	*grass;
+	t_image	*tree;
+	t_image	*shrub;
 }		t_scene_textures;
 
 typedef struct s_scene_obj 
@@ -60,6 +63,7 @@ typedef	struct s_chest
 
 typedef struct s_scene
 {
+	void				*mlx;
 	char				**raw;
 	t_scene_textures	*textures;
 	int					width;
@@ -72,16 +76,39 @@ typedef struct s_scene
 	t_point_list		*game_objs_points;
 }		t_scene;
 
-t_scene *make_scene(void *mlx, char *mapPath, int height, int width);
+// SCENE INSTANCE
+
+t_scene				*make_scene(void *mlx, char *mapPath, int height, int width);
+void				*free_scene(t_scene *scene);
+
+// SCENE FEEL
+
+int 				feel_scene(void *mlx, char **map, t_scene *scene);
+int					feel_chests(void *mlx, char **map, t_scene *scene);
+int					feel_enemies(void *mlx, char **map, t_scene *scene);
+int					feel_trees(char **map, t_scene *scene);
+int					feel_player_pos(char **map, t_scene *scene);
+
+// SCENE TEXTURES
+
+t_scene_textures	*make_scene_textures(void *mlx);
+void				*free_scene_textures(t_scene_textures *t);
+
+// SCENE OBJS
+
+t_scene_obj			*make_scene_obj(t_obj_type t, void *image, int x, int y);
+t_scene_obj			*make_tree(t_scene *scene, int is_border, int x, int y);
+void				*free_scene_obj(t_scene_obj *obj);
 
 
-t_scene_obj	*make_scene_obj(t_obj_type t, void *image, int x, int y);
-int 		feel_tree(void *mlx, char **map, t_scene *scene);
+// CHEST INSTANCE
 
-t_chest		*make_chest(void *mlx, unsigned int money, int x, int y);
-void		*free_chest(t_chest *chest);
-void		*render_chest(t_chest *chest);
-int			toggle_chest(t_chest *chest);
+t_chest				*make_chest(void *mlx, unsigned int money, int x, int y);
+void				*free_chest(t_chest *chest);
+void				*render_chest(t_chest *chest);
+int					toggle_chest(t_chest *chest);
+
+// CHEST ANIME
 
 t_anime	*make_chest_close_anime(void *mlx, int height, int width);
 t_anime	*make_chest_open_anime(void *mlx, int height, int width);

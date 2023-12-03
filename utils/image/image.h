@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:19:38 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/30 15:34:26 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/03 15:48:43 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_image
 }		t_image;
 
 t_image	*make_image(void *mlx, int height, int width);
+t_image *make_image_v2(void *mlx, char *path, int height, int width);
 void	*free_image(t_image *image);
 
 #endif // !IMAGE_H

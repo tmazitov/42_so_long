@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 14:47:33 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/03 15:08:53 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/03 19:11:12 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	render_scene(t_game *game)
 	void	*image;
 
 	x = 0;
-	image = game->scene->textures->grass;
+	image = game->scene->textures->grass->content;
 	while (x < game->scene->width)
 	{
 		y = 0;
@@ -39,12 +39,13 @@ static void render_scene_obj(void *mlx, void *win, t_scene_obj *obj)
 	
 	x = 0;
 	y = 0;
+	
 	if (obj->type == OBJ_TREE)
 	{
-		x = obj->x - (obj->width - obj->coll->width) / 2;
-		y = obj->y - (obj->height - obj->coll->height) / 2 - 28;
+		x = obj->x - (obj->width - obj->coll->width) / 2 - 16;
+		y = obj->y - (obj->height - obj->coll->height) / 2 - 64;
 	}
-	else if (obj->type == OBJ_STONE)
+	else if (obj->type == OBJ_SHRUB)
 	{
 		x = obj->x;
 		y = obj->y;
@@ -59,6 +60,7 @@ void	render_scene_objs(t_game *game)
 	t_scene_obj	*obj;
 
 	counter = 0;
+
 	objs = game->scene->objs;
 	while (objs[counter])
 	{

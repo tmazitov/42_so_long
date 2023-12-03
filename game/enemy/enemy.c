@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 15:39:17 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/02 19:31:22 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/03 19:04:11 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ t_enemy	*make_enemy(void *mlx, int x, int y)
 	if (!enemy) 
 		return (NULL);
 	set_default_values(enemy);
-	enemy->x = x;
-	enemy->y = y;
+	enemy->x = 64 * x;
+	enemy->y =  64 * (y + 1);
 	enemy->coll = make_collider(64, 64, &enemy->x, &enemy->y);
 	if (!enemy->coll)
 		return (free_enemy(enemy));	
