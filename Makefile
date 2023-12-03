@@ -6,7 +6,7 @@
 #    By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/30 14:16:32 by tmazitov          #+#    #+#              #
-#    Updated: 2023/12/02 19:44:52 by tmazitov         ###   ########.fr        #
+#    Updated: 2023/12/02 20:18:27 by tmazitov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = so_long
 
 SRC =	cmd/main.c \
 		game/game.c \
-		game/movement.c \
+		game/player_behavior.c \
 		game/enemy_behavior.c \
 		game/enemy_move_check.c \
 		game/enemy_move.c \

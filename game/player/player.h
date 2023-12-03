@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:07:26 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/02 19:57:49 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/02 20:18:04 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include "../../utils/collider/collider.h"
 
 # define PLAYER_SPEED 		2
-# define ATTACK_CALL_DOWN	16
+# define ATTACK_CALL_DOWN	40
 
 // Player movement buttons
 enum t_move_keycode {
