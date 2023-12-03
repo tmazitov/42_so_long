@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 15:39:17 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/03 19:04:11 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/03 20:14:49 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,18 @@ void	*free_enemy(t_enemy *enemy)
 		return (NULL);
 	if (enemy->anime)
 		free_enemy_anime(enemy->anime);
+	printf("free enemy coll\n");
 	if (enemy->coll)
 		free_collider(enemy->coll);
+	printf("free enemy hit box\n");
+	if (enemy->hit_box)
+		free_collider(enemy->hit_box);
 	if (enemy->health)
 		free_health_bar(enemy->health);
-	if (enemy)
+	if (enemy->path)
+		free_path(enemy->path);
+	if (enemy->current_task)
+		free_enemy_task(enemy->current_task);
 	free(enemy);
 	return (NULL);
 }

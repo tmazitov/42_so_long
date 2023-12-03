@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:44:53 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/03 17:00:12 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/03 20:12:55 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,20 @@
 
 void	*free_anime(t_anime *anime)
 {
-	t_anime_tile *tile;
-	t_anime_tile *next;
+	t_anime_tile	*tile;
+	t_anime_tile	*next;
+	int				counter;
 
 	if (!anime)
 		return (NULL);
+	counter = 0;
 	tile = anime->init;
-	while(tile)
+	while(anime->tile_count > counter)
 	{
 		next = tile->next;
 		free_anime_tile(anime->mlx, tile);
 		tile = next;
+		counter++;
 	}
 	free(anime);
 	return (NULL);
@@ -81,7 +84,6 @@ t_anime *make_anime(void *mlx, char **tile_paths, int height, int width, int lif
 	if (fill_anime(anime, tile_paths) != 0)
 		return (free_anime(anime), NULL);
 	anime->render = anime->init;
-	printf("complete anime! %p\n", anime->render);
 	return (anime);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 17:59:04 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/01 12:11:09 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/03 21:02:09 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,5 @@ t_point 	*coll_upd_top_right(t_collider *collider, int x, int y);
 t_point 	*coll_upd_bot_right(t_collider *collider, int x, int y);
 t_point 	*coll_upd_bot_left(t_collider *collider, int x, int y);
 
-int		do_line_intersect_segment(t_point p1, t_point p2, t_point q1, t_point q2);
+int			do_line_intersect_segment(t_point p1, t_point p2, t_point q1, t_point q2);
 #endif // !COLLAIDER_H

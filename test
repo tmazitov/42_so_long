@@ -1,0 +1,533 @@
+anime tile loaded: textures/player/idle_down/tile000.xpm
+anime tile loaded: textures/player/idle_down/tile001.xpm
+anime tile loaded: textures/player/idle_down/tile002.xpm
+anime tile loaded: textures/player/idle_down/tile003.xpm
+anime tile loaded: textures/player/idle_down/tile004.xpm
+anime tile loaded: textures/player/idle_down/tile005.xpm
+anime tile loaded: textures/player/idle_up/tile012.xpm
+anime tile loaded: textures/player/idle_up/tile013.xpm
+anime tile loaded: textures/player/idle_up/tile014.xpm
+anime tile loaded: textures/player/idle_up/tile015.xpm
+anime tile loaded: textures/player/idle_up/tile016.xpm
+anime tile loaded: textures/player/idle_up/tile017.xpm
+anime tile loaded: textures/player/idle_right/tile006.xpm
+anime tile loaded: textures/player/idle_right/tile007.xpm
+anime tile loaded: textures/player/idle_right/tile008.xpm
+anime tile loaded: textures/player/idle_right/tile009.xpm
+anime tile loaded: textures/player/idle_right/tile010.xpm
+anime tile loaded: textures/player/idle_right/tile011.xpm
+anime tile loaded: textures/player/idle_left/m_tile006.xpm
+anime tile loaded: textures/player/idle_left/m_tile007.xpm
+anime tile loaded: textures/player/idle_left/m_tile008.xpm
+anime tile loaded: textures/player/idle_left/m_tile009.xpm
+anime tile loaded: textures/player/idle_left/m_tile010.xpm
+anime tile loaded: textures/player/idle_left/m_tile011.xpm
+anime tile loaded: textures/player/walk_down/tile019.xpm
+anime tile loaded: textures/player/walk_down/tile019.xpm
+anime tile loaded: textures/player/walk_down/tile020.xpm
+anime tile loaded: textures/player/walk_down/tile021.xpm
+anime tile loaded: textures/player/walk_down/tile022.xpm
+anime tile loaded: textures/player/walk_down/tile023.xpm
+anime tile loaded: textures/player/walk_up/tile030.xpm
+anime tile loaded: textures/player/walk_up/tile031.xpm
+anime tile loaded: textures/player/walk_up/tile033.xpm
+anime tile loaded: textures/player/walk_up/tile034.xpm
+anime tile loaded: textures/player/walk_up/tile035.xpm
+anime tile loaded: textures/player/walk_right/tile024.xpm
+anime tile loaded: textures/player/walk_right/tile025.xpm
+anime tile loaded: textures/player/walk_right/tile026.xpm
+anime tile loaded: textures/player/walk_right/tile027.xpm
+anime tile loaded: textures/player/walk_right/tile028.xpm
+anime tile loaded: textures/player/walk_right/tile029.xpm
+anime tile loaded: textures/player/walk_left/m_tile024.xpm
+anime tile loaded: textures/player/walk_left/m_tile025.xpm
+anime tile loaded: textures/player/walk_left/m_tile026.xpm
+anime tile loaded: textures/player/walk_left/m_tile027.xpm
+anime tile loaded: textures/player/walk_left/m_tile028.xpm
+anime tile loaded: textures/player/walk_left/m_tile029.xpm
+anime tile loaded: textures/player/attack-up/tile048.xpm
+anime tile loaded: textures/player/attack-up/tile049.xpm
+anime tile loaded: textures/player/attack-up/tile050.xpm
+anime tile loaded: textures/player/attack-up/tile051.xpm
+anime tile loaded: textures/player/attack-down/tile036.xpm
+anime tile loaded: textures/player/attack-down/tile037.xpm
+anime tile loaded: textures/player/attack-down/tile038.xpm
+anime tile loaded: textures/player/attack-down/tile039.xpm
+anime tile loaded: textures/player/attack-right/tile042.xpm
+anime tile loaded: textures/player/attack-right/tile043.xpm
+anime tile loaded: textures/player/attack-right/tile044.xpm
+anime tile loaded: textures/player/attack-right/tile045.xpm
+anime tile loaded: textures/player/attack-left/m_tile042.xpm
+anime tile loaded: textures/player/attack-left/m_tile043.xpm
+anime tile loaded: textures/player/attack-left/m_tile044.xpm
+anime tile loaded: textures/player/attack-left/m_tile045.xpm
+create coll: 0x604000065b10
+        point created: 0 0 0x602000014050
+        point created: 64 0 0x602000014070
+        point created: 64 64 0x602000014090
+        point created: 0 64 0x6020000140b0
+0) percent : 0
+1) percent : 12
+2) percent : 24
+3) percent : 36
+4) percent : 48
+5) percent : 60
+create coll: 0x604000065d10
+        point created: 0 0 0x6020000140f0
+        point created: 32 0 0x602000014110
+        point created: 32 42 0x602000014130
+        point created: 0 42 0x602000014150
+coll set align : 0x604000065d10
+        point free: 0x6020000140f0
+        point free: 0x602000014110
+        point free: 0x602000014130
+        point free: 0x602000014150
+create coll: 0x604000065d10
+        point created: 16 16 0x602000014170
+        point created: 48 16 0x602000014190
+        point created: 48 58 0x6020000141b0
+        point created: 16 58 0x6020000141d0
+success created player!
+0) dup : 11111111111111111
+1) dup : 1E000010C000000C1
+2) dup : 10100111010000001
+3) dup : 1010S110101010101
+4) dup : 10000000000S00001
+5) dup : 11111111111111111
+raw row: 6
+0)dup1: 11111111111111111
+1)dup1: 1E000010C000000C1
+2)dup1: 10100111010000001
+3)dup1: 1010S110101010101
+4)dup1: 10000000000S00001
+5)dup1: 11111111111111111
+create coll: 0x604000065f50
+        point created: 256 256 0x602000014450
+        point created: 320 256 0x602000014470
+        point created: 320 320 0x602000014490
+        point created: 256 320 0x6020000144b0
+create coll: 0x604000065fd0
+        point created: 256 256 0x6020000144d0
+        point created: 288 256 0x6020000144f0
+        point created: 288 288 0x602000014510
+        point created: 256 288 0x602000014530
+coll set align : 0x604000065fd0
+        point free: 0x6020000144d0
+        point free: 0x6020000144f0
+        point free: 0x602000014510
+        point free: 0x602000014530
+create coll: 0x604000065fd0
+        point created: 272 272 0x602000014550
+        point created: 304 272 0x602000014570
+        point created: 304 304 0x602000014590
+        point created: 272 304 0x6020000145b0
+anime tile loaded: textures/enemy/idle-left/tile000.xpm
+anime tile loaded: textures/enemy/idle-left/tile001.xpm
+anime tile loaded: textures/enemy/idle-left/tile002.xpm
+anime tile loaded: textures/enemy/idle-left/tile003.xpm
+anime tile loaded: textures/enemy/idle-right/tile000.xpm
+anime tile loaded: textures/enemy/idle-right/tile001.xpm
+anime tile loaded: textures/enemy/idle-right/tile002.xpm
+anime tile loaded: textures/enemy/idle-right/tile003.xpm
+anime tile loaded: textures/enemy/move-left/tile007.xpm
+anime tile loaded: textures/enemy/move-left/tile008.xpm
+anime tile loaded: textures/enemy/move-left/tile008_1.xpm
+anime tile loaded: textures/enemy/move-left/tile009.xpm
+anime tile loaded: textures/enemy/move-left/tile009_1.xpm
+anime tile loaded: textures/enemy/move-left/tile010.xpm
+anime tile loaded: textures/enemy/move-left/tile011.xpm
+anime tile loaded: textures/enemy/move-left/tile012.xpm
+anime tile loaded: textures/enemy/move-right/tile007.xpm
+anime tile loaded: textures/enemy/move-right/tile008.xpm
+anime tile loaded: textures/enemy/move-right/tile008_1.xpm
+anime tile loaded: textures/enemy/move-right/tile009.xpm
+anime tile loaded: textures/enemy/move-right/tile009_1.xpm
+anime tile loaded: textures/enemy/move-right/tile010.xpm
+anime tile loaded: textures/enemy/move-right/tile011.xpm
+anime tile loaded: textures/enemy/move-right/tile012.xpm
+anime tile loaded: textures/enemy/death/tile028.xpm
+anime tile loaded: textures/enemy/death/tile029.xpm
+anime tile loaded: textures/enemy/death/tile030.xpm
+anime tile loaded: textures/enemy/death/tile031.xpm
+anime tile loaded: textures/enemy/death/tile032.xpm
+anime tile loaded: textures/enemy/death/tile032.xpm
+success enemy create
+0) percent : 0
+1) percent : 20
+2) percent : 40
+3) percent : 60
+create coll: 0x604000067250
+        point created: 704 320 0x6020000145f0
+        point created: 768 320 0x602000014610
+        point created: 768 384 0x602000014630
+        point created: 704 384 0x602000014650
+create coll: 0x6040000672d0
+        point created: 704 320 0x602000014670
+        point created: 736 320 0x602000014690
+        point created: 736 352 0x6020000146b0
+        point created: 704 352 0x6020000146d0
+coll set align : 0x6040000672d0
+        point free: 0x602000014670
+        point free: 0x602000014690
+        point free: 0x6020000146b0
+        point free: 0x6020000146d0
+create coll: 0x6040000672d0
+        point created: 720 336 0x6020000146f0
+        point created: 752 336 0x602000014710
+        point created: 752 368 0x602000014730
+        point created: 720 368 0x602000014750
+anime tile loaded: textures/enemy/idle-left/tile000.xpm
+anime tile loaded: textures/enemy/idle-left/tile001.xpm
+anime tile loaded: textures/enemy/idle-left/tile002.xpm
+anime tile loaded: textures/enemy/idle-left/tile003.xpm
+anime tile loaded: textures/enemy/idle-right/tile000.xpm
+anime tile loaded: textures/enemy/idle-right/tile001.xpm
+anime tile loaded: textures/enemy/idle-right/tile002.xpm
+anime tile loaded: textures/enemy/idle-right/tile003.xpm
+anime tile loaded: textures/enemy/move-left/tile007.xpm
+anime tile loaded: textures/enemy/move-left/tile008.xpm
+anime tile loaded: textures/enemy/move-left/tile008_1.xpm
+anime tile loaded: textures/enemy/move-left/tile009.xpm
+anime tile loaded: textures/enemy/move-left/tile009_1.xpm
+anime tile loaded: textures/enemy/move-left/tile010.xpm
+anime tile loaded: textures/enemy/move-left/tile011.xpm
+anime tile loaded: textures/enemy/move-left/tile012.xpm
+anime tile loaded: textures/enemy/move-right/tile007.xpm
+anime tile loaded: textures/enemy/move-right/tile008.xpm
+anime tile loaded: textures/enemy/move-right/tile008_1.xpm
+anime tile loaded: textures/enemy/move-right/tile009.xpm
+anime tile loaded: textures/enemy/move-right/tile009_1.xpm
+anime tile loaded: textures/enemy/move-right/tile010.xpm
+anime tile loaded: textures/enemy/move-right/tile011.xpm
+anime tile loaded: textures/enemy/move-right/tile012.xpm
+anime tile loaded: textures/enemy/death/tile028.xpm
+anime tile loaded: textures/enemy/death/tile029.xpm
+anime tile loaded: textures/enemy/death/tile030.xpm
+anime tile loaded: textures/enemy/death/tile031.xpm
+anime tile loaded: textures/enemy/death/tile032.xpm
+anime tile loaded: textures/enemy/death/tile032.xpm
+success enemy create
+0) percent : 0
+1) percent : 20
+2) percent : 40
+3) percent : 60
+create coll: 0x604000068590
+        point created: 0 64 0x602000014790
+        point created: 64 64 0x6020000147b0
+        point created: 64 128 0x6020000147d0
+        point created: 0 128 0x6020000147f0
+create coll: 0x604000068650
+        point created: 64 64 0x602000014810
+        point created: 128 64 0x602000014830
+        point created: 128 128 0x602000014850
+        point created: 64 128 0x602000014870
+create coll: 0x604000068710
+        point created: 128 64 0x602000014890
+        point created: 192 64 0x6020000148b0
+        point created: 192 128 0x6020000148d0
+        point created: 128 128 0x6020000148f0
+create coll: 0x6040000687d0
+        point created: 192 64 0x602000014910
+        point created: 256 64 0x602000014930
+        point created: 256 128 0x602000014950
+        point created: 192 128 0x602000014970
+create coll: 0x604000068890
+        point created: 256 64 0x602000014990
+        point created: 320 64 0x6020000149b0
+        point created: 320 128 0x6020000149d0
+        point created: 256 128 0x6020000149f0
+create coll: 0x604000068950
+        point created: 320 64 0x602000014a10
+        point created: 384 64 0x602000014a30
+        point created: 384 128 0x602000014a50
+        point created: 320 128 0x602000014a70
+create coll: 0x604000068a10
+        point created: 384 64 0x602000014a90
+        point created: 448 64 0x602000014ab0
+        point created: 448 128 0x602000014ad0
+        point created: 384 128 0x602000014af0
+create coll: 0x604000068ad0
+        point created: 448 64 0x602000014b10
+        point created: 512 64 0x602000014b30
+        point created: 512 128 0x602000014b50
+        point created: 448 128 0x602000014b70
+create coll: 0x604000068b90
+        point created: 512 64 0x602000014b90
+        point created: 576 64 0x602000014bb0
+        point created: 576 128 0x602000014bd0
+        point created: 512 128 0x602000014bf0
+create coll: 0x604000068c50
+        point created: 576 64 0x602000014c10
+        point created: 640 64 0x602000014c30
+        point created: 640 128 0x602000014c50
+        point created: 576 128 0x602000014c70
+create coll: 0x604000068d10
+        point created: 640 64 0x602000014c90
+        point created: 704 64 0x602000014cb0
+        point created: 704 128 0x602000014cd0
+        point created: 640 128 0x602000014cf0
+create coll: 0x604000068dd0
+        point created: 704 64 0x602000014d10
+        point created: 768 64 0x602000014d30
+        point created: 768 128 0x602000014d50
+        point created: 704 128 0x602000014d70
+create coll: 0x604000068e90
+        point created: 768 64 0x602000014d90
+        point created: 832 64 0x602000014db0
+        point created: 832 128 0x602000014dd0
+        point created: 768 128 0x602000014df0
+create coll: 0x604000068f50
+        point created: 832 64 0x602000014e10
+        point created: 896 64 0x602000014e30
+        point created: 896 128 0x602000014e50
+        point created: 832 128 0x602000014e70
+create coll: 0x604000069010
+        point created: 896 64 0x602000014e90
+        point created: 960 64 0x602000014eb0
+        point created: 960 128 0x602000014ed0
+        point created: 896 128 0x602000014ef0
+create coll: 0x6040000690d0
+        point created: 960 64 0x602000014f10
+        point created: 1024 64 0x602000014f30
+        point created: 1024 128 0x602000014f50
+        point created: 960 128 0x602000014f70
+create coll: 0x604000069190
+        point created: 1024 64 0x602000014f90
+        point created: 1088 64 0x602000014fb0
+        point created: 1088 128 0x602000014fd0
+        point created: 1024 128 0x602000014ff0
+create coll: 0x604000069250
+        point created: 0 128 0x602000015010
+        point created: 64 128 0x602000015030
+        point created: 64 192 0x602000015050
+        point created: 0 192 0x602000015070
+create coll: 0x604000069310
+        point created: 384 128 0x602000015090
+        point created: 448 128 0x6020000150b0
+        point created: 448 192 0x6020000150d0
+        point created: 384 192 0x6020000150f0
+create coll: 0x6040000693d0
+        point created: 1024 128 0x602000015110
+        point created: 1088 128 0x602000015130
+        point created: 1088 192 0x602000015150
+        point created: 1024 192 0x602000015170
+create coll: 0x604000069490
+        point created: 0 192 0x602000015190
+        point created: 64 192 0x6020000151b0
+        point created: 64 256 0x6020000151d0
+        point created: 0 256 0x6020000151f0
+create coll: 0x604000069550
+        point created: 128 192 0x602000015210
+        point created: 192 192 0x602000015230
+        point created: 192 256 0x602000015250
+        point created: 128 256 0x602000015270
+create coll: 0x604000069610
+        point created: 320 192 0x602000015290
+        point created: 384 192 0x6020000152b0
+        point created: 384 256 0x6020000152d0
+        point created: 320 256 0x6020000152f0
+create coll: 0x6040000696d0
+        point created: 384 192 0x602000015310
+        point created: 448 192 0x602000015330
+        point created: 448 256 0x602000015350
+        point created: 384 256 0x602000015370
+create coll: 0x604000069790
+        point created: 448 192 0x602000015390
+        point created: 512 192 0x6020000153b0
+        point created: 512 256 0x6020000153d0
+        point created: 448 256 0x6020000153f0
+create coll: 0x604000069850
+        point created: 576 192 0x602000015410
+        point created: 640 192 0x602000015430
+        point created: 640 256 0x602000015450
+        point created: 576 256 0x602000015470
+create coll: 0x604000069910
+        point created: 1024 192 0x602000015490
+        point created: 1088 192 0x6020000154b0
+        point created: 1088 256 0x6020000154d0
+        point created: 1024 256 0x6020000154f0
+create coll: 0x6040000699d0
+        point created: 0 256 0x602000015510
+        point created: 64 256 0x602000015530
+        point created: 64 320 0x602000015550
+        point created: 0 320 0x602000015570
+create coll: 0x604000069a90
+        point created: 128 256 0x602000015590
+        point created: 192 256 0x6020000155b0
+        point created: 192 320 0x6020000155d0
+        point created: 128 320 0x6020000155f0
+create coll: 0x604000069b50
+        point created: 320 256 0x602000015610
+        point created: 384 256 0x602000015630
+        point created: 384 320 0x602000015650
+        point created: 320 320 0x602000015670
+create coll: 0x604000069c10
+        point created: 384 256 0x602000015690
+        point created: 448 256 0x6020000156b0
+        point created: 448 320 0x6020000156d0
+        point created: 384 320 0x6020000156f0
+create coll: 0x604000069cd0
+        point created: 512 256 0x602000015710
+        point created: 576 256 0x602000015730
+        point created: 576 320 0x602000015750
+        point created: 512 320 0x602000015770
+create coll: 0x604000069d90
+        point created: 640 256 0x602000015790
+        point created: 704 256 0x6020000157b0
+        point created: 704 320 0x6020000157d0
+        point created: 640 320 0x6020000157f0
+create coll: 0x604000069e50
+        point created: 768 256 0x602000015810
+        point created: 832 256 0x602000015830
+        point created: 832 320 0x602000015850
+        point created: 768 320 0x602000015870
+create coll: 0x604000069f10
+        point created: 896 256 0x602000015890
+        point created: 960 256 0x6020000158b0
+        point created: 960 320 0x6020000158d0
+        point created: 896 320 0x6020000158f0
+create coll: 0x604000069fd0
+        point created: 1024 256 0x602000015910
+        point created: 1088 256 0x602000015930
+        point created: 1088 320 0x602000015950
+        point created: 1024 320 0x602000015970
+create coll: 0x60400006a090
+        point created: 0 320 0x602000015990
+        point created: 64 320 0x6020000159b0
+        point created: 64 384 0x6020000159d0
+        point created: 0 384 0x6020000159f0
+create coll: 0x60400006a150
+        point created: 1024 320 0x602000015a10
+        point created: 1088 320 0x602000015a30
+        point created: 1088 384 0x602000015a50
+        point created: 1024 384 0x602000015a70
+create coll: 0x60400006a210
+        point created: 0 384 0x602000015a90
+        point created: 64 384 0x602000015ab0
+        point created: 64 448 0x602000015ad0
+        point created: 0 448 0x602000015af0
+create coll: 0x60400006a2d0
+        point created: 64 384 0x602000015b10
+        point created: 128 384 0x602000015b30
+        point created: 128 448 0x602000015b50
+        point created: 64 448 0x602000015b70
+create coll: 0x60400006a390
+        point created: 128 384 0x602000015b90
+        point created: 192 384 0x602000015bb0
+        point created: 192 448 0x602000015bd0
+        point created: 128 448 0x602000015bf0
+create coll: 0x60400006a450
+        point created: 192 384 0x602000015c10
+        point created: 256 384 0x602000015c30
+        point created: 256 448 0x602000015c50
+        point created: 192 448 0x602000015c70
+create coll: 0x60400006a510
+        point created: 256 384 0x602000015c90
+        point created: 320 384 0x602000015cb0
+        point created: 320 448 0x602000015cd0
+        point created: 256 448 0x602000015cf0
+create coll: 0x60400006a5d0
+        point created: 320 384 0x602000015d10
+        point created: 384 384 0x602000015d30
+        point created: 384 448 0x602000015d50
+        point created: 320 448 0x602000015d70
+create coll: 0x60400006a690
+        point created: 384 384 0x602000015d90
+        point created: 448 384 0x602000015db0
+        point created: 448 448 0x602000015dd0
+        point created: 384 448 0x602000015df0
+create coll: 0x60400006a750
+        point created: 448 384 0x602000015e10
+        point created: 512 384 0x602000015e30
+        point created: 512 448 0x602000015e50
+        point created: 448 448 0x602000015e70
+create coll: 0x60400006a810
+        point created: 512 384 0x602000015e90
+        point created: 576 384 0x602000015eb0
+        point created: 576 448 0x602000015ed0
+        point created: 512 448 0x602000015ef0
+create coll: 0x60400006a8d0
+        point created: 576 384 0x602000015f10
+        point created: 640 384 0x602000015f30
+        point created: 640 448 0x602000015f50
+        point created: 576 448 0x602000015f70
+create coll: 0x60400006a990
+        point created: 640 384 0x602000015f90
+        point created: 704 384 0x602000015fb0
+        point created: 704 448 0x602000015fd0
+        point created: 640 448 0x602000015ff0
+create coll: 0x60400006aa50
+        point created: 704 384 0x602000016010
+        point created: 768 384 0x602000016030
+        point created: 768 448 0x602000016050
+        point created: 704 448 0x602000016070
+create coll: 0x60400006ab10
+        point created: 768 384 0x602000016090
+        point created: 832 384 0x6020000160b0
+        point created: 832 448 0x6020000160d0
+        point created: 768 448 0x6020000160f0
+create coll: 0x60400006abd0
+        point created: 832 384 0x602000016110
+        point created: 896 384 0x602000016130
+        point created: 896 448 0x602000016150
+        point created: 832 448 0x602000016170
+create coll: 0x60400006ac90
+        point created: 896 384 0x602000016190
+        point created: 960 384 0x6020000161b0
+        point created: 960 448 0x6020000161d0
+        point created: 896 448 0x6020000161f0
+create coll: 0x60400006ad50
+        point created: 960 384 0x602000016210
+        point created: 1024 384 0x602000016230
+        point created: 1024 448 0x602000016250
+        point created: 960 448 0x602000016270
+create coll: 0x60400006ae10
+        point created: 1024 384 0x602000016290
+        point created: 1088 384 0x6020000162b0
+        point created: 1088 448 0x6020000162d0
+        point created: 1024 448 0x6020000162f0
+anime tile loaded: textures/chest/chest_1.xpm
+anime tile loaded: textures/chest/chest_2.xpm
+anime tile loaded: textures/chest/chest_3.xpm
+anime tile loaded: textures/chest/chest_4.xpm
+anime tile loaded: textures/chest/chest_4.xpm
+anime tile loaded: textures/chest/chest_3.xpm
+anime tile loaded: textures/chest/chest_2.xpm
+anime tile loaded: textures/chest/chest_1.xpm
+create coll: 0x60400006b410
+        point created: 512 128 0x602000016310
+        point created: 576 128 0x602000016330
+        point created: 576 192 0x602000016350
+        point created: 512 192 0x602000016370
+anime tile loaded: textures/chest/chest_1.xpm
+anime tile loaded: textures/chest/chest_2.xpm
+anime tile loaded: textures/chest/chest_3.xpm
+anime tile loaded: textures/chest/chest_4.xpm
+anime tile loaded: textures/chest/chest_4.xpm
+anime tile loaded: textures/chest/chest_3.xpm
+anime tile loaded: textures/chest/chest_2.xpm
+anime tile loaded: textures/chest/chest_1.xpm
+create coll: 0x60400006ba10
+        point created: 960 128 0x602000016390
+        point created: 1024 128 0x6020000163b0
+        point created: 1024 192 0x6020000163d0
+        point created: 960 192 0x6020000163f0
+        coll point 0 : 512 128 
+        point free: 0x602000016310
+        coll point 1 : 576 128 
+        point free: 0x602000016330
+        coll point 2 : 576 192 
+        point free: 0x602000016350
+        coll point 3 : 512 192 
+        point free: 0x602000016370
+        coll point 0 : 960 128 
+        point free: 0x602000016390
+        coll point 1 : 1024 128 
+        point free: 0x6020000163b0
+        coll point 2 : 1024 192 
+        point free: 0x6020000163d0
+        coll point 3 : 960 192 
+        point free: 0x6020000163f0
+free enemy coll
+        coll point 0 : 256 256 
+        point free: 0x602000014450

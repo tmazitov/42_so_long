@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:13:16 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/30 12:52:27 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/03 20:51:20 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@ double cross_product(t_point *a, t_point *b)
     return a->x * b->y - a->y * b->x;
 }
 
+static int	free_support_points(t_point *v1, t_point *v2, t_point *v3)
+{
+	free_point(v1);
+	free_point(v2);
+	free_point(v3);
+	return (0);
+}
 int do_line_intersect_segment(t_point p1, t_point p2, t_point q1, t_point q2) 
 {
     t_point *v1;
@@ -35,11 +42,12 @@ int do_line_intersect_segment(t_point p1, t_point p2, t_point q1, t_point q2)
     cross1 = cross_product(v1, v3);
     cross2 = cross_product(v1, v2);
     if (cross1 == 0 && cross2 == 0) 
-        return 0;
+        return free_support_points(v1, v2, v3);
     if (cross1 == 0 || cross2 == 0)
-        return 0;
+        return free_support_points(v1, v2, v3);
     t1 = cross_product(v3, v2) / cross2;
     t2 = cross_product(v3, v1) / cross2;
+	free_support_points(v1, v2, v3);
     return (t1 >= 0 && t1 <= 1 && t2 >= 0 && t2 <= 1);
 }
 

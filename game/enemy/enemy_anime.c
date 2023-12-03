@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 15:53:39 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/02 16:33:01 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/03 20:09:46 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	*free_enemy_anime(t_enemy_anime *anime)
 	if (anime->die)
 		free_anime(anime->die);
 	if (anime->died)
-		free_anime(anime->die);
+		free_anime(anime->died);
 	free(anime);
 	return (NULL);
 }
