@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 18:13:16 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/03 20:51:20 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/05 13:54:03 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	free_support_points(t_point *v1, t_point *v2, t_point *v3)
 	free_point(v3);
 	return (0);
 }
-int do_line_intersect_segment(t_point p1, t_point p2, t_point q1, t_point q2) 
+int	do_line_intersect_segment(t_point *p1, t_point *p2, t_point *q1, t_point *q2)
 {
     t_point *v1;
     t_point *v2;
@@ -34,9 +34,9 @@ int do_line_intersect_segment(t_point p1, t_point p2, t_point q1, t_point q2)
 	double t1; 
 	double t2;
 
-	v1 = make_point(p2.x - p1.x, p2.y - p1.y);
-	v2 = make_point(q2.x - q1.x, q2.y - q1.y);
-	v3 = make_point(q1.x - p1.x, q1.y - p1.y);
+	v1 = make_point(p2->x - p1->x, p2->y - p1->y);
+	v2 = make_point(q2->x - q1->x, q2->y - q1->y);
+	v3 = make_point(q1->x - p1->x, q1->y - p1->y);
 	if (!v1 || !v2 || !v3)
 		return (0);
     cross1 = cross_product(v1, v3);

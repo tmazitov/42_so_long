@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/tmazitov/Desktop/study/so_long",
+      "program": "/Users/tmazitov/Desktop/study/so_long/build/Debug/outDebug"
+    }
+  ]
+}

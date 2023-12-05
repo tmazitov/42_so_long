@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:08:01 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/29 12:14:29 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/05 14:52:28 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,16 @@ int	main(void)
 	game = make_game(screen_height, screen_width, "so_long");
 	if (!game)
 		return (1);
-	game->player = make_player(game->mlx, 128, 128);
-	if (!game->player)
-	{
-		printf("wrong player\n");
-		return (1);
-	}
 	game->scene = make_scene(game->mlx, "maps/map1.ber", screen_height, screen_width);
 	if (!game->scene)
 	{
 		printf("wrong scene\n");
+		return (1);
+	}
+	game->player = make_player(game->mlx, 128, 128);
+	if (!game->player)
+	{
+		printf("wrong player\n");
 		return (1);
 	}
 	printf("player: %d %d\n", game->scene->player_x, game->scene->player_y);

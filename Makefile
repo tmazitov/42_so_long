@@ -6,7 +6,7 @@
 #    By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/30 14:16:32 by tmazitov          #+#    #+#              #
-#    Updated: 2023/12/03 19:21:32 by tmazitov         ###   ########.fr        #
+#    Updated: 2023/12/05 18:47:20 by tmazitov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,7 @@ SRC =	cmd/main.c \
 		utils/anime/anime_tile.c \
 		utils/collider/point.c \
 		utils/collider/collider.c \
+		utils/collider/collider_update.c \
 		utils/collider/intersection.c \
 		utils/collider/intersection_variants.c \
 		utils/gnl/get_next_line.c \

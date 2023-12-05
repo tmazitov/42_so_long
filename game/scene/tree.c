@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:20:36 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/03 18:45:19 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/05 14:50:51 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	objs_counting(char **map, int *ch, int *o, int *en)
 		{
 			if (map[y][x] == 'C')
 				*ch = *ch + 1;
-			if (map[y][x] == 'E')
+			if (map[y][x] == 'S')
 				*en = *en + 1;
 			if (map[y][x] == '1')
 				*o = *o + 1;

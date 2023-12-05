@@ -6,13 +6,13 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 15:39:17 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/03 20:14:49 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/05 18:48:30 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "enemy.h"
 
-static	void	set_default_values(t_enemy *enemy)
+static	void	init_enemy(t_enemy *enemy)
 {
 	enemy->path = NULL;
 	enemy->health = NULL;
@@ -35,9 +35,9 @@ t_enemy	*make_enemy(void *mlx, int x, int y)
 	enemy = malloc(sizeof(t_enemy));
 	if (!enemy) 
 		return (NULL);
-	set_default_values(enemy);
+	init_enemy(enemy);
 	enemy->x = 64 * x;
-	enemy->y =  64 * (y + 1);
+	enemy->y = 64 * (y + 1);
 	enemy->coll = make_collider(64, 64, &enemy->x, &enemy->y);
 	if (!enemy->coll)
 		return (free_enemy(enemy));	
@@ -61,10 +61,8 @@ void	*free_enemy(t_enemy *enemy)
 		return (NULL);
 	if (enemy->anime)
 		free_enemy_anime(enemy->anime);
-	printf("free enemy coll\n");
 	if (enemy->coll)
 		free_collider(enemy->coll);
-	printf("free enemy hit box\n");
 	if (enemy->hit_box)
 		free_collider(enemy->hit_box);
 	if (enemy->health)
