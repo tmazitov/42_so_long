@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 15:39:24 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/02 19:42:03 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:57:47 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include "../../utils/collider/collider.h"
 #include "../../utils/anime/anime.h"
 #include "../../utils/path/path.h"
+#include "../../utils/printf/ft_printf.h"
 
 # define PATH_FOUND_CALLDOWN 	128
 # define ENEMY_MOVE_SPEED		1

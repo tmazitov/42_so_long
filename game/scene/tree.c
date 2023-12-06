@@ -6,29 +6,29 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:20:36 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/05 14:50:51 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:31:08 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
 
 
-static void	objs_counting(char **map, int *ch, int *o, int *en)
+static void	objs_counting(t_map *map, int *ch, int *o, int *en)
 {
 	int x;
 	int y;
 
 	y = 0;
-	while (map[y])
+	while (map->content[y])
 	{
 		x = 0;
-		while(map[y][x])
+		while(map->content[y][x])
 		{
-			if (map[y][x] == 'C')
+			if (map->content[y][x] == 'C')
 				*ch = *ch + 1;
-			if (map[y][x] == 'S')
+			if (map->content[y][x] == 'S')
 				*en = *en + 1;
-			if (map[y][x] == '1')
+			if (map->content[y][x] == '1')
 				*o = *o + 1;
 			x++;
 		}
@@ -36,7 +36,7 @@ static void	objs_counting(char **map, int *ch, int *o, int *en)
 	}
 }
 
-static int	init_feel_scene(char **map, t_scene *scene)
+static int	init_feel_scene(t_map *map, t_scene *scene)
 {
 	int chests;
 	int enemies;
@@ -58,7 +58,7 @@ static int	init_feel_scene(char **map, t_scene *scene)
 	return (0);
 }
 
-int	feel_scene(void *mlx, char **map, t_scene *scene)
+int	feel_scene(void *mlx, t_map *map, t_scene *scene)
 {
 	if (init_feel_scene(map, scene) != 0)
 		return (1);

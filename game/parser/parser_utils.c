@@ -6,13 +6,13 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:02:27 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/06 13:37:27 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:44:37 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-int	ft_strlen(char *str)
+int	ft_strlen(const char *str)
 {
 	int	counter;
 	
@@ -90,7 +90,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	return (0);
 }
 
-int	map_count_of_char(char **map, char ch)
+int	map_count_of_char(t_map *map, char ch)
 {
 	int	x;
 	int	y;
@@ -98,12 +98,12 @@ int	map_count_of_char(char **map, char ch)
 
 	count = 0;
 	y = 0;
-	while (map[y])
+	while (map->content[y])
 	{
 		x = 0;
-		while (map[y][x])
+		while (map->content[y][x])
 		{
-			if (map[y][x] == ch)
+			if (map->content[y][x] == ch)
 				count++;
 			x++;
 		}

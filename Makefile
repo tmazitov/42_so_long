@@ -6,7 +6,7 @@
 #    By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/30 14:16:32 by tmazitov          #+#    #+#              #
-#    Updated: 2023/12/06 13:37:29 by tmazitov         ###   ########.fr        #
+#    Updated: 2023/12/06 14:57:27 by tmazitov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,8 +54,9 @@ SRC =	cmd/main.c \
 		game/scene/chest.c \
 		game/scene/chest_anime.c \
 		game/parser/parser.c \
-		game/parser/parser_noda.c \
+		game/parser/parser_node.c \
 		game/parser/parser_utils.c \
+		game/parser/parser_error.c \
 		game/parser/parser_validation.c \
 		utils/image/image.c \
 		utils/path/a_star.c \
@@ -76,6 +77,12 @@ SRC =	cmd/main.c \
 		utils/collider/intersection_variants.c \
 		utils/gnl/get_next_line.c \
 		utils/gnl/get_next_line_utils.c \
+		utils/printf/ft_printf.c \
+		utils/printf/ft_puthex.c \
+		utils/printf/ft_putchar.c \
+		utils/printf/ft_putstr.c \
+		utils/printf/ft_putnbr.c \
+		utils/printf/ft_putunbr.c \
 		
 
 OBJ = $(SRC:.c=.o)
@@ -84,38 +91,21 @@ CC = gcc
 
 CFLAGS = -Wall -Werror -Wextra
 
-# LIB = cd libft && make
-
 MLX = cd mlx && make
-
-# MYPRINTF = cd printf42 && make
-
-# 		$(LIB)
-#		$(MYPRINTF)
-# $(OBJ): $(SRC)
-# 	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
 
 $(NAME): $(OBJ) 
 		$(MLX)
 		gcc $(CFLAGS) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME) -fsanitize=address -g
-# 
-# -Lmlx -lmlx
-# libft/libft.a printf42/libftprintf.a
-# -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
 clean:
 		rm -f $(OBJ)
 		$(MAKE) clean -C mlx
-#		cd libft && make clean
-#		cd printf42 && make clean
+
 fclean: clean
 		rm -f $(NAME)
-# 		cd libft && make fclean
-# 		cd printf42 && make fclean
+
 re:		fclean all
-#		cd libft && make fclean && make all
-#0		cd printf42 && make fclean && make all
 
 .PHONY:	all clean fclean re

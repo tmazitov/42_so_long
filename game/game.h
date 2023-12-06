@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:52:22 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/02 19:42:27 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:52:49 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@
 #include "../mlx/mlx.h"
 #include "player/player.h"
 #include "scene/scene.h"
+#include "../utils/printf/ft_printf.h"
 
 typedef struct s_game
 {
 	void		*mlx;
 	void		*window;
+	int			height;
+	int			width;
 	t_player	*player;
 	t_scene		*scene;
 }		t_game;

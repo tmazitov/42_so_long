@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:32:11 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/03 18:35:30 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:40:47 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,16 +78,16 @@ typedef struct s_scene
 
 // SCENE INSTANCE
 
-t_scene				*make_scene(void *mlx, char *mapPath, int height, int width);
+t_scene				*make_scene(void *mlx, t_map *map, int height, int width);
 void				*free_scene(t_scene *scene);
 
 // SCENE FEEL
 
-int 				feel_scene(void *mlx, char **map, t_scene *scene);
-int					feel_chests(void *mlx, char **map, t_scene *scene);
-int					feel_enemies(void *mlx, char **map, t_scene *scene);
-int					feel_trees(char **map, t_scene *scene);
-int					feel_player_pos(char **map, t_scene *scene);
+int 				feel_scene(void *mlx, t_map *map, t_scene *scene);
+int					feel_chests(void *mlx, t_map *map, t_scene *scene);
+int					feel_enemies(void *mlx, t_map *map, t_scene *scene);
+int					feel_trees(t_map *map, t_scene *scene);
+int					feel_player_pos(t_map *map, t_scene *scene);
 
 // SCENE TEXTURES
 

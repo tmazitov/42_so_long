@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:45:01 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/02 19:07:34 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:58:27 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define ANIME_H
 
 # include "../../mlx/mlx.h"
+# include "../printf/ft_printf.h"
 # include <stdlib.h>
-# include <stdio.h>
 # include <math.h>
 
 typedef struct s_anime_tile

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:07:19 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/02 19:58:09 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:53:34 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ t_player *make_player(void *mlx, int height, int width)
 	player->hit_box = coll_set_align(player->hit_box, 16, 16);
 	if (!player->hit_box)
 		return (free_player(player));
-	printf("success created player!\n");
+	ft_printf("success created player!\n");
 	return (player);
 }

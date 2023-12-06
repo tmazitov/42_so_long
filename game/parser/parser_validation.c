@@ -6,22 +6,21 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:08:30 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/06 13:39:02 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/06 15:00:10 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-static int	map_check_length(char **map)
+static int	map_check_length(t_map *map)
 {
 	int	counter;
 
 	counter = 0;
-	while (map[counter])
+	while (map->content[counter])
 	{
-		if (ft_strlen(map[counter]) != ft_strlen(*map))
+		if (ft_strlen(map->content[counter++]) != ft_strlen(map->content[0]))
 			return (1);
-		counter++;
 	}
 	return (0);
 }
@@ -31,17 +30,17 @@ static int	map_check_border_line(char *str)
 	int	counter;	
 
 	if (!str)
-		return (NULL);
+		return (1);
 	counter = 0;
 	while (str[counter])
 	{
-		if (str != '1')
-			return (1); 
+		if (str[counter++] != '1')
+			return (1);
 	}
 	return (0);
 }
 
-static int	map_check_walls(char **map)
+static int	map_check_walls(t_map *map)
 {
 	int	x;
 	int	y;
@@ -50,22 +49,22 @@ static int	map_check_walls(char **map)
 	height = 0;
 	x = 0;
 	y = 0;
-	if (map_check_border_line(map[y++]) != 0)
+	if (map_check_border_line(map->content[y++]) != 0)
 		return (1);
-	while (map[y])
+	while (map->content[y])
 	{
-		if (map[y+1] == NULL)
+		if (map->content[y+1] == NULL)
 			break;
 		x = 0;
-		if (map[y][x++] != '1')
+		if (map->content[y][x++] != '1')
 			return (1);
-		while (map[y][x])
+		while (map->content[y][x])
 			x++;
-		if (map[y][x - 1] != '1')
+		if (map->content[y][x - 1] != '1')
 			return (1);
 		y++;
 	}
-	if (map_check_border_line(map[y++]) != 0)
+	if (map_check_border_line(map->content[y++]) != 0)
 		return (1);
 	return (0);
 }
@@ -78,7 +77,7 @@ int file_check(char *file_path)
 	return (resolution && ft_strlen(resolution) == 4);
 }
 
-int	map_validate(char **map)
+int	map_validate(t_map *map)
 {
 	if (!map)
 		return (1);

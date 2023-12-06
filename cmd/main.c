@@ -6,43 +6,52 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:08:01 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/05 14:52:28 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/06 15:08:37 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-// int	key_hook(int keycode, t_game *game)
-// {
-// 	printf("Hello from key_hook! Keycode : %d,Vars : %p \n", keycode, game);
-// 	return (0);
-// }
+static int	check_paths(t_game *game)
+{
+	// TODO : make the additional validation for the paths:
+	//	* path player -> exit is exists ? (save this way to show the road)
+	//	* path player -> each one collecatable is exists ?
+}
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	t_game	*game;
-	int		screen_height;
-	int		screen_width;
+	t_map	*map;
 
-	screen_height = 1080;
-	screen_width = 1920;
-
-	game = make_game(screen_height, screen_width, "so_long");
-	if (!game)
+	if (argc != 2)
 		return (1);
-	game->scene = make_scene(game->mlx, "maps/map1.ber", screen_height, screen_width);
+	map = make_map(argv[1]);
+	if (!map)
+		return (1);
+	game = make_game((map->height + 1) * 64, map->width * 64, "so_long");
+	if (!game)
+	{
+		free_map(map);
+		return (1);
+	}
+	game->scene = make_scene(game->mlx, map, game->height, game->width);
 	if (!game->scene)
 	{
-		printf("wrong scene\n");
+		free_game(game);
+		return (1);
+	}
+	if (check_paths(game) != 0)
+	{
+		free_game(game);
 		return (1);
 	}
 	game->player = make_player(game->mlx, 128, 128);
 	if (!game->player)
 	{
-		printf("wrong player\n");
+		free_game(game);
 		return (1);
 	}
-	printf("player: %d %d\n", game->scene->player_x, game->scene->player_y);
 	game->player->x = game->scene->player_x;
 	game->player->y = game->scene->player_y;
 	game->player->last_x = game->player->x;

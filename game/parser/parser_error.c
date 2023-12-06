@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 13:20:23 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/06 13:39:25 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:57:59 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,5 @@ int	parser_error(char *str)
 	ft_printf("err : ");
 	ft_printf(str);
 	ft_printf("\n");
+	return (1);
 }

@@ -6,12 +6,11 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:32:02 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/03 19:13:46 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:30:31 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
-
 
 static t_point_list	*make_game_points(t_scene *scene)
 {
@@ -45,14 +44,11 @@ static void	init_scene(t_scene *scene)
 	scene->raw = NULL;
 }
 
-t_scene *make_scene(void *mlx, char *mapPath, int height, int width)
+t_scene *make_scene(void *mlx, t_map *map, int height, int width)
 {
 	t_scene	*scene;
-	char	**map;
-
-	map = parse(mapPath);
-	if (!map)
-		return (NULL);
+	int		err;
+	
 	scene = malloc(sizeof(t_scene));
 	if (!scene)
 		return (NULL);
@@ -63,7 +59,9 @@ t_scene *make_scene(void *mlx, char *mapPath, int height, int width)
 		return (free_scene(scene));
 	scene->height = height;
 	scene->width = width;
-	if (feel_scene(mlx, map, scene) != 0)
+	err = feel_scene(mlx, map, scene);
+	free_map(map);
+	if (err != 0)
 		return (free_scene(scene));
 	scene->game_objs_points = make_game_points(scene);
 	if (!scene->game_objs_points)

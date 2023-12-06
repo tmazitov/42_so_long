@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 10:39:26 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/29 14:12:02 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:53:49 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	lst_add_point(t_point_list *list, t_a_point *point)
 	
 	if (!point)
 		return (1);
-	// printf("\t add new point: %d %d\n", point->x, point->y);
 	if (!list->points)
 	{
 		list->points = make_point_node(point);
@@ -34,7 +33,6 @@ int	lst_add_point(t_point_list *list, t_a_point *point)
 		node = node->next;		
 	}
 	node->next = make_point_node(point);
-	// printf("\tnode %p ---> next %p \n", node, node->next);
 	if (!node->next)
 		return (1);
 	return (0);

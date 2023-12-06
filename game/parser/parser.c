@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:32:54 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/06 13:37:36 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:43:48 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,51 +47,65 @@ static char	**convert_to_map(t_raw_node *raw_list, int length)
 		return (NULL);
 	result = malloc(sizeof(char*) * (length + 1));
 	if (!result)
-		return (free_parse(result), NULL);
+		return (NULL);
 	row_count = 0;
 	while(raw_list && row_count < length)
 	{
 		result[row_count] = ft_strdup(raw_list->data);
 		if (!result[row_count++])
-			return (free_parse(result), NULL);
+			return (NULL);
 		raw_list = raw_list->next;
 	}	
 	result[row_count] = NULL;
 	return (result);
 }
 
+static void	init_map(t_map *map)
+{
+	map->content = NULL;
+	map->height = 0;
+	map->width = 0;
+}
 
-
-char	**make_map(char *filePath)
+t_map	*make_map(char *file_path)
 {
 	t_raw_node	*raw_list;
 	int			row_count;
-	char		**map;
+	t_map		*map;
 
-	row_count = 0;
-	raw_list = make_raw_list(filePath, &row_count);
-	if (!raw_list || row_count == 0)
-		return (parser_error("can not to read file"), NULL);
-	map = convert_to_map(raw_list, row_count);
-	free_node(raw_list);
+	if (!file_path)
+		return (NULL);
+	map = malloc(sizeof(t_map));
 	if (!map)
-		return (parser_error("can not to create map"), NULL);
+		return (NULL);
+	init_map(map);
+	row_count = 0;
+	raw_list = make_raw_list(file_path, &row_count);
+	if (!raw_list || row_count == 0)
+		return (parser_error("can not to read file"), free_map(map));
+	map->content = convert_to_map(raw_list, row_count);
+	free_node(raw_list);
+	if (!map->content)
+		return (parser_error("can not to create map"), free_map(map));
 	if (map_validate(map) != 0)
-		return (free_parse(map), NULL);
+		return (free_map(map));
+	map->width = ft_strlen(map->content[0]);
+	map->height = row_count;
 	return (map);
 }
 
 
 
-void	*free_map(char **map)
+void	*free_map(t_map *map)
 {
 	int	counter;
 
 	if (!map)
 		return (NULL);
 	counter = 0;
-	while(map[counter])
-		free(map[counter++]);
+	while(map->content[counter])
+		free(map->content[counter++]);
+	free(map->content);
 	free(map);
 	return (NULL);
 }

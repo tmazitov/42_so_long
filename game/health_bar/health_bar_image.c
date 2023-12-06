@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:12:46 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/01 21:44:48 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:54:08 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ static void		make_main(t_image *i, int *buffer, int count, int max)
 	
 	y = 2;
 	percent = round((count / (float)max) * 60);
-	printf("%d) percent : %d\n", count, percent);
 	while (y < i->height - 2)
 	{
 		x = 0;
