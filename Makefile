@@ -6,7 +6,7 @@
 #    By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/30 14:16:32 by tmazitov          #+#    #+#              #
-#    Updated: 2023/12/05 18:47:20 by tmazitov         ###   ########.fr        #
+#    Updated: 2023/12/06 13:37:29 by tmazitov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,9 @@ SRC =	cmd/main.c \
 		game/scene/chest.c \
 		game/scene/chest_anime.c \
 		game/parser/parser.c \
+		game/parser/parser_noda.c \
+		game/parser/parser_utils.c \
+		game/parser/parser_validation.c \
 		utils/image/image.c \
 		utils/path/a_star.c \
 		utils/path/a_star_check.c \

@@ -6,150 +6,92 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:32:54 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/12 19:34:28 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/06 13:37:36 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-int	ft_strlen(char *str)
+static t_raw_node	*make_raw_list(char *file_path, int *length) 
 {
-	int	counter;
-	
-	if (!str)
-		return (0);
-	counter = 0;
-	while (str[counter])
-		counter++;
-	return (counter);
-}
-
-char	*ft_strdup(char *src)
-{
-	size_t	src_len;
-	int		counter;
-	char	*new_str;
-
-	src_len = ft_strlen(src);
-	counter = 0;
-	new_str = malloc(sizeof(char) * (src_len + 1));
-	if (!new_str)
-		return (0);
-	while (src[counter])
-	{
-		new_str[counter] = src[counter];
-		counter++;
-	}
-	new_str[counter] = '\0';
-	return (new_str);
-}
-
-
-t_raw_node	*make_node(char *data)
-{
-	t_raw_node	*raw_node;
-
-	if (!data)
-		return (NULL);
-	raw_node = malloc(sizeof(t_raw_node));
-	if (!raw_node)
-		return (NULL);
-	raw_node->data = data;
-	raw_node->next = NULL;
-	return (raw_node);
-}
-
-void	free_node(t_raw_node *node)
-{
-	if (node->next)
-		free_node(node->next);
-	if (node->data)
-		free(node->data);
-	free(node);
-}
-
-void	free_parse(char	**result)
-{
-	int	counter;
-
-	counter = 0;
-	while(result[counter])
-		free(result[counter++]);
-	free(result);
-}
-
-int	count_of_char(char	**map, char ch)
-{
-	int	x;
-	int	y;
-	int count;
-
-	count = 0;
-	y = 0;
-	while (map[y])
-	{
-		x = 0;
-		while (map[y][x])
-		{
-			if (map[y][x] == ch)
-				count++;
-			x++;
-		}
-		y++;
-	}
-	return (count);
-}
-
-char	**parse(char *filePath)
-{
-	t_raw_node	*init;
-	t_raw_node	*raw;
 	int			fd;
-	int			row_count;
-	char		**result;
-
-	fd = open(filePath, O_RDONLY);
+	t_raw_node	*raw;
+	t_raw_node	*init;
+	
+	if (!file_path)
+		return (NULL);
+	fd = open(file_path, O_RDONLY);
 	if (fd == -1)
 		return (NULL);
 	init = make_node(get_next_line(fd));
 	if (!init)
 		return (close(fd), NULL);
 	raw = init;
-	row_count = 0;
 	while (raw)
 	{
 		if (ft_strchr(raw->data, '\n'))
 			raw->data[ft_strlen(raw->data) - 1] = '\0';
-		if (ft_strlen(init->data) != ft_strlen(raw->data))
-			return (close(fd), free_node(init), NULL);
 		raw->next = make_node(get_next_line(fd));
 		raw = raw->next;
-		row_count++;
+		*length = *length + 1;
 	}
-	close(fd);
-	result = malloc(sizeof(char*) * (row_count + 1));
-	if (!result)
-		return (free_node(init), NULL);
-	raw = init;
-	row_count = 0;
-	while(raw)
-	{
-		result[row_count] = ft_strdup(raw->data);
-		printf("%d) dup : %s\n",row_count, result[row_count]);
-		if (!result[row_count])
-			return (free_parse(result), NULL);
-		row_count++;
-		raw = raw->next;
-	}
+	return (close(fd), init);
+}
+
+static char	**convert_to_map(t_raw_node *raw_list, int length)
+{
+	char	**result;
+	int		row_count;
 	
-	printf("raw row: %d\n", row_count);
-	result[row_count] = NULL;
+	if (!raw_list || length == 0)
+		return (NULL);
+	result = malloc(sizeof(char*) * (length + 1));
+	if (!result)
+		return (free_parse(result), NULL);
 	row_count = 0;
-	while (result[row_count])
+	while(raw_list && row_count < length)
 	{
-		printf("%d)dup1: %s\n",row_count, result[row_count]);
-		row_count++;
-	}
-	free_node(init);
+		result[row_count] = ft_strdup(raw_list->data);
+		if (!result[row_count++])
+			return (free_parse(result), NULL);
+		raw_list = raw_list->next;
+	}	
+	result[row_count] = NULL;
 	return (result);
+}
+
+
+
+char	**make_map(char *filePath)
+{
+	t_raw_node	*raw_list;
+	int			row_count;
+	char		**map;
+
+	row_count = 0;
+	raw_list = make_raw_list(filePath, &row_count);
+	if (!raw_list || row_count == 0)
+		return (parser_error("can not to read file"), NULL);
+	map = convert_to_map(raw_list, row_count);
+	free_node(raw_list);
+	if (!map)
+		return (parser_error("can not to create map"), NULL);
+	if (map_validate(map) != 0)
+		return (free_parse(map), NULL);
+	return (map);
+}
+
+
+
+void	*free_map(char **map)
+{
+	int	counter;
+
+	if (!map)
+		return (NULL);
+	counter = 0;
+	while(map[counter])
+		free(map[counter++]);
+	free(map);
+	return (NULL);
 }
