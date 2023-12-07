@@ -6,17 +6,48 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:08:01 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/06 15:08:37 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/07 12:11:24 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
+static int	check_collectable_paths(t_game *game)
+{
+	t_path		*path;
+	t_a_point	*src;
+	t_a_point	*dest;
+	t_chest		*chest;
+	int			counter;
+	
+	src = make_a_point(game->player->x, game->player->y, NULL);
+	if (!src)
+		return (1);
+	counter = 0;
+	while (game->scene->chests[counter])
+	{
+		ft_printf("# chest %d path - ");
+		chest = game->scene->chests[counter++];
+		dest = make_a_point(chest->x, chest->y, NULL);
+		if (!dest)
+			return (ft_printf("fail\n"), free_a_point(src), 1);
+		path = calc_path(src, dest, game->scene->game_objs_points);
+		free_a_point(dest);
+		if (!path)
+			return (ft_printf("fail\n"), free_a_point(src), 1);
+		free_path(path);
+		ft_printf("ok");
+	}
+	free_a_point(src);
+	return (0);
+}
 static int	check_paths(t_game *game)
 {
 	// TODO : make the additional validation for the paths:
 	//	* path player -> exit is exists ? (save this way to show the road)
 	//	* path player -> each one collecatable is exists ?
+	if (check_collectable_paths(game) != 0)
+		return (1);
 }
 
 int	main(int argc, char **argv)
