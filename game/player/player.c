@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:07:19 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/06 14:53:34 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/07 15:37:49 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,11 @@ static void	init_player(t_player *player)
 	player->last_x = 0;
 	player->last_y = 0;
 	player->score = 0;
+	player->money = 0;
 	player->attack_call_down = 0;
 	player->last_movement = MOVE_DOWN;
 	player->current_task = NULL;
-}	
+}
 
 t_player *make_player(void *mlx, int height, int width)
 {

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:52:24 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/03 15:07:55 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/07 15:29:11 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 # define RENDER_H
 
 # include "../game.h"
+int		render_hook(t_game *game);
 
-int render_player(t_game *game);
-int render_player_health_bar(t_game *game);
-int	render_hook(t_game *game);
+int 	render_player(t_game *game);
+int 	render_player_money(t_game *game);
+int 	render_player_health_bar(t_game *game);
 
 void	render_enemy(t_game	*game);
 void	render_enemy_health_bar(t_game *game);
@@ -28,4 +29,7 @@ void	render_chests(t_game *game);
 
 void	render_colliders(t_game *game);
 void	render_hit_box(t_game *game);
-#endif // 0
+
+char	*ft_itoa(int n);
+
+#endif // RENDER_H

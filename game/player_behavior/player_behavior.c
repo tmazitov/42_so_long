@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:58:47 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/07 13:59:58 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/07 14:09:15 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ void	player_attack_handler(t_player *player)
 
 void	player_open_chest_handler(t_game *game)
 {
-	int	counter;
+	int			counter;
+	int			chest_money;
 	t_chest		*chest;
 	t_player	*player;
 
@@ -38,9 +39,10 @@ void	player_open_chest_handler(t_game *game)
 	{
 		chest = game->scene->chests[counter];
 		if (check_intersection(chest->obj->coll, player->coll, OPEN_CHEST, 0))
-			toggle_chest(chest);
+			chest_money = toggle_chest(chest);
 		counter++;
 	}
+	game->player->money += chest_money;
 }
 
 int	player_control_hook(int keycode, t_game *game)

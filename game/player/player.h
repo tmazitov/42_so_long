@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:07:26 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/02 20:18:04 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/07 14:04:08 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct s_player
 	int					height;
 	int					attack_call_down;
 	int					score;
+	int					money;
 	t_collider			*hit_box;
 	t_health_bar		*health;
 	t_action			last_movement;

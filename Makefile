@@ -6,7 +6,7 @@
 #    By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/30 14:16:32 by tmazitov          #+#    #+#              #
-#    Updated: 2023/12/07 14:02:05 by tmazitov         ###   ########.fr        #
+#    Updated: 2023/12/07 15:29:25 by tmazitov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRC =	cmd/main.c \
 		game/render/render_enemy.c \
 		game/render/render_player.c \
 		game/render/render_support.c \
+		game/render/render_itoa.c \
 		game/scene/scene.c \
 		game/scene/scene_free.c \
 		game/scene/scene_feel.c \
