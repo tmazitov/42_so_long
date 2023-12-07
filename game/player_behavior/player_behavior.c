@@ -6,11 +6,11 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:58:47 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/06 14:53:25 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/07 13:59:58 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "player_behavior.h"
 
 void	player_attack_handler(t_player *player)
 {
