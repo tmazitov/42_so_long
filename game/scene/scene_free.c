@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 19:13:28 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/03 19:51:52 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/07 13:44:15 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void	*free_scene(t_scene *scene)
 		free_scene_objs(scene->objs);
 	if (scene->game_objs_points)
 		free_point_list(scene->game_objs_points);
+	if (scene->exit)
+		free_exit(scene->exit);
 	free(scene);
 	return (NULL);
 }

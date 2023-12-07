@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:20:36 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/06 14:31:08 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/07 13:44:37 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int	feel_scene(void *mlx, t_map *map, t_scene *scene)
 	if (feel_chests(mlx, map, scene) != 0)
 		return (1);
 	if (feel_player_pos(map, scene) != 0)
+		return (1);
+	if (feel_player_exit(map, scene) != 0)
 		return (1);
 	return (0);
 }

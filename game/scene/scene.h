@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:32:11 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/06 14:40:47 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/07 13:39:31 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef enum s_obj_type{
 	OBJ_TREE	= 1,
 	OBJ_SHRUB	= 2,
 	OBJ_CHEST	= 3,
+	OBJ_EXIT	= 4,
 }		t_obj_type;
 
 typedef struct s_scene_textures
@@ -61,6 +62,13 @@ typedef	struct s_chest
 	t_scene_obj	*obj;
 }		t_chest;
 
+typedef	struct s_exit
+{
+	int			x;
+	int			y;
+	t_scene_obj	*obj;
+}		t_exit;
+
 typedef struct s_scene
 {
 	void				*mlx;
@@ -73,6 +81,9 @@ typedef struct s_scene
 	t_scene_obj 		**objs;
 	int					player_x;
 	int					player_y;
+	t_exit				*exit;
+	int					exit_x;
+	int					exit_y;
 	t_point_list		*game_objs_points;
 }		t_scene;
 
@@ -87,6 +98,7 @@ int 				feel_scene(void *mlx, t_map *map, t_scene *scene);
 int					feel_chests(void *mlx, t_map *map, t_scene *scene);
 int					feel_enemies(void *mlx, t_map *map, t_scene *scene);
 int					feel_trees(t_map *map, t_scene *scene);
+int					feel_player_exit(t_map *map, t_scene *scene);
 int					feel_player_pos(t_map *map, t_scene *scene);
 
 // SCENE TEXTURES
@@ -100,7 +112,6 @@ t_scene_obj			*make_scene_obj(t_obj_type t, void *image, int x, int y);
 t_scene_obj			*make_tree(t_scene *scene, int is_border, int x, int y);
 void				*free_scene_obj(t_scene_obj *obj);
 
-
 // CHEST INSTANCE
 
 t_chest				*make_chest(void *mlx, unsigned int money, int x, int y);
@@ -112,5 +123,10 @@ int					toggle_chest(t_chest *chest);
 
 t_anime	*make_chest_close_anime(void *mlx, int height, int width);
 t_anime	*make_chest_open_anime(void *mlx, int height, int width);
+
+// EXIT INSTANCE
+
+t_exit	*make_exit(int x, int y);
+void	*free_exit(t_exit *exit);
 
 #endif 

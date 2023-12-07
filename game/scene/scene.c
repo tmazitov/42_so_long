@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:32:02 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/06 14:30:31 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/07 13:41:03 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ static void	init_scene(t_scene *scene)
 	scene->enemies = NULL;
 	scene->objs = NULL;
 	scene->raw = NULL;
+	scene->exit = NULL;
+	scene->player_x = 0;
+	scene->player_y = 0;
+	scene->exit_x = 0;
+	scene->exit_y = 0;
 }
 
 t_scene *make_scene(void *mlx, t_map *map, int height, int width)
@@ -65,6 +70,9 @@ t_scene *make_scene(void *mlx, t_map *map, int height, int width)
 		return (free_scene(scene));
 	scene->game_objs_points = make_game_points(scene);
 	if (!scene->game_objs_points)
+		return (free_scene(scene));
+	scene->exit = make_exit(scene->exit_x, scene->exit_y);
+	if (!scene->exit)
 		return (free_scene(scene));
 	return (scene);
 }
