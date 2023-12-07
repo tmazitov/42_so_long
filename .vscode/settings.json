@@ -28,7 +28,9 @@
     "anime.h": "c",
     "__locale": "c",
     "stdlib.h": "c",
-    "health_bar.h": "c"
+    "health_bar.h": "c",
+    "enemy_behavior.h": "c",
+    "game.h": "c"
   },
   "cmake.configureOnOpen": true,
   "C_Cpp_Runner.cCompilerPath": "clang",

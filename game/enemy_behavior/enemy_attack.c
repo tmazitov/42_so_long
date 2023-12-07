@@ -6,11 +6,11 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:19:34 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/02 19:40:51 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/07 13:56:30 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "enemy_behavior.h"
 
 static void	enemy_make_hit(t_player *player)
 {

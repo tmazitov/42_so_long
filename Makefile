@@ -6,7 +6,7 @@
 #    By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/30 14:16:32 by tmazitov          #+#    #+#              #
-#    Updated: 2023/12/07 13:41:35 by tmazitov         ###   ########.fr        #
+#    Updated: 2023/12/07 13:56:08 by tmazitov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,6 @@ NAME = so_long
 SRC =	cmd/main.c \
 		game/game.c \
 		game/player_behavior.c \
-		game/enemy_behavior.c \
-		game/enemy_move_check.c \
-		game/enemy_move.c \
-		game/enemy_attack.c \
 		game/enemy/enemy.c \
 		game/enemy/enemy_anime.c \
 		game/enemy/enemy_movement.c \
@@ -27,6 +23,10 @@ SRC =	cmd/main.c \
 		game/enemy/enemy_die_anime.c \
 		game/enemy/enemy_idle_anime.c \
 		game/enemy/enemy_move_anime.c \
+		game/enemy_behavior/enemy_behavior.c \
+		game/enemy_behavior/enemy_move_check.c \
+		game/enemy_behavior/enemy_move.c \
+		game/enemy_behavior/enemy_attack.c \
 		game/player/anime.c \
 		game/player/player_idle_anime.c \
 		game/player/anime_attack.c \

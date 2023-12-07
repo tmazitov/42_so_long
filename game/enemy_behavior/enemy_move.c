@@ -6,11 +6,11 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:08:42 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/02 19:12:50 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/07 13:56:38 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "enemy_behavior.h"
 
 static void calc_future_path(t_player *player, t_scene *scene, t_enemy *enemy)
 {

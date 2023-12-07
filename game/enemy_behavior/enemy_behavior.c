@@ -6,11 +6,11 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 19:48:34 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/02 19:42:43 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/07 13:56:26 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "enemy_behavior.h"
 
 static	int	enemy_delay(t_enemy *enemy)
 {

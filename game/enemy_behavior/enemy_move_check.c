@@ -6,11 +6,11 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:43:30 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/02 19:09:19 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/07 13:56:33 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "game.h"
+#include "enemy_behavior.h"
 
 static int enemy_is_movement(t_enemy_action action)
 {
