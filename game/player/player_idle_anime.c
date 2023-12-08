@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:39:26 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/08 15:58:38 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/08 16:33:36 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,18 +80,26 @@ t_anime	*make_idle_left_anime(void *mlx, int height, int width)
 	return make_anime(mlx, tilePaths, height, width, 6);
 }
 
-t_anime	*pl_idle_anime(t_player *player)
+int	setup_idle_anime(t_player *player, t_player_anime *player_anime)
 {
-	t_anime	*anime;
-
-	anime = NULL;
-	if (player->last_movement == MOVE_DOWN)
-		anime = player->anime->idle_up;
-	else if (player->last_movement == MOVE_UP)
-		anime = player->anime->idle_down;
-	else if (player->last_movement == MOVE_STRAIGHT)
-		anime = player->anime->idle_right;
-	else if (player->last_movement == MOVE_BACK)
-		anime = player->anime->idle_left;
-	return (anime);
+	void	*mlx;
+	int		height;
+	int		width;
+	
+	height = player->height;
+	width = player->width;
+	mlx = player->mlx;
+	player_anime->idle_down = make_idle_down_anime(mlx, height, width);
+	if (!player_anime->idle_down)
+		return (1);
+	player_anime->idle_up = make_idle_up_anime(mlx, height, width);
+	if (!player_anime->idle_up)
+		return (1);
+	player_anime->idle_right = make_idle_right_anime(mlx, height, width);
+	if (!player_anime->idle_right)
+		return (1);
+	player_anime->idle_left = make_idle_left_anime(mlx, height, width);
+	if (!player_anime->idle_left)
+		return (1);
+	return (0);
 }

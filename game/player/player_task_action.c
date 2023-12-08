@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   task_action.c                                      :+:      :+:    :+:   */
+/*   player_task_action.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:34:10 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/02 20:03:02 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/08 16:39:21 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,13 @@ int	execute_action(t_scene *scene, t_player *player, t_player_task *task)
 	return (1);
 }
 
+static void	set_last_position(t_player *player)
+{
+	player->score += 1;
+	player->last_x = player->x;
+	player->last_y = player->y;
+}
+
 t_anime	*task_proccess(t_scene *scene, t_player *player)
 {
 	t_player_task	*task;
@@ -84,11 +91,7 @@ t_anime	*task_proccess(t_scene *scene, t_player *player)
 		else if (!task->next)
 			refresh_anime(task->anime);
 		if (task && is_movement(task->action)) 
-		{
-			player->score += 1;
-			player->last_x = player->x;
-			player->last_y = player->y;
-		}
+			set_last_position(player);
 		free_task(task);
 		if (!player->current_task)
 			return (pl_idle_anime(player));

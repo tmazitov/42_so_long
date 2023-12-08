@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:07:26 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/08 16:00:34 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/08 16:34:28 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ void			*free_player(t_player *player);
 t_player_anime	*make_player_anime(t_player *player);
 void			*free_player_anime(t_player_anime *anime);
 int				setup_attack_anime(t_player *player, t_player_anime *player_anime);
+int				setup_idle_anime(t_player *player, t_player_anime *player_anime);
+int				setup_move_anime(t_player *player, t_player_anime *player_anime);
 t_anime			*pl_idle_anime(t_player *player);
 t_anime			*make_idle_down_anime(void *mlx, int height, int width);
 t_anime			*make_idle_up_anime(void *mlx, int height, int width);

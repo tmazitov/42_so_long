@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   task_check.c                                       :+:      :+:    :+:   */
+/*   player_task_check.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:30:15 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/01 22:05:44 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/08 16:38:06 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static	int	check_objs_intersect(t_player *player, t_scene_obj **objs)
 	}
 	return (1);
 }
+
 static	int	check_enemy_intersect(t_player *player, t_enemy **enemies)
 {
 	int				counter;
