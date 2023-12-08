@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:52:22 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/07 14:00:26 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/08 15:49:44 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,14 @@ typedef struct s_game
 	int			width;
 	t_player	*player;
 	t_scene		*scene;
+	int			blocker;
 }		t_game;
 
 // GAME
 
-void		*free_game(t_game *game);
-t_game		*make_game(int height, int width, char *title);
-int			player_control_hook(int keycode, t_game *game);
+void	*free_game(t_game *game);
+t_game	*make_game(int height, int width, char *title);
 
-
+void	player_exit_handler(t_game *game);
+int		player_control_hook(int keycode, t_game *game);
 #endif // GAME_H

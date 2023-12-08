@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:08:01 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/07 13:49:34 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/08 15:50:08 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,17 @@ static int	check_paths(t_game *game)
 	return (0);
 }
 
+static int	window_exit(void *game)
+{
+	free_game(game);
+	exit(EXIT_SUCCESS);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	*game;
 	t_map	*map;
-
 	if (argc != 2)
 		return (1);
 	map = make_map(argv[1]);
@@ -115,7 +121,9 @@ int	main(int argc, char **argv)
 		free_game(game);
 		return (1);
 	}
-	mlx_loop_hook(game->mlx, render_hook, game);
+
+	mlx_hook(game->window, 17, 0, window_exit, game);
 	mlx_key_hook(game->window, player_control_hook, game);
-	mlx_loop(game->mlx);
+	mlx_loop_hook(game->mlx, render_hook, game);
+	mlx_loop(game->mlx);  
 }

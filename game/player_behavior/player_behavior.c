@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:58:47 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/07 15:59:34 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/08 15:52:12 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,28 +54,33 @@ void	player_exit_handler(t_game *game)
 {
 	t_collider	*exit_coll;
 	t_collider	*player_coll;
+	int			inter;
 
 	player_coll = game->player->coll;
 	exit_coll = game->scene->exit->obj->coll;
-	if (check_intersection(player_coll, exit_coll, OPEN_CHEST, 0))
+	inter = check_intersection(player_coll, exit_coll, OPEN_CHEST, 0);
+	if (inter && inter != -1)
 	{
 		free_game(game);
 		exit(EXIT_SUCCESS);
 	}
+	return;
 }
 
 void	shift_handler(t_game *game)
 {
 	if (player_open_chest_handler(game))
 		return ;
+	ft_printf("check exit\n");
 	player_exit_handler(game);
+	ft_printf("false\n");
 }
 
 int	player_control_hook(int keycode, t_game *game)
 {
-	ft_printf("keycode: %d\n", keycode);
 	t_player	*player;
 
+	ft_printf("keycode: %d\n", keycode);
 	player = game->player;
 	if (keycode == BUTTON_STRAIGHT)
 		add_task(player, MOVE_STRAIGHT, player->anime->walk_right, 64);

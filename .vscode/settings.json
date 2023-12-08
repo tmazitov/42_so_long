@@ -30,7 +30,9 @@
     "stdlib.h": "c",
     "health_bar.h": "c",
     "enemy_behavior.h": "c",
-    "game.h": "c"
+    "game.h": "c",
+    "enemy.h": "c",
+    "player_behavior.h": "c"
   },
   "cmake.configureOnOpen": true,
   "C_Cpp_Runner.cCompilerPath": "clang",
