@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:39:26 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/03 15:18:51 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/08 15:58:38 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_anime	*make_idle_down_anime(void *mlx, int height, int width)
 	tilePaths[4] = "textures/player/idle_down/tile004.xpm";
 	tilePaths[5] = "textures/player/idle_down/tile005.xpm";
 	tilePaths[6] = NULL;
-	return make_anime(mlx, tilePaths, height, width, 9);
+	return make_anime(mlx, tilePaths, height, width, 6);
 }
 
 t_anime	*make_idle_up_anime(void *mlx, int height, int width)
@@ -43,7 +43,7 @@ t_anime	*make_idle_up_anime(void *mlx, int height, int width)
 	tilePaths[4] = "textures/player/idle_up/tile016.xpm";
 	tilePaths[5] = "textures/player/idle_up/tile017.xpm";
 	tilePaths[6] = NULL;
-	return make_anime(mlx, tilePaths, height, width, 9);
+	return make_anime(mlx, tilePaths, height, width, 6);
 }
 
 t_anime	*make_idle_right_anime(void *mlx, int height, int width)
@@ -60,7 +60,7 @@ t_anime	*make_idle_right_anime(void *mlx, int height, int width)
 	tilePaths[4] = "textures/player/idle_right/tile010.xpm";
 	tilePaths[5] = "textures/player/idle_right/tile011.xpm";
 	tilePaths[6] = NULL;
-	return make_anime(mlx, tilePaths, height, width, 9);
+	return make_anime(mlx, tilePaths, height, width, 6);
 }
 
 t_anime	*make_idle_left_anime(void *mlx, int height, int width)
@@ -77,7 +77,7 @@ t_anime	*make_idle_left_anime(void *mlx, int height, int width)
 	tilePaths[4] = "textures/player/idle_left/m_tile010.xpm";
 	tilePaths[5] = "textures/player/idle_left/m_tile011.xpm";
 	tilePaths[6] = NULL;
-	return make_anime(mlx, tilePaths, height, width, 9);
+	return make_anime(mlx, tilePaths, height, width, 6);
 }
 
 t_anime	*pl_idle_anime(t_player *player)

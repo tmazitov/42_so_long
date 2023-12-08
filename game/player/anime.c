@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:10:20 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/02 16:44:06 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/08 15:56:51 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static t_anime	*make_walk_right_anime(void *mlx, int height, int width)
 	tilePaths[4] = "textures/player/walk_right/tile028.xpm";
 	tilePaths[5] = "textures/player/walk_right/tile029.xpm";
 	tilePaths[6] = NULL;
-	return make_anime(mlx, tilePaths, height, width, 6);
+	return make_anime(mlx, tilePaths, height, width, 3);
 }
 
 static t_anime	*make_walk_left_anime(void *mlx, int height, int width)
@@ -68,7 +68,7 @@ static t_anime	*make_walk_left_anime(void *mlx, int height, int width)
 	tilePaths[4] = "textures/player/walk_left/m_tile028.xpm";
 	tilePaths[5] = "textures/player/walk_left/m_tile029.xpm";
 	tilePaths[6] = NULL;
-	return make_anime(mlx, tilePaths, height, width, 6);
+	return make_anime(mlx, tilePaths, height, width, 3);
 }
 static t_anime	*make_walk_down_anime(void *mlx, int height, int width)
 {
@@ -84,7 +84,7 @@ static t_anime	*make_walk_down_anime(void *mlx, int height, int width)
 	tilePaths[4] = "textures/player/walk_down/tile022.xpm";
 	tilePaths[5] = "textures/player/walk_down/tile023.xpm";
 	tilePaths[6] = NULL;
-	return make_anime(mlx, tilePaths, height, width, 6);
+	return make_anime(mlx, tilePaths, height, width, 3);
 }
 static t_anime	*make_walk_up_anime(void *mlx, int height, int width)
 {
@@ -99,7 +99,7 @@ static t_anime	*make_walk_up_anime(void *mlx, int height, int width)
 	tilePaths[3] = "textures/player/walk_up/tile034.xpm";
 	tilePaths[4] = "textures/player/walk_up/tile035.xpm";
 	tilePaths[5] = NULL;
-	return make_anime(mlx, tilePaths, height, width, 6);
+	return make_anime(mlx, tilePaths, height, width, 3);
 }
 
 
