@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 14:04:35 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/02 14:48:26 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/08 16:03:13 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_anime	*make_die_anime(void *mlx, int height, int width)
 	tilePaths[3] = "textures/enemy/death/tile031.xpm";
 	tilePaths[4] = "textures/enemy/death/tile032.xpm";
 	tilePaths[5] = NULL;
-	return make_anime(mlx, tilePaths, height, width, 12);
+	return make_anime(mlx, tilePaths, height, width, 6);
 }
 
 t_anime	*make_died_anime(void *mlx, int height, int width)
@@ -31,5 +31,5 @@ t_anime	*make_died_anime(void *mlx, int height, int width)
 
 	tilePaths[0] = "textures/enemy/death/tile032.xpm";
 	tilePaths[1] = NULL;
-	return make_anime(mlx, tilePaths, height, width, 12);
+	return make_anime(mlx, tilePaths, height, width, 6);
 }

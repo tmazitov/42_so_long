@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 15:39:24 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/06 14:57:47 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/08 16:06:46 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 #include "../../utils/path/path.h"
 #include "../../utils/printf/ft_printf.h"
 
-# define PATH_FOUND_CALLDOWN 	128
-# define ENEMY_MOVE_SPEED		1
+# define PATH_FOUND_CALLDOWN 	96
+# define ENEMY_MOVE_SPEED		2
 
 typedef enum s_enemy_actions {
 	E_MOVE_STRAIGHT	= 1,
