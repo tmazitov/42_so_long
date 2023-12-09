@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:52:24 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/09 15:59:32 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/09 19:03:32 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 # define RENDER_H
 
 # include "../game.h"
+
+typedef enum s_step{
+	TO_TOP		= 1,
+	TO_RIGHT	= 2,
+	TO_LEFT		= 3,
+	TO_BOT		= 4,
+}		t_step;
+
 int		render_hook(t_game *game);
 
 int 	render_player(t_game *game);

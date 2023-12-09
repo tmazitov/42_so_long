@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:32:02 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/08 14:54:45 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/09 18:00:41 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static void	init_scene(t_scene *scene)
 	scene->objs = NULL;
 	scene->raw = NULL;
 	scene->exit = NULL;
+	scene->player_way = NULL;
 	scene->player_x = 0;
 	scene->player_y = 0;
 	scene->exit_x = 0;

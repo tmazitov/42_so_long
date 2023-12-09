@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:20:36 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/07 13:44:37 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/09 18:07:03 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,23 @@ static int	init_feel_scene(t_map *map, t_scene *scene)
 	if (!scene->enemies)
 		return (1);
 	return (0);
+}
+
+int	make_player_way(t_scene *scene)
+{
+	t_a_point	*src;
+	t_exit		*dest;
+
+	src = make_a_point(scene->player_x, scene->player_y, NULL);
+	if (!src)
+		return (1); 
+	dest = make_a_point(scene->exit_x, scene->exit_y, NULL);
+	if (!src)
+		return (free_a_point(src),1);
+	scene->player_way = calc_path(src, dest, scene->game_objs_points);
+	free_a_point(src);
+	free_a_point(dest);
+	return (scene->player_way == NULL);
 }
 
 int	feel_scene(void *mlx, t_map *map, t_scene *scene)

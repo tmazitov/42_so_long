@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 15:41:02 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/09 15:30:12 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/09 17:46:58 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static int	feel_scene_textures(void *mlx, t_scene_textures *t)
 	t->shrub = make_image_v2(mlx, "textures/tree/tree_2.xpm");
 	if (!t->shrub)
 		return (1);
+	if (make_road_textures(mlx, t) != 0)
+		return (1);
 	return (0);
 }
 
@@ -30,6 +32,7 @@ static void	init_scene_textures(t_scene_textures *t)
 {
 	t->grass = NULL;
 	t->shrub = NULL;
+	t->roads = NULL;
 	t->tree = NULL;
 }
 
@@ -48,6 +51,8 @@ t_scene_textures	*make_scene_textures(void *mlx)
 
 void	*free_scene_textures(t_scene_textures *t)
 {
+	int	counter;
+	
 	if (!t)
 		return (NULL);
 	if (t->grass)
@@ -56,6 +61,13 @@ void	*free_scene_textures(t_scene_textures *t)
 		free_image(t->tree);
 	if (t->shrub)
 		free_image(t->shrub);
+	if (t->roads) 
+	{
+		counter = 0;
+		while (t->roads[counter])
+			free_image(t->roads[counter++]);
+		free(t->roads);
+	}
 	free(t);
 	return (NULL);
 }
