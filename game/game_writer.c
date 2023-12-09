@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 14:57:08 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/09 15:12:37 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/09 15:44:51 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static int	feed_game_writer_digits(t_writer *writer)
 {
 	int res;
 
+	res = 0;
 	res += add_symbol(writer, '0', "textures/font/0.xpm");
 	res += add_symbol(writer, '1', "textures/font/1.xpm");
 	res += add_symbol(writer, '2', "textures/font/2.xpm");
@@ -32,6 +33,7 @@ static int	feed_game_writer_letters(t_writer *writer)
 {
 	int res;
 
+	res = 0;
 	res += add_symbol(writer, 'A', "textures/font/a.xpm");
 	res += add_symbol(writer, 'B', "textures/font/b.xpm");
 	res += add_symbol(writer, 'C', "textures/font/c.xpm");

@@ -6,7 +6,7 @@
 #    By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/30 14:16:32 by tmazitov          #+#    #+#              #
-#    Updated: 2023/12/08 16:36:37 by tmazitov         ###   ########.fr        #
+#    Updated: 2023/12/09 15:44:35 by tmazitov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = so_long
 
 SRC =	cmd/main.c \
 		game/game.c \
+		game/game_writer.c \
 		game/enemy/enemy.c \
 		game/enemy/enemy_anime.c \
 		game/enemy/enemy_movement.c \
@@ -86,6 +87,9 @@ SRC =	cmd/main.c \
 		utils/printf/ft_putstr.c \
 		utils/printf/ft_putnbr.c \
 		utils/printf/ft_putunbr.c \
+		utils/mlx_font_print/writer.c \
+		utils/mlx_font_print/writer_symbol.c \
+		utils/mlx_font_print/writer_handler.c \
 		
 
 OBJ = $(SRC:.c=.o)

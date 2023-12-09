@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 20:44:51 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/09 15:15:09 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/09 15:50:48 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_writer	*make_writer(void *mlx, void *win, int space)
 		return (NULL);
 	writer->symbols = NULL;
 	writer->mlx = mlx;
+	writer->win = win;
 	writer->space = space;
 	return (writer);
 }
@@ -32,7 +33,7 @@ int	add_symbol(t_writer *writer, char ch, char *image_path)
 	if (!writer)
 		return (1);
 	last = writer->symbols;
-	while (1) 
+	while (last) 
 	{
 		if (!last->next)
 			break ;
@@ -42,12 +43,12 @@ int	add_symbol(t_writer *writer, char ch, char *image_path)
 	{
 		last->next = make_symbol(writer->mlx, ch, image_path);
 		if (last->next)
-			printf("# symbol %c added!\n", last->next->symbol);
+			ft_printf("# symbol %c added!\n", last->next->symbol);
 		return (last->next == NULL);
 	}
 	writer->symbols = make_symbol(writer->mlx, ch, image_path);
 	if (writer->symbols)
-		printf("# symbol %c added!\n", writer->symbols->symbol);
+		ft_printf("# symbol %c added!\n", writer->symbols->symbol);
 	return (writer->symbols == NULL);
 }
 

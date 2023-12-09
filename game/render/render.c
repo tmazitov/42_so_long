@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:51:46 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/08 16:16:58 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/09 15:59:59 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	render_hook(t_game *game)
 	// render_colliders(game);
 	// render_hit_box(game);
 	render_player_money(game);
+	render_player_score(game);
 	mlx_do_sync(game->mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 20:39:51 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/09 15:13:38 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/09 15:52:16 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 # define MLX_FONT_PRINT_H
 
 #include "../image/image.h"
+#include "../printf/ft_printf.h"
 
 typedef struct s_symbol
 {
-	char		symbol;
-	t_image		*image;
-	t_symbol	*next;
+	char			symbol;
+	t_image			*image;
+	struct s_symbol	*next;
 }		t_symbol;
 
 
@@ -28,7 +29,6 @@ typedef struct s_writer
 	t_symbol	*symbols;
 	void		*mlx;
 	void		*win;
-	int			dist;
 	int			space;
 }		t_writer;
 

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 14:27:14 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/07 15:28:54 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/09 15:59:12 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,38 @@ int render_player_health_bar(t_game *game)
 
 int render_player_money(t_game *game)
 {
-	void	*mlx;
 	int		res;
-	void	*win;
+	int		x;
+	int		y;
 	char	*money_str;
 
-	mlx = game->mlx;
-	win = game->window;
-	res = mlx_string_put(mlx, win, 10, 10, 0xe6dddc, "Money!");
+	x = 16;
+	y = 16;
+	x = mlx_print(game->writer, "MONEY", x, y);
 	money_str = ft_itoa(game->player->money);
 	if (!money_str)
 		return (1);
-	res = mlx_string_put(mlx, win, 60, 10, 0xe6dddc, money_str);
-	return (res);
+	res = mlx_print(game->writer, money_str, x, y);
+	free(money_str);
+	return (0);
+}
+
+int render_player_score(t_game *game)
+{
+	int		res;
+	int		x;
+	int		y;
+	char	*score_str;
+
+	x = 16;
+	y = 40;
+	x = mlx_print(game->writer, "SCORE", x, y);
+	score_str = ft_itoa(game->player->score);
+	if (!score_str)
+		return (1);
+	res = mlx_print(game->writer, score_str, x, y);
+	free(score_str);
+	return (0);
 }
 
 
