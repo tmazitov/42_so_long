@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:32:54 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/07 13:50:22 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/09 16:07:46 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,12 @@ void	*free_map(t_map *map)
 	if (!map)
 		return (NULL);
 	counter = 0;
-	while(map->content[counter])
-		free(map->content[counter++]);
-	free(map->content);
+	if (map->content)
+	{
+		while(map->content[counter])
+			free(map->content[counter++]);
+		free(map->content);
+	}
 	free(map);
 	return (NULL);
 }
