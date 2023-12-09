@@ -1,1 +1,0 @@
-cc -Wall -Wextra -Werror cmd/main.c cmd/main.h  -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:58:47 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/08 15:52:12 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/09 19:04:07 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ int	player_control_hook(int keycode, t_game *game)
 
 	ft_printf("keycode: %d\n", keycode);
 	player = game->player;
+	if (player->is_died)
+		return (0);
 	if (keycode == BUTTON_STRAIGHT)
 		add_task(player, MOVE_STRAIGHT, player->anime->walk_right, 64);
 	if (keycode == BUTTON_BACK)

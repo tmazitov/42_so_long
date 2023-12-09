@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:34:10 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/08 16:39:21 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/09 19:08:57 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ t_anime	*task_proccess(t_scene *scene, t_player *player)
 	t_player_task	*task;
 	int				is_able_to_proc;
 
+	if (!player || player->is_died)
+		return (NULL);
 	task = player->current_task;
 	is_able_to_proc = is_able_to_proccess(scene, player);
 	if (task->duration > 0 && is_able_to_proc)
@@ -86,9 +88,8 @@ t_anime	*task_proccess(t_scene *scene, t_player *player)
 	else
 	{
 		player->current_task = task->next;
-		if (task->next && task->action != player->current_task->action)
-			refresh_anime(task->anime);
-		else if (!task->next)
+		if ((task->next && task->action != player->current_task->action) 
+			|| !task->next)
 			refresh_anime(task->anime);
 		if (task && is_movement(task->action)) 
 			set_last_position(player);

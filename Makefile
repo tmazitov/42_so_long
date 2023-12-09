@@ -6,7 +6,7 @@
 #    By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/30 14:16:32 by tmazitov          #+#    #+#              #
-#    Updated: 2023/12/09 15:44:35 by tmazitov         ###   ########.fr        #
+#    Updated: 2023/12/09 19:07:47 by tmazitov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRC =	cmd/main.c \
 		game/enemy_behavior/enemy_attack.c \
 		game/player/player.c \
 		game/player/player_anime.c \
+		game/player/player_die_anime.c \
 		game/player/player_idle_anime.c \
 		game/player/player_move_anime.c \
 		game/player/player_attack.c \

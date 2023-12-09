@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:10:20 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/08 16:30:52 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/09 18:55:57 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,18 @@ void	*free_player_anime(t_player_anime *anime)
 		free_anime(anime->attack_right);
 	if (anime->attack_left)
 		free_anime(anime->attack_left);
+	if (anime->die)
+		free_anime(anime->die);
+	if (anime->died)
+		free_anime(anime->died);
 	free(anime);
 	return (NULL);
 }
 
 void	init_player_anime(t_player_anime *anime)
 {
+	anime->die = NULL;
+	anime->died = NULL;
 	anime->idle_down = NULL;
 	anime->idle_right = NULL;
 	anime->idle_left = NULL;
@@ -56,6 +62,8 @@ t_anime	*pl_idle_anime(t_player *player)
 {
 	t_anime	*anime;
 
+	if (player->is_died)
+		return (player->anime->died);
 	anime = NULL;
 	if (player->last_movement == MOVE_DOWN)
 		anime = player->anime->idle_up;
@@ -82,25 +90,13 @@ t_player_anime	*make_player_anime(t_player *player)
 	height = player->height;
 	width = player->width;
 	mlx = player->mlx;
-
-	// IDLE
-
-	player_anime->idle_down = make_idle_down_anime(mlx, height, width);
-	if (!player_anime->idle_down)
-		return (NULL);
-	player_anime->idle_up = make_idle_up_anime(mlx, height, width);
-	if (!player_anime->idle_up)
-		return (NULL);
-	player_anime->idle_right = make_idle_right_anime(mlx, height, width);
-	if (!player_anime->idle_right)
-		return (NULL);
-	player_anime->idle_left = make_idle_left_anime(mlx, height, width);
-	if (!player_anime->idle_left)
-		return (NULL);
-
+	if (setup_idle_anime(player, player_anime) != 0)
+		return (free_player_anime(player_anime));
 	if (setup_move_anime(player, player_anime) != 0)
 		return (free_player_anime(player_anime));
 	if (setup_attack_anime(player, player_anime) != 0)
+		return (free_player_anime(player_anime));
+	if (setup_die_anime(player, player_anime) != 0)
 		return (free_player_anime(player_anime));
 	return (player_anime);
 }

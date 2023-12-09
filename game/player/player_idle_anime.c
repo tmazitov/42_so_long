@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:39:26 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/08 16:33:36 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/09 18:44:12 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 t_anime	*make_idle_down_anime(void *mlx, int height, int width)
 {
-	char	**tilePaths;
-	tilePaths = malloc(sizeof(char*) * 7);
-	if (!tilePaths)
-		return (NULL);
+	char	*tilePaths[7];
 
 	tilePaths[0] = "textures/player/idle_down/tile000.xpm";
 	tilePaths[1] = "textures/player/idle_down/tile001.xpm";
@@ -31,10 +28,7 @@ t_anime	*make_idle_down_anime(void *mlx, int height, int width)
 
 t_anime	*make_idle_up_anime(void *mlx, int height, int width)
 {
-	char	**tilePaths;
-	tilePaths = malloc(sizeof(char*) * 7);
-	if (!tilePaths)
-		return (NULL);
+	char	*tilePaths[7];
 
 	tilePaths[0] = "textures/player/idle_up/tile012.xpm";
 	tilePaths[1] = "textures/player/idle_up/tile013.xpm";
@@ -48,10 +42,7 @@ t_anime	*make_idle_up_anime(void *mlx, int height, int width)
 
 t_anime	*make_idle_right_anime(void *mlx, int height, int width)
 {
-	char	**tilePaths;
-	tilePaths = malloc(sizeof(char*) * 7);
-	if (!tilePaths)
-		return (NULL);
+	char	*tilePaths[7];
 
 	tilePaths[0] = "textures/player/idle_right/tile006.xpm";
 	tilePaths[1] = "textures/player/idle_right/tile007.xpm";
@@ -65,10 +56,7 @@ t_anime	*make_idle_right_anime(void *mlx, int height, int width)
 
 t_anime	*make_idle_left_anime(void *mlx, int height, int width)
 {
-	char	**tilePaths;
-	tilePaths = malloc(sizeof(char*) * 7);
-	if (!tilePaths)
-		return (NULL);
+	char	*tilePaths[7];
 
 	tilePaths[0] = "textures/player/idle_left/m_tile006.xpm";
 	tilePaths[1] = "textures/player/idle_left/m_tile007.xpm";

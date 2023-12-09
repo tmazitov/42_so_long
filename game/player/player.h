@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:07:26 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/08 16:34:28 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/09 18:59:07 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef enum s_action {
 	ATTACK_2		= 6,
 	ATTACK_3		= 7,
 	OPEN_CHEST		= 8,	
+	DIE				= 9,	
 } 		t_action;
 
 // Task target
@@ -75,6 +76,9 @@ typedef struct s_player_anime
 	t_anime		*attack_right;
 	t_anime		*attack_up;
 	t_anime		*attack_left;
+
+	t_anime		*die;
+	t_anime		*died;
 }		t_player_anime;
 
 // Player structure
@@ -90,6 +94,7 @@ typedef struct s_player
 	int					attack_call_down;
 	int					score;
 	int					money;
+	int					is_died;
 	t_collider			*hit_box;
 	t_health_bar		*health;
 	t_action			last_movement;
@@ -110,11 +115,9 @@ void			*free_player_anime(t_player_anime *anime);
 int				setup_attack_anime(t_player *player, t_player_anime *player_anime);
 int				setup_idle_anime(t_player *player, t_player_anime *player_anime);
 int				setup_move_anime(t_player *player, t_player_anime *player_anime);
+int				setup_die_anime(t_player *player, t_player_anime *player_anime);
 t_anime			*pl_idle_anime(t_player *player);
-t_anime			*make_idle_down_anime(void *mlx, int height, int width);
-t_anime			*make_idle_up_anime(void *mlx, int height, int width);
-t_anime			*make_idle_right_anime(void *mlx, int height, int width);
-t_anime			*make_idle_left_anime(void *mlx, int height, int width);
+
 // TASK
 
 t_player_task	*make_task(t_action action, t_anime *anime);
