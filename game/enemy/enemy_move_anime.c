@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 22:21:13 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/08 16:06:38 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/09 18:30:26 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_anime	*make_right_move_anime(void *mlx, int height, int width)
 	tilePaths[6] = "textures/enemy/move-right/tile011.xpm";
 	tilePaths[7] = "textures/enemy/move-right/tile012.xpm";
 	tilePaths[8] = NULL;
-	return make_anime(mlx, tilePaths, height, width, 8);
+	return make_anime(mlx, tilePaths, height, width, 4);
 }
 
 t_anime	*make_left_move_anime(void *mlx, int height, int width)
@@ -41,5 +41,5 @@ t_anime	*make_left_move_anime(void *mlx, int height, int width)
 	tilePaths[6] = "textures/enemy/move-left/tile011.xpm";
 	tilePaths[7] = "textures/enemy/move-left/tile012.xpm";
 	tilePaths[8] = NULL;
-	return make_anime(mlx, tilePaths, height, width, 8);
+	return make_anime(mlx, tilePaths, height, width, 4);
 }
