@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 16:31:07 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/10 21:21:19 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/11 03:40:01 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ int	feel_player_pos(t_map *map, t_scene *scene)
 			if (map->content[y][x] == 'P')
 			{
 				scene->player_x = x * 64;
-				scene->player_y = y * 64;
+				scene->player_y = (y + 1) * 64;
 				counter++;
 			}
 			x++;
