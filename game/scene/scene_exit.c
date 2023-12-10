@@ -6,13 +6,13 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:22:38 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/11 02:39:10 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/11 03:03:27 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
 
-static void init_exit(t_exit *exit)
+static void	init_exit_inst(t_exit *exit)
 {
 	exit->image = NULL;
 	exit->obj = NULL;
@@ -25,7 +25,7 @@ t_exit	*make_exit(void *mlx, int x, int y)
 	exit = malloc(sizeof(t_exit));
 	if (!exit)
 		return (NULL);
-	init_exit(exit);
+	init_exit_inst(exit);
 	exit->x = x;
 	exit->y = y;
 	exit->obj = make_scene_obj(OBJ_EXIT, NULL, x, y);
@@ -37,7 +37,6 @@ t_exit	*make_exit(void *mlx, int x, int y)
 		return (free_exit(exit));
 	return (exit);
 }
-
 
 void	*free_exit(t_exit *exit)
 {

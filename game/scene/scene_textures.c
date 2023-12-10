@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 15:41:02 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/10 21:21:34 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/11 02:53:43 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	feel_scene_textures(void *mlx, t_scene_textures *t)
 {
-	t->grass = make_image_v2(mlx, "textures/grass.xpm");
+	t->grass = make_image_v2(mlx, "textures/grass_3.xpm");
 	if (!t->grass)
 		return (1);
 	t->tree = make_image_v2(mlx, "textures/tree/tree_4.xpm");
