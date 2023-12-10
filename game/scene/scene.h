@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:32:11 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/09 19:57:14 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 14:19:09 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int					feel_enemies(void *mlx, t_map *map, t_scene *scene);
 int					feel_trees(t_map *map, t_scene *scene);
 int					feel_player_exit(t_map *map, t_scene *scene);
 int					feel_player_pos(t_map *map, t_scene *scene);
-
+int					make_player_way(t_scene *scene);
 // SCENE TEXTURES
 
 t_scene_textures	*make_scene_textures(void *mlx);
