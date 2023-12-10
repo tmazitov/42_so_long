@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:32:11 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/11 00:09:08 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/11 02:33:33 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ typedef struct s_exit
 	int					x;
 	int					y;
 	t_scene_obj			*obj;
+	t_image				*image;
 }						t_exit;
 
 typedef struct s_scene
@@ -147,7 +148,7 @@ t_anime					*make_chest_open_anime(void *mlx);
 
 // EXIT INSTANCE
 
-t_exit					*make_exit(int x, int y);
+t_exit					*make_exit(void *mlx, int x, int y);
 void					*free_exit(t_exit *exit);
 
 #endif

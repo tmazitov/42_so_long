@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:52:24 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/10 23:59:06 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/11 02:37:51 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	render_player_health_bar(t_game *game);
 void	render_enemy(t_game *game);
 void	render_enemy_health_bar(t_game *game);
 
+void	render_exit(t_game *game);
 void	render_scene(t_game *game);
 void	render_scene_objs(t_game *game);
 void	render_chests(t_game *game);

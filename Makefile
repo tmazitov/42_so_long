@@ -6,7 +6,7 @@
 #    By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/30 14:16:32 by tmazitov          #+#    #+#              #
-#    Updated: 2023/12/11 00:23:50 by tmazitov         ###   ########.fr        #
+#    Updated: 2023/12/11 02:38:12 by tmazitov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRC =	cmd/main.c \
 		game/health_bar/health_bar_image.c \
 		game/health_bar/health_bar_update.c \
 		game/render/render.c \
+		game/render/render_exit.c \
 		game/render/render_scene.c \
 		game/render/render_enemy.c \
 		game/render/render_player.c \
