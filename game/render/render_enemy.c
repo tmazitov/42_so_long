@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 14:33:13 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/03 15:16:30 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:13:46 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,29 @@
 
 void	render_enemy_health_bar(t_game *game)
 {
-	t_enemy			**enemies;
-	t_enemy			*enemy;
-	int				counter;
-	t_image			*image;
-	int				x;
-	int				y;
+	t_enemy	**enemies;
+	int		counter;
+	t_image	*image;
+	int		x;
+	int		y;
 
 	counter = 0;
 	enemies = game->scene->enemies;
 	while (enemies[counter])
 	{
-		enemy = enemies[counter];
-		image = hb_get_image(enemy->health);
+		image = hb_get_image(enemies[counter]->health);
 		if (image)
 		{
-			x = enemy->x;
-			y = enemy->y - image->height;
-			mlx_put_image_to_window(game->mlx, game->window, image->content, x, y);
+			x = enemies[counter]->x;
+			y = enemies[counter]->y - image->height;
+			mlx_put_image_to_window(game->mlx, game->window, image->content, x,
+				y);
 		}
 		counter++;
-	} 
+	}
 }
 
-void	render_enemy(t_game	*game)
+void	render_enemy(t_game *game)
 {
 	t_anime_tile	*enemy_tile;
 	t_enemy			**enemies;
@@ -57,9 +56,10 @@ void	render_enemy(t_game	*game)
 			enemy_tile = get_next_tile_rev(anime);
 		else
 			enemy_tile = get_next_tile(anime);
-		mlx_put_image_to_window(game->mlx, game->window, enemy_tile->image, enemy->x, enemy->y);
+		mlx_put_image_to_window(game->mlx, game->window, enemy_tile->image,
+			enemy->x, enemy->y);
 		counter++;
-	} 
+	}
 }
 
 // int render_enemy_path(t_game *game, t_enemy *enemy)

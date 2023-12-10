@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image.h                                            :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/30 15:19:38 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/09 14:26:47 by tmazitov         ###   ########.fr       */
+/*   Created: 2023/12/10 22:46:43 by tmazitov          #+#    #+#             */
+/*   Updated: 2023/12/10 22:48:01 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IMAGE_H
-# define IMAGE_H
+#include "main.h"
 
-# include "../../mlx/mlx.h"
-# include <stdlib.h>
-
-typedef struct s_image
+static int	window_exit(void *game)
 {
-	void	*content;
-	int		pixel_bits;
-	int		line_bytes;
-	int		endian;
-	int		height;
-	int		width;
-	void	*mlx;
-}			t_image;
+	free_game(game);
+	exit(EXIT_SUCCESS);
+	return (0);
+}
 
-t_image		*make_image(void *mlx, int height, int width);
-t_image		*make_image_v2(void *mlx, char *path);
-void		*free_image(t_image *image);
-
-#endif // !IMAGE_H
+void	setup_hooks(t_game *game)
+{
+	mlx_hook(game->window, 17, 0, window_exit, game);
+	mlx_key_hook(game->window, player_control_hook, game);
+	mlx_loop_hook(game->mlx, render_hook, game);
+	mlx_loop(game->mlx);
+}

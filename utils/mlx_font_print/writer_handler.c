@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 14:30:14 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/09 15:57:37 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:56:48 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	mlx_print_char(t_writer *w, char ch, int x, int y)
 	while (symbol)
 	{
 		if (symbol->symbol == ch)
-			break;
+			break ;
 		symbol = symbol->next;
 	}
 	if (!symbol)
@@ -48,7 +48,7 @@ int	mlx_print(t_writer *w, char *str, int x, int y)
 	{
 		if (str[counter] == ' ')
 			x += w->space;
-		else			 
+		else
 			x += mlx_print_char(w, str[counter], x, y);
 		counter++;
 	}

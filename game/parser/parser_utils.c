@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:02:27 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/06 14:44:37 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:22:56 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_strlen(const char *str)
 {
 	int	counter;
-	
+
 	if (!str)
 		return (0);
 	counter = 0;
@@ -94,7 +94,7 @@ int	map_count_of_char(t_map *map, char ch)
 {
 	int	x;
 	int	y;
-	int count;
+	int	count;
 
 	count = 0;
 	y = 0;

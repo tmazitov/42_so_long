@@ -6,18 +6,18 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:32:54 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/09 16:07:46 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:22:19 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-static t_raw_node	*make_raw_list(char *file_path, int *length) 
+static t_raw_node	*make_raw_list(char *file_path, int *length)
 {
 	int			fd;
 	t_raw_node	*raw;
 	t_raw_node	*init;
-	
+
 	if (!file_path)
 		return (NULL);
 	fd = open(file_path, O_RDONLY);
@@ -42,20 +42,20 @@ static char	**convert_to_map(t_raw_node *raw_list, int length)
 {
 	char	**result;
 	int		row_count;
-	
+
 	if (!raw_list || length == 0)
 		return (NULL);
-	result = malloc(sizeof(char*) * (length + 1));
+	result = malloc(sizeof(char *) * (length + 1));
 	if (!result)
 		return (NULL);
 	row_count = 0;
-	while(raw_list && row_count < length)
+	while (raw_list && row_count < length)
 	{
 		result[row_count] = ft_strdup(raw_list->data);
 		if (!result[row_count++])
 			return (NULL);
 		raw_list = raw_list->next;
-	}	
+	}
 	result[row_count] = NULL;
 	return (result);
 }
@@ -103,7 +103,7 @@ void	*free_map(t_map *map)
 	counter = 0;
 	if (map->content)
 	{
-		while(map->content[counter])
+		while (map->content[counter])
 			free(map->content[counter++]);
 		free(map->content);
 	}

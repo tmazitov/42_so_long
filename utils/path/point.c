@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 16:13:49 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/26 20:52:22 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:57:22 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_a_point	*make_a_point(int x, int y, t_a_point *origin)
 	point = malloc(sizeof(t_a_point));
 	if (!point)
 		return (NULL);
-	point->x = x;	
+	point->x = x;
 	point->y = y;
 	point->heuristic_approxim = -1;
 	point->origin = NULL;
@@ -28,14 +28,14 @@ t_a_point	*make_a_point(int x, int y, t_a_point *origin)
 	if (origin)
 		point->passed_way = origin->passed_way + NEIGHBOUR_DISTANCE;
 	point->origin = origin;
-	return (point);	
+	return (point);
 }
 
 static int	pnt_calc_distance(t_a_point *point, t_a_point *dest)
 {
-	int distance;
-	int x;
-	int y;
+	int	distance;
+	int	x;
+	int	y;
 
 	x = point->x;
 	y = point->y;
@@ -59,7 +59,7 @@ static int	pnt_calc_distance(t_a_point *point, t_a_point *dest)
 	return (distance);
 }
 
-void pnt_calc_weight(t_a_point *point, t_a_point *dest)
+void	pnt_calc_weight(t_a_point *point, t_a_point *dest)
 {
 	if (!point || !dest)
 		return ;
@@ -68,7 +68,7 @@ void pnt_calc_weight(t_a_point *point, t_a_point *dest)
 	point->weight = point->heuristic_approxim + point->passed_way;
 }
 
-void	*free_a_point(t_a_point	*point)
+void	*free_a_point(t_a_point *point)
 {
 	if (point)
 		free(point);

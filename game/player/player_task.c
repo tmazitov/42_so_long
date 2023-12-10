@@ -30,4 +30,3 @@ t_player_task	*make_task(t_action action, t_anime *anime)
 	task->next = NULL;
 	return (task);
 }
-

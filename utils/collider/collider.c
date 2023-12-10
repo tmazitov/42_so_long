@@ -21,7 +21,7 @@ static void	init_collider_points(t_collider *collider)
 	collider->bot_r = NULL;
 }
 
-int 	feel_collider(t_collider *collider)
+int	feel_collider(t_collider *collider)
 {
 	int	x;
 	int	y;
@@ -50,14 +50,14 @@ int 	feel_collider(t_collider *collider)
 
 t_collider	*make_collider(int height, int width, int *x, int *y)
 {
-	t_collider	*coll; 
+	t_collider	*coll;
 
 	coll = malloc(sizeof(t_collider));
 	if (!coll)
 		return (NULL);
 	coll->x = x;
 	coll->y = y;
-	coll->align_left = 0;	
+	coll->align_left = 0;
 	coll->align_top = 0;
 	coll->width = width;
 	coll->height = height;
@@ -68,7 +68,6 @@ t_collider	*make_collider(int height, int width, int *x, int *y)
 
 t_collider	*coll_set_align(t_collider *coll, int top, int left)
 {
-
 	if (!coll)
 		return (NULL);
 	coll->align_top = top;
@@ -76,7 +75,6 @@ t_collider	*coll_set_align(t_collider *coll, int top, int left)
 	update_collider(coll);
 	return (coll);
 }
-
 
 void	free_collider(t_collider *coll)
 {

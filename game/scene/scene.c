@@ -17,14 +17,14 @@ static t_point_list	*make_game_points(t_scene *scene)
 	t_point_list	*result;
 	t_a_point		*point;
 	t_scene_obj		**objs;
-	
+
 	if (!scene)
 		return (NULL);
 	result = make_point_list();
 	if (!result)
 		return (NULL);
 	objs = scene->objs;
-	while (*objs) 
+	while (*objs)
 	{
 		point = make_a_point((*objs)->x, (*objs)->y, NULL);
 		if (lst_add_point(result, point) != 0)
@@ -60,11 +60,11 @@ static int	add_exit(t_scene *scene)
 	return (0);
 }
 
-t_scene *make_scene(void *mlx, t_map *map, int height, int width)
+t_scene	*make_scene(void *mlx, t_map *map, int height, int width)
 {
 	t_scene	*scene;
 	int		err;
-	
+
 	scene = malloc(sizeof(t_scene));
 	if (!scene)
 		return (NULL);
@@ -86,4 +86,3 @@ t_scene *make_scene(void *mlx, t_map *map, int height, int width)
 		return (free_scene(scene));
 	return (scene);
 }
-

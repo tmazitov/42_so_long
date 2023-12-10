@@ -6,23 +6,22 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:20:36 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/10 14:19:42 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:22:00 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scene.h"
 
-
 static void	objs_counting(t_map *map, int *ch, int *o, int *en)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = 0;
 	while (map->content[y])
 	{
 		x = 0;
-		while(map->content[y][x])
+		while (map->content[y][x])
 		{
 			if (map->content[y][x] == 'C')
 				*ch = *ch + 1;
@@ -38,9 +37,9 @@ static void	objs_counting(t_map *map, int *ch, int *o, int *en)
 
 static int	init_feel_scene(t_map *map, t_scene *scene)
 {
-	int chests;
-	int enemies;
-	int objs;
+	int	chests;
+	int	enemies;
+	int	objs;
 
 	enemies = 0;
 	chests = 0;
@@ -65,7 +64,7 @@ int	make_player_way(t_scene *scene)
 
 	src = make_a_point(scene->player_x, scene->player_y, NULL);
 	if (!src)
-		return (1); 
+		return (1);
 	dest = make_a_point(scene->exit_x, scene->exit_y, NULL);
 	if (!dest)
 		return (free_a_point(src), 1);

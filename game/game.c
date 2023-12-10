@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:52:19 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/09 15:15:04 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 18:43:56 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_game	*make_game(int height, int width, char *title)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		return (free_game(game));
-	game->window = mlx_new_window(game->mlx,  width, height, title);
+	game->window = mlx_new_window(game->mlx, width, height, title);
 	if (!game->window)
 		return (free_game(game));
 	game->writer = make_writer(game->mlx, game->window, 10);

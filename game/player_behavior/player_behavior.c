@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:58:47 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/09 19:04:07 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 23:29:56 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,14 @@ void	player_exit_handler(t_game *game)
 		free_game(game);
 		exit(EXIT_SUCCESS);
 	}
-	return;
+	return ;
 }
 
 void	shift_handler(t_game *game)
 {
 	if (player_open_chest_handler(game))
 		return ;
-	ft_printf("check exit\n");
 	player_exit_handler(game);
-	ft_printf("false\n");
 }
 
 int	player_control_hook(int keycode, t_game *game)
@@ -96,5 +94,5 @@ int	player_control_hook(int keycode, t_game *game)
 		player_attack_handler(player);
 	if (keycode == BUTTON_SHIFT)
 		shift_handler(game);
-	return 0;
+	return (0);
 }

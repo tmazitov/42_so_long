@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 18:08:39 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/10 18:23:29 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:15:18 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static t_step	calc_step(t_point_node *from, t_point_node *to)
 	return (TO_NONE);
 }
 
-static t_image	*get_road_tile(t_scene *s, t_point_node *point, t_point_node *prev)
+static t_image	*get_road_tile(t_scene *s, t_point_node *point,
+		t_point_node *prev)
 {
 	t_step	prev_step;
 	t_step	next_step;
@@ -40,17 +41,17 @@ static t_image	*get_road_tile(t_scene *s, t_point_node *point, t_point_node *pre
 		return (get_end_tile(prev_step, s));
 	if (next_step == prev_step)
 		return (get_tile(prev_step, s));
-	if ((prev_step == TO_TOP && next_step == TO_RIGHT) || 
-		(prev_step == TO_LEFT && next_step == TO_BOT))
+	if ((prev_step == TO_TOP && next_step == TO_RIGHT) || (prev_step == TO_LEFT
+			&& next_step == TO_BOT))
 		return (s->textures->roads[ROAD_TOP_RIGHT]);
-	if ((prev_step == TO_TOP && next_step == TO_LEFT) ||
-		(prev_step == TO_RIGHT && next_step == TO_BOT))
+	if ((prev_step == TO_TOP && next_step == TO_LEFT) || (prev_step == TO_RIGHT
+			&& next_step == TO_BOT))
 		return (s->textures->roads[ROAD_TOP_LEFT]);
-	if ((prev_step == TO_BOT && next_step == TO_RIGHT) ||
-		(prev_step == TO_LEFT && next_step == TO_TOP))
+	if ((prev_step == TO_BOT && next_step == TO_RIGHT) || (prev_step == TO_LEFT
+			&& next_step == TO_TOP))
 		return (s->textures->roads[ROAD_BOT_RIGHT]);
-	if ((prev_step == TO_BOT && next_step == TO_LEFT) || 
-		(prev_step == TO_RIGHT && next_step == TO_TOP))
+	if ((prev_step == TO_BOT && next_step == TO_LEFT) || (prev_step == TO_RIGHT
+			&& next_step == TO_TOP))
 		return (s->textures->roads[ROAD_BOT_LEFT]);
 	return (NULL);
 }

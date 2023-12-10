@@ -6,37 +6,11 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 10:39:26 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/06 14:53:49 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 22:16:43 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "path.h"
-
-int	lst_add_point(t_point_list *list, t_a_point *point)
-{
-	t_point_node *node;
-	
-	if (!point)
-		return (1);
-	if (!list->points)
-	{
-		list->points = make_point_node(point);
-		if (!list->points)
-			return (1);
-		return (0);
-	}
-	node = list->points; 
-	while (node)
-	{
-		if (!node->next)
-			break ;
-		node = node->next;		
-	}
-	node->next = make_point_node(point);
-	if (!node->next)
-		return (1);
-	return (0);
-}
 
 void	lst_rem_point(t_point_list *list, t_a_point *point)
 {
@@ -47,7 +21,7 @@ void	lst_rem_point(t_point_list *list, t_a_point *point)
 	node = list->points;
 	while (node)
 	{
-		if (node->point == point) 
+		if (node->point == point)
 		{
 			if (prev)
 				prev->next = node->next;
@@ -56,9 +30,8 @@ void	lst_rem_point(t_point_list *list, t_a_point *point)
 			else if (!prev && list->points == node)
 				list->points = node->next;
 			free(node);
-			return ;			
+			return ;
 		}
-
 		prev = node;
 		node = node->next;
 	}
@@ -67,7 +40,7 @@ void	lst_rem_point(t_point_list *list, t_a_point *point)
 
 t_a_point	*lst_get_min_point(t_point_list *list)
 {
-	int	min;
+	int				min;
 	t_point_node	*node;
 	t_a_point		*point;
 
@@ -76,7 +49,7 @@ t_a_point	*lst_get_min_point(t_point_list *list)
 	min = INT32_MAX;
 	point = NULL;
 	node = list->points;
-	while (node) 
+	while (node)
 	{
 		if (node->point->weight < min)
 		{
@@ -88,14 +61,14 @@ t_a_point	*lst_get_min_point(t_point_list *list)
 	return (point);
 }
 
-int	lst_length(t_point_list *list) 
+int	lst_length(t_point_list *list)
 {
 	int				length;
 	t_point_node	*node;
 
 	length = 0;
 	node = list->points;
-	while(node) 
+	while (node)
 	{
 		length++;
 		node = node->next;
@@ -103,12 +76,24 @@ int	lst_length(t_point_list *list)
 	return (length);
 }
 
+t_point_node	*lst_get_item(t_point_list *list, int index)
+{
+	t_point_node	*iter;
+	int				counter;
+
+	counter = 0;
+	iter = list->points;
+	while (iter && iter->next && counter++ != index - 1)
+		iter = iter->next;
+	return (iter);
+}
+
 t_point_list	*lst_reverse(t_point_list *list)
 {
 	t_point_list	*result;
 	t_point_node	*iter;
+	t_a_point		*p;
 	int				length;
-	int				counter;
 
 	if (!list)
 		return (NULL);
@@ -116,17 +101,11 @@ t_point_list	*lst_reverse(t_point_list *list)
 	if (!result)
 		return (NULL);
 	length = lst_length(list);
-	while(1)
+	while (1)
 	{
-		counter = 0;
-		iter = list->points;
-		while(iter && iter->next && counter != length - 1)
-		{
-			iter = iter->next;
-			counter++;
-		}
-		length--;
-		if (lst_add_point(result, make_a_point(iter->point->x, iter->point->y, NULL)) != 0)
+		iter = lst_get_item(list, length--);
+		p = iter->point;
+		if (lst_add_point(result, make_a_point(p->x, p->y, NULL)))
 			return (free_point_list(result));
 		if (iter == list->points)
 			break ;

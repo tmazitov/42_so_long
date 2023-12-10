@@ -6,29 +6,30 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 14:27:14 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/09 15:59:12 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 23:10:20 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
 
-int render_player_health_bar(t_game *game)
+void	render_player_health_bar(t_game *game)
 {
 	int		x;
 	int		y;
 	int		res;
-	t_image *image;
+	t_image	*image;
+	void	*win;
 
-	image = hb_get_image(game->player->health);	
+	image = hb_get_image(game->player->health);
 	if (!image)
-		return (0);
+		return ;
+	win = game->window;
 	x = game->player->x;
 	y = game->player->y - image->height;
-	res = mlx_put_image_to_window(game->mlx, game->window, image->content, x, y);
-	return (res);
+	res = mlx_put_image_to_window(game->mlx, win, image->content, x, y);
 }
 
-int render_player_money(t_game *game)
+void	render_player_money(t_game *game)
 {
 	int		res;
 	int		x;
@@ -40,13 +41,12 @@ int render_player_money(t_game *game)
 	x = mlx_print(game->writer, "MONEY", x, y);
 	money_str = ft_itoa(game->player->money);
 	if (!money_str)
-		return (1);
+		return ;
 	res = mlx_print(game->writer, money_str, x, y);
 	free(money_str);
-	return (0);
 }
 
-int render_player_score(t_game *game)
+void	render_player_score(t_game *game)
 {
 	int		res;
 	int		x;
@@ -58,18 +58,15 @@ int render_player_score(t_game *game)
 	x = mlx_print(game->writer, "SCORE", x, y);
 	score_str = ft_itoa(game->player->score);
 	if (!score_str)
-		return (1);
+		return ;
 	res = mlx_print(game->writer, score_str, x, y);
 	free(score_str);
-	return (0);
 }
 
-
-int render_player(t_game *game)
+void	render_player(t_game *game)
 {
 	int				x;
 	int				y;
-	int				res;
 	t_anime_tile	*tile;
 	t_anime			*anime;
 
@@ -83,6 +80,5 @@ int render_player(t_game *game)
 	tile = get_next_tile(anime);
 	x = game->player->x - (game->player->coll->width / 2) + 16;
 	y = game->player->y - (game->player->coll->height / 2);
-	res = mlx_put_image_to_window(game->mlx, game->window, tile->image, x, y);
-	return (res);
+	mlx_put_image_to_window(game->mlx, game->window, tile->image, x, y);
 }

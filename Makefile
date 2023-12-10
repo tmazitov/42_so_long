@@ -6,7 +6,7 @@
 #    By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/30 14:16:32 by tmazitov          #+#    #+#              #
-#    Updated: 2023/12/10 14:10:43 by tmazitov         ###   ########.fr        #
+#    Updated: 2023/12/10 23:20:56 by tmazitov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@
 NAME = so_long
 
 SRC =	cmd/main.c \
+		cmd/hooks.c \
 		game/game.c \
 		game/game_writer.c \
 		game/enemy/enemy.c \
@@ -47,6 +48,7 @@ SRC =	cmd/main.c \
 		game/render/render_enemy.c \
 		game/render/render_player.c \
 		game/render/render_player_road.c \
+		game/render/render_player_road_utils.c \
 		game/render/render_support.c \
 		game/render/render_itoa.c \
 		game/scene/scene.c \
@@ -59,6 +61,7 @@ SRC =	cmd/main.c \
 		game/scene/scene_exit.c \
 		game/scene/tree.c \
 		game/scene/chest.c \
+		game/scene/chest_utils.c \
 		game/scene/chest_anime.c \
 		game/parser/parser.c \
 		game/parser/parser_node.c \
@@ -80,6 +83,7 @@ SRC =	cmd/main.c \
 		utils/collider/point.c \
 		utils/collider/collider.c \
 		utils/collider/collider_update.c \
+		utils/collider/collider_shift.c \
 		utils/collider/intersection.c \
 		utils/collider/intersection_variants.c \
 		utils/gnl/get_next_line.c \

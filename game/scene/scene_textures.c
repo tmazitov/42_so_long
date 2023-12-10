@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 15:41:02 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/09 17:46:58 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:21:34 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ t_scene_textures	*make_scene_textures(void *mlx)
 void	*free_scene_textures(t_scene_textures *t)
 {
 	int	counter;
-	
+
 	if (!t)
 		return (NULL);
 	if (t->grass)
@@ -61,7 +61,7 @@ void	*free_scene_textures(t_scene_textures *t)
 		free_image(t->tree);
 	if (t->shrub)
 		free_image(t->shrub);
-	if (t->roads) 
+	if (t->roads)
 	{
 		counter = 0;
 		while (t->roads[counter])

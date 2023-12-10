@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 14:06:21 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/11/29 14:21:36 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:36:23 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 // 		1. rename this package
 //		2. make the struct s_path for the final path form src to the dest
 //		3. s_path will contain the step counter and length
-//		4. make the func get_next_step that return next step of the entered path 
-
+//		4. make the func get_next_step that return next step of the entered path
 
 t_path	*make_path(t_point_list *list)
 {
@@ -38,7 +37,7 @@ t_a_point	*get_next_point(t_path *path)
 {
 	t_point_node	*node;
 	int				counter;
-	
+
 	if (path->counter == path->length)
 		return (NULL);
 	counter = 0;
@@ -48,7 +47,7 @@ t_a_point	*get_next_point(t_path *path)
 		node = node->next;
 		counter++;
 	}
-	if (path->length > path->counter) 
+	if (path->length > path->counter)
 		path->counter += 1;
 	return (node->point);
 }

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 14:57:08 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/09 15:44:51 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:01:31 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	feed_game_writer_digits(t_writer *writer)
 {
-	int res;
+	int	res;
 
 	res = 0;
 	res += add_symbol(writer, '0', "textures/font/0.xpm");
@@ -29,9 +29,24 @@ static int	feed_game_writer_digits(t_writer *writer)
 	res += add_symbol(writer, '9', "textures/font/9.xpm");
 	return (res);
 }
+
+static int	feed_game_writer_letters_1(t_writer *writer)
+{
+	int	res;
+
+	res = 0;
+	res += add_symbol(writer, 'U', "textures/font/u.xpm");
+	res += add_symbol(writer, 'V', "textures/font/v.xpm");
+	res += add_symbol(writer, 'W', "textures/font/w.xpm");
+	res += add_symbol(writer, 'X', "textures/font/x.xpm");
+	res += add_symbol(writer, 'Y', "textures/font/y.xpm");
+	res += add_symbol(writer, 'Z', "textures/font/z.xpm");
+	return (res);
+}
+
 static int	feed_game_writer_letters(t_writer *writer)
 {
-	int res;
+	int	res;
 
 	res = 0;
 	res += add_symbol(writer, 'A', "textures/font/a.xpm");
@@ -54,13 +69,7 @@ static int	feed_game_writer_letters(t_writer *writer)
 	res += add_symbol(writer, 'R', "textures/font/r.xpm");
 	res += add_symbol(writer, 'S', "textures/font/s.xpm");
 	res += add_symbol(writer, 'T', "textures/font/t.xpm");
-	res += add_symbol(writer, 'U', "textures/font/u.xpm");
-	res += add_symbol(writer, 'V', "textures/font/v.xpm");
-	res += add_symbol(writer, 'W', "textures/font/w.xpm");
-	res += add_symbol(writer, 'X', "textures/font/x.xpm");
-	res += add_symbol(writer, 'Y', "textures/font/y.xpm");
-	res += add_symbol(writer, 'Z', "textures/font/z.xpm");
-	return (res);
+	return (res + feed_game_writer_letters_1(writer));
 }
 
 int	feed_game_writer(t_writer *writer)
@@ -69,5 +78,5 @@ int	feed_game_writer(t_writer *writer)
 		return (1);
 	if (feed_game_writer_digits(writer))
 		return (1);
-	return feed_game_writer_letters(writer);
+	return (feed_game_writer_letters(writer));
 }

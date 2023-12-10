@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:08:30 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/06 15:00:10 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:23:00 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	map_check_length(t_map *map)
 
 static int	map_check_border_line(char *str)
 {
-	int	counter;	
+	int	counter;
 
 	if (!str)
 		return (1);
@@ -53,8 +53,8 @@ static int	map_check_walls(t_map *map)
 		return (1);
 	while (map->content[y])
 	{
-		if (map->content[y+1] == NULL)
-			break;
+		if (map->content[y + 1] == NULL)
+			break ;
 		x = 0;
 		if (map->content[y][x++] != '1')
 			return (1);
@@ -69,7 +69,7 @@ static int	map_check_walls(t_map *map)
 	return (0);
 }
 
-int file_check(char *file_path)
+int	file_check(char *file_path)
 {
 	char	*resolution;
 

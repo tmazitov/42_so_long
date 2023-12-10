@@ -13,22 +13,22 @@
 #ifndef HEALTH_BAR_H
 # define HEALTH_BAR_H
 
-#include <stdlib.h>
-#include "../../utils/image/image.h"
+# include "../../utils/image/image.h"
+# include <stdlib.h>
 
 # define HEALTH_BAR_BORDER_C 0x222529
 # define HEALTH_BAR_HEALTH_C 0xe2725b
 
-typedef	struct s_health_bar
+typedef struct s_health_bar
 {
-	int		max;
-	int		current;
-	t_image	**images;
-}		t_health_bar;
+	int			max;
+	int			current;
+	t_image		**images;
+}				t_health_bar;
 
 t_health_bar	*make_health_bar(void *mlx, int max);
 t_image			*hb_get_image(t_health_bar *bar);
 void			hb_update(t_health_bar *bar, int value);
 void			*free_health_bar(t_health_bar *bar);
-t_image			*make_health_bar_image(void *mlx , t_health_bar *bar, int count);
+t_image			*make_health_bar_image(void *mlx, t_health_bar *bar, int count);
 #endif // !HEALTH_BAR_H

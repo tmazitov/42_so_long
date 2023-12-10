@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:44:53 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/06 14:53:42 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:38:31 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*free_anime(t_anime *anime)
 		return (NULL);
 	counter = 0;
 	tile = anime->init;
-	while(anime->tile_count > counter)
+	while (anime->tile_count > counter)
 	{
 		next = tile->next;
 		free_anime_tile(anime->mlx, tile);
@@ -37,9 +37,9 @@ int	fill_anime(t_anime *anime, char **tile_paths)
 {
 	t_anime_tile	*init;
 	t_anime_tile	*tile;
-	
+
 	if (!tile_paths)
-		return 1;
+		return (1);
 	init = make_anime_tile(anime, *tile_paths);
 	if (!init)
 		return (1);
@@ -62,20 +62,18 @@ int	fill_anime(t_anime *anime, char **tile_paths)
 	return (0);
 }
 
-t_anime *make_anime(void *mlx, char **tile_paths, int height, int width, int life_time)
+t_anime	*make_anime(void *mlx, char **tile_paths, int life_time)
 {
 	t_anime	*anime;
 	int		tile_count;
-	
+
 	anime = malloc(sizeof(t_anime));
 	if (!anime)
 		return (NULL);
 	tile_count = 0;
-	while(tile_paths[tile_count])
+	while (tile_paths[tile_count])
 		tile_count++;
 	anime->init = NULL;
-	anime->height = height;
-	anime->width = width;
 	anime->mlx = mlx;
 	anime->tile_counter = 0;
 	anime->tile_count = tile_count;

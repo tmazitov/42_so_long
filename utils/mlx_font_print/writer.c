@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 20:44:51 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/09 15:50:48 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:33:13 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	add_symbol(t_writer *writer, char ch, char *image_path)
 	if (!writer)
 		return (1);
 	last = writer->symbols;
-	while (last) 
+	while (last)
 	{
 		if (!last->next)
 			break ;

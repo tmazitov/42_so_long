@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:19:31 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/08 20:59:16 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:57:05 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ t_image	*make_image(void *mlx, int height, int width)
 t_image	*make_image_v2(void *mlx, char *path)
 {
 	t_image	*image;
+	int		*width;
+	int		*height;
 
 	image = malloc(sizeof(t_image));
 	if (!image)
@@ -44,7 +46,9 @@ t_image	*make_image_v2(void *mlx, char *path)
 	image->mlx = mlx;
 	image->width = 0;
 	image->height = 0;
-	image->content = mlx_xpm_file_to_image(mlx, path, &image->width, &image->height);
+	width = &image->width;
+	height = &image->height;
+	image->content = mlx_xpm_file_to_image(mlx, path, width, height);
 	if (!image->content)
 		return (free_image(image));
 	return (image);

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 19:13:28 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/09 18:07:01 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:21:23 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	*free_scene_enemies(t_enemy **enemies)
 	int	counter;
 
 	counter = 0;
-	while(enemies[counter])
+	while (enemies[counter])
 	{
 		free_enemy(enemies[counter]);
 		counter++;
@@ -31,7 +31,7 @@ static void	*free_scene_chests(t_chest **chests)
 	int	counter;
 
 	counter = 0;
-	while(chests[counter])
+	while (chests[counter])
 	{
 		free_chest(chests[counter]);
 		counter++;
@@ -45,7 +45,7 @@ static void	*free_scene_objs(t_scene_obj **objs)
 	int	counter;
 
 	counter = 0;
-	while(objs[counter])
+	while (objs[counter])
 	{
 		free_scene_obj(objs[counter]);
 		counter++;

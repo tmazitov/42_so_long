@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 15:53:39 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/03 20:09:46 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 23:11:34 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,22 @@ static void	init_enemy_anime(t_enemy_anime *anime)
 
 static int	feel_enemy_anime(void *mlx, t_enemy_anime *anime)
 {
-	anime->idle_left = make_left_idle_anime(mlx, 64, 64);
+	anime->idle_left = make_left_idle_anime(mlx);
 	if (!anime->idle_left)
 		return (1);
-	anime->idle_right = make_right_idle_anime(mlx, 64, 64);
+	anime->idle_right = make_right_idle_anime(mlx);
 	if (!anime->idle_right)
 		return (1);
-	anime->move_left = make_left_move_anime(mlx, 64, 64);
+	anime->move_left = make_left_move_anime(mlx);
 	if (!anime->move_left)
 		return (1);
-	anime->move_right = make_right_move_anime(mlx, 64, 64);
+	anime->move_right = make_right_move_anime(mlx);
 	if (!anime->move_right)
 		return (1);
-	anime->die = make_die_anime(mlx, 64, 64);
+	anime->die = make_die_anime(mlx);
 	if (!anime->die)
 		return (1);
-	anime->died = make_died_anime(mlx, 64, 64);
+	anime->died = make_died_anime(mlx);
 	if (!anime->died)
 		return (1);
 	return (0);
@@ -49,7 +49,7 @@ static int	feel_enemy_anime(void *mlx, t_enemy_anime *anime)
 t_enemy_anime	*make_enemy_anime(void *mlx)
 {
 	t_enemy_anime	*anime;
-	
+
 	anime = malloc(sizeof(t_enemy_anime));
 	if (!anime)
 		return (NULL);

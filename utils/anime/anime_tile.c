@@ -6,14 +6,14 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 18:20:48 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/02 19:06:43 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:50:14 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "anime.h"
 
 void	*free_anime_tile(void *mlx, t_anime_tile *tile)
-{	
+{
 	if (!tile)
 		return (NULL);
 	if (tile->image)
@@ -29,22 +29,24 @@ static void	init_anime_tile(t_anime_tile *tile)
 	tile->prev = NULL;
 }
 
-t_anime_tile	*make_anime_tile(t_anime *anime, char *tile_path)
+t_anime_tile	*make_anime_tile(t_anime *anime, char *path)
 {
-	t_anime_tile	*anime_tile;
-	int				width;
-	int				height;
+	t_anime_tile	*tile;
+	int				*width;
+	int				*height;
 
-	anime_tile = malloc(sizeof(t_anime));
-	if (!anime_tile)
+	tile = malloc(sizeof(t_anime));
+	if (!tile)
 		return (NULL);
-	init_anime_tile(anime_tile);
-	height = anime->height;
-	width = anime->width;
-	anime_tile->image = mlx_xpm_file_to_image(anime->mlx, tile_path, &width, &height);
-	if (!anime_tile->image)
-		return (free_anime_tile(anime->mlx, anime_tile));
-	return (anime_tile);
+	init_anime_tile(tile);
+	tile->height = 0;
+	tile->width = 0;
+	width = &tile->width;
+	height = &tile->height;
+	tile->image = mlx_xpm_file_to_image(anime->mlx, path, width, height);
+	if (!tile->image)
+		return (free_anime_tile(anime->mlx, tile));
+	return (tile);
 }
 
 t_anime_tile	*get_next_tile(t_anime *anime)

@@ -50,7 +50,7 @@ void	init_player_anime(t_player_anime *anime)
 	anime->idle_up = NULL;
 	anime->walk_right = NULL;
 	anime->walk_left = NULL;
-	anime->walk_down = NULL;	
+	anime->walk_down = NULL;
 	anime->walk_up = NULL;
 	anime->attack_down = NULL;
 	anime->attack_right = NULL;
@@ -100,4 +100,3 @@ t_player_anime	*make_player_anime(t_player *player)
 		return (free_player_anime(player_anime));
 	return (player_anime);
 }
-

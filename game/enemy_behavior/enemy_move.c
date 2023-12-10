@@ -6,13 +6,13 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:08:42 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/07 13:56:38 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 18:53:13 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "enemy_behavior.h"
 
-static void calc_future_path(t_player *player, t_scene *scene, t_enemy *enemy)
+static void	calc_future_path(t_player *player, t_scene *scene, t_enemy *enemy)
 {
 	t_a_point	*src;
 	t_a_point	*dest;
@@ -31,7 +31,7 @@ static void calc_future_path(t_player *player, t_scene *scene, t_enemy *enemy)
 	return ;
 }
 
-t_anime *enemy_handle_move(t_player *player, t_scene *scene, t_enemy *enemy)
+t_anime	*enemy_handle_move(t_player *player, t_scene *scene, t_enemy *enemy)
 {
 	t_a_point	*target;
 

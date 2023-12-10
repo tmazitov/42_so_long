@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 14:53:01 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/02 15:26:44 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:02:29 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	create_health_bar_images(void *mlx, t_health_bar *bar)
 	bar->images = malloc(sizeof(t_image *) * (bar->max + 2));
 	if (!bar->images)
 		return (1);
-	while(counter <= bar->max)
+	while (counter <= bar->max)
 	{
 		bar->images[counter] = make_health_bar_image(mlx, bar, counter);
 		if (!bar->images[counter])
@@ -29,7 +29,7 @@ static int	create_health_bar_images(void *mlx, t_health_bar *bar)
 	}
 	bar->images[counter] = NULL;
 	return (0);
-}	
+}
 
 t_health_bar	*make_health_bar(void *mlx, int max)
 {
@@ -56,6 +56,7 @@ t_image	*hb_get_image(t_health_bar *bar)
 void	*free_health_bar(t_health_bar *bar)
 {
 	int	counter;
+
 	if (!bar)
 		return (NULL);
 	if (bar->images)

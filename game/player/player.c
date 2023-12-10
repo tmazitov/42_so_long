@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:07:19 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/09 18:40:41 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 22:46:21 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	init_player(t_player *player)
 	player->current_task = NULL;
 }
 
-t_player *make_player(void *mlx, int height, int width)
+t_player	*make_player(void *mlx, int height, int width)
 {
 	t_player	*player;
 

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 14:47:33 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/03 19:11:12 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:16:12 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,17 @@ void	render_scene(t_game *game)
 			mlx_put_image_to_window(game->mlx, game->window, image, x, y);
 			y += 128;
 		}
-		x += 128;	
+		x += 128;
 	}
 }
 
-static void render_scene_obj(void *mlx, void *win, t_scene_obj *obj)
+static void	render_scene_obj(void *mlx, void *win, t_scene_obj *obj)
 {
-	int x;
-	int y;
-	
+	int	x;
+	int	y;
+
 	x = 0;
 	y = 0;
-	
 	if (obj->type == OBJ_TREE)
 	{
 		x = obj->x - (obj->width - obj->coll->width) / 2 - 16;
@@ -55,12 +54,11 @@ static void render_scene_obj(void *mlx, void *win, t_scene_obj *obj)
 
 void	render_scene_objs(t_game *game)
 {
-	int 	counter;
+	int			counter;
 	t_scene_obj	**objs;
 	t_scene_obj	*obj;
 
 	counter = 0;
-
 	objs = game->scene->objs;
 	while (objs[counter])
 	{
@@ -84,7 +82,8 @@ void	render_chests(t_game *game)
 	{
 		chest = chests[counter];
 		chest_image = render_chest(chest);
-		mlx_put_image_to_window(game->mlx, game->window, chest_image, chest->obj->x, chest->obj->y);
+		mlx_put_image_to_window(game->mlx, game->window, chest_image,
+			chest->obj->x, chest->obj->y);
 		counter++;
-	} 
+	}
 }

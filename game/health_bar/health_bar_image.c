@@ -6,15 +6,15 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:12:46 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/06 14:54:08 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:04:50 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "health_bar.h"
-#include <stdio.h>
 #include <math.h>
+#include <stdio.h>
 
-static void		make_top_border(int *buffer, int width, int line_bytes)
+static void	make_top_border(int *buffer, int width, int line_bytes)
 {
 	int	x;
 	int	y;
@@ -34,7 +34,8 @@ static void		make_top_border(int *buffer, int width, int line_bytes)
 	buffer[(0 * line_bytes) + width - 2] = 0xFF000000;
 	buffer[(1 * line_bytes) + width - 1] = 0xFF000000;
 }
-static void		make_bot_border(int *buffer, int height, int width, int line_bytes)
+
+static void	make_bot_border(int *buffer, int height, int width, int line_bytes)
 {
 	int	x;
 	int	y;
@@ -55,12 +56,12 @@ static void		make_bot_border(int *buffer, int height, int width, int line_bytes)
 	buffer[((height - 2) * line_bytes) + width - 1] = 0xFF000000;
 }
 
-static void		make_main(t_image *i, int *buffer, int count, int max)
+static void	make_main(t_image *i, int *buffer, int count, int max)
 {
-	int		x;
-	int		y;
-	int		percent;
-	
+	int	x;
+	int	y;
+	int	percent;
+
 	y = 2;
 	percent = round((count / (float)max) * 60);
 	while (y < i->height - 2)
@@ -78,18 +79,21 @@ static void		make_main(t_image *i, int *buffer, int count, int max)
 	}
 }
 
-t_image	*make_health_bar_image(void *mlx , t_health_bar *bar, int count)
+t_image	*make_health_bar_image(void *mlx, t_health_bar *bar, int count)
 {
-
 	int		*buffer;
 	t_image	*i;
+	int		*lb;
+	int		*e;
 
 	if (!bar)
 		return (NULL);
 	i = make_image(mlx, 10, 64);
 	if (!i)
 		return (NULL);
-	buffer = (int *)mlx_get_data_addr(i->content, &i->pixel_bits, &i->line_bytes, &i->endian);
+	lb = &i->line_bytes;
+	e = &i->endian;
+	buffer = (int *)mlx_get_data_addr(i->content, &i->pixel_bits, lb, e);
 	if (!buffer)
 		return (free_image(i));
 	i->line_bytes /= 4;

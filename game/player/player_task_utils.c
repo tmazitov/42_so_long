@@ -12,7 +12,7 @@
 
 #include "player.h"
 
-int task_count(t_player_task *task)
+int	task_count(t_player_task *task)
 {
 	if (!task)
 		return (0);

@@ -6,14 +6,14 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 13:26:55 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/02 19:24:59 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:06:19 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "player.h"
 
 static t_enemy	*get_enemy_to_hit(t_player *player, t_scene *scene)
-{	
+{
 	int			counter;
 	t_action	act;
 	t_enemy		**enemies;
@@ -30,7 +30,7 @@ static t_enemy	*get_enemy_to_hit(t_player *player, t_scene *scene)
 		{
 			coll = enemies[counter]->coll;
 			if (check_intersection(player->coll, coll, act, PLAYER_SPEED))
-				return (enemies[counter]);	
+				return (enemies[counter]);
 		}
 		counter++;
 	}

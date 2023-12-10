@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 16:31:07 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/08 14:55:01 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:21:19 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	feel_enemies(void *mlx, t_map *map, t_scene *scene)
 {
-	int		counter;
-	int		x;
-	int		y;
+	int	counter;
+	int	x;
+	int	y;
 
 	y = 0;
 	counter = 0;
@@ -27,7 +27,7 @@ int	feel_enemies(void *mlx, t_map *map, t_scene *scene)
 		{
 			if (map->content[y][x] == 'S')
 			{
-				scene->enemies[counter] = make_enemy(mlx, x, y);				
+				scene->enemies[counter] = make_enemy(mlx, x, y);
 				if (!scene->enemies[counter++])
 					return (3);
 			}
@@ -41,10 +41,10 @@ int	feel_enemies(void *mlx, t_map *map, t_scene *scene)
 
 int	feel_trees(t_map *map, t_scene *scene)
 {
-	int		counter;
-	int		x;
-	int		y;
-	int		is_border;
+	int	counter;
+	int	x;
+	int	y;
+	int	is_border;
 
 	y = 0;
 	counter = 0;
@@ -70,9 +70,9 @@ int	feel_trees(t_map *map, t_scene *scene)
 
 int	feel_chests(void *mlx, t_map *map, t_scene *scene)
 {
-	int		counter;
-	int		x;
-	int		y;
+	int	counter;
+	int	x;
+	int	y;
 
 	y = 0;
 	counter = 0;
@@ -83,7 +83,7 @@ int	feel_chests(void *mlx, t_map *map, t_scene *scene)
 		{
 			if (map->content[y][x] == 'C')
 			{
-				scene->chests[counter] = make_chest(mlx, 2, x, y);				
+				scene->chests[counter] = make_chest(mlx, 2, x, y);
 				if (!scene->chests[counter++])
 					return (1);
 			}
@@ -97,9 +97,9 @@ int	feel_chests(void *mlx, t_map *map, t_scene *scene)
 
 int	feel_player_pos(t_map *map, t_scene *scene)
 {
-	int		counter;
-	int		x;
-	int		y;
+	int	counter;
+	int	x;
+	int	y;
 
 	y = 0;
 	counter = 0;
@@ -123,9 +123,9 @@ int	feel_player_pos(t_map *map, t_scene *scene)
 
 int	feel_player_exit(t_map *map, t_scene *scene)
 {
-	int		counter;
-	int		x;
-	int		y;
+	int	counter;
+	int	x;
+	int	y;
 
 	y = 0;
 	counter = 0;

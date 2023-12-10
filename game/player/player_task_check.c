@@ -6,40 +6,38 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 12:30:15 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/08 16:38:06 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:12:03 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "player.h"
 
-int is_attack(t_action action)
+int	is_attack(t_action action)
 {
-	return (action == ATTACK_1 ||
-			action == ATTACK_2 ||
-			action == ATTACK_3);
+	return (action == ATTACK_1 || action == ATTACK_2 || action == ATTACK_3);
 }
 
-int is_movement(t_action action)
+int	is_movement(t_action action)
 {
-	return (action == MOVE_BACK ||
-			action == MOVE_DOWN || 
-			action == MOVE_STRAIGHT ||
-			action == MOVE_UP);
+	return (action == MOVE_BACK || action == MOVE_DOWN
+		|| action == MOVE_STRAIGHT || action == MOVE_UP);
 }
 
-static	int	check_objs_intersect(t_player *player, t_scene_obj **objs)
+static int	check_objs_intersect(t_player *player, t_scene_obj **objs)
 {
 	int				counter;
 	int				inter;
 	t_collider		*coll;
+	t_collider		*pl_coll;
 	t_player_task	*task;
 
 	counter = 0;
 	task = player->current_task;
+	pl_coll = player->coll;
 	while (objs[counter])
 	{
 		coll = objs[counter]->coll;
-		inter = check_intersection(player->coll, coll, task->action, PLAYER_SPEED);
+		inter = check_intersection(pl_coll, coll, task->action, PLAYER_SPEED);
 		if (inter && inter != -1)
 			return (0);
 		counter++;
@@ -47,24 +45,28 @@ static	int	check_objs_intersect(t_player *player, t_scene_obj **objs)
 	return (1);
 }
 
-static	int	check_enemy_intersect(t_player *player, t_enemy **enemies)
+static int	check_enemy_intersect(t_player *player, t_enemy **enemies)
 {
 	int				counter;
 	int				inter;
 	t_collider		*coll;
+	t_collider		*pl_coll;
 	t_player_task	*task;
 
 	counter = 0;
 	task = player->current_task;
+	pl_coll = player->coll;
 	while (enemies[counter])
 	{
-		if (enemies[counter]->is_died == 0)
+		if (enemies[counter]->is_died == 1)
 		{
-			coll = enemies[counter]->coll;
-			inter = check_intersection(player->coll, coll, task->action, PLAYER_SPEED);
-			if (inter && inter != -1)
-				return (0);
+			counter++;
+			continue ;
 		}
+		coll = enemies[counter]->coll;
+		inter = check_intersection(pl_coll, coll, task->action, PLAYER_SPEED);
+		if (inter && inter != -1)
+			return (0);
 		counter++;
 	}
 	return (1);
@@ -73,7 +75,7 @@ static	int	check_enemy_intersect(t_player *player, t_enemy **enemies)
 int	is_able_to_proccess(t_scene *scene, t_player *player)
 {
 	t_player_task	*task;
-	
+
 	if (!player || !scene || !player->current_task)
 		return (1);
 	task = player->current_task;
