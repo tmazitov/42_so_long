@@ -1,9 +1,0 @@
-[submodule "utils/gnl"]
-	path = utils/gnl
-	url = https://github.com/tmazitov/42_get_next_line
-[submodule "utils/printf"]
-	path = utils/printf
-	url = git@github.com:tmazitov/42_printf.git
-[submodule "mlx_linux"]
-	path = mlx_linux
-	url = https://github.com/42Paris/minilibx-linux.git
