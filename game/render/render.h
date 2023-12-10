@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:52:24 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/10 14:13:11 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 18:22:52 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,8 @@ void	render_colliders(t_game *game);
 void	render_hit_box(t_game *game);
 
 char	*ft_itoa(int n);
+t_image	*get_end_tile(t_step next_step, t_scene *s);
+t_image	*get_start_tile(t_step next_step, t_scene *s);
+t_image	*get_tile(t_step prev, t_scene *s);
 
 #endif // RENDER_H

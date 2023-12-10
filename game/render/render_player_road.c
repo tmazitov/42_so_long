@@ -6,13 +6,13 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 18:08:39 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/10 14:45:04 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/10 18:23:29 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
 
-t_step	calc_step(t_point_node *from, t_point_node *to)
+static t_step	calc_step(t_point_node *from, t_point_node *to)
 {
 	if (!from || !to)
 		return (TO_NONE);
@@ -27,49 +27,13 @@ t_step	calc_step(t_point_node *from, t_point_node *to)
 	return (TO_NONE);
 }
 
-t_image	*get_start_tile(t_step next_step, t_scene *s)
-{
-	if (next_step == TO_BOT)
-		return (s->textures->roads[ROAD_NONE_BOT]);
-	if (next_step == TO_TOP)
-		return (s->textures->roads[ROAD_NONE_TOP]);
-	if (next_step == TO_RIGHT)
-		return (s->textures->roads[ROAD_NONE_RIGHT]);
-	if (next_step == TO_LEFT)
-		return (s->textures->roads[ROAD_NONE_LEFT]);
-	return (NULL);
-}
-
-t_image	*get_end_tile(t_step next_step, t_scene *s)
-{
-	if (next_step == TO_BOT)
-		return (s->textures->roads[ROAD_NONE_TOP]);
-	if (next_step == TO_TOP)
-		return (s->textures->roads[ROAD_NONE_BOT]);
-	if (next_step == TO_RIGHT)
-		return (s->textures->roads[ROAD_NONE_LEFT]);
-	if (next_step == TO_LEFT)
-		return (s->textures->roads[ROAD_NONE_RIGHT]);
-	return (NULL);
-}
-
-t_image	*get_tile(t_step prev, t_scene *s)
-{
-	if (prev == TO_BOT || prev == TO_TOP)
-		return (s->textures->roads[ROAD_TOP_TOP]);
-	if (prev == TO_LEFT || prev == TO_RIGHT)
-		return (s->textures->roads[ROAD_RIGHT_RIGHT]);
-	return (NULL);
-}
-
-t_image	*get_road_tile(t_scene *s, t_point_node *point, t_point_node *prev)
+static t_image	*get_road_tile(t_scene *s, t_point_node *point, t_point_node *prev)
 {
 	t_step	prev_step;
 	t_step	next_step;
 
 	prev_step = calc_step(prev, point);
 	next_step = calc_step(point, point->next);
-	printf("steps next %d prev %d\n", next_step, prev_step);
 	if (prev_step == TO_NONE)
 		return (get_start_tile(next_step, s));
 	if (next_step == TO_NONE)
@@ -91,7 +55,7 @@ t_image	*get_road_tile(t_scene *s, t_point_node *point, t_point_node *prev)
 	return (NULL);
 }
 
-void	render_tile(t_image *image, t_a_point *point, t_game *game)
+static void	render_tile(t_image *image, t_a_point *point, t_game *game)
 {
 	void	*mlx;
 	void	*win;
@@ -102,7 +66,7 @@ void	render_tile(t_image *image, t_a_point *point, t_game *game)
 	y = point->y;
 	mlx = game->mlx;
 	win = game->window;
-	mlx_put_image_to_window(mlx, win, image->content, x, y);
+	mlx_put_image_to_window(mlx, win, image->content, x, y + 16);
 }
 
 void	render_player_road(t_game *game)
@@ -121,9 +85,7 @@ void	render_player_road(t_game *game)
 	{
 		image = get_road_tile(game->scene, point, prev);
 		if (image)
-		{
-			render_tile(image, point->point, game);	 
-		}
+			render_tile(image, point->point, game);
 		prev = point;
 		point = point->next;
 	}
