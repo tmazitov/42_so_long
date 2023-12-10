@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 15:39:17 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/10 18:46:52 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/11 00:10:54 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ t_enemy	*make_enemy(void *mlx, int x, int y)
 	enemy->anime = make_enemy_anime(mlx);
 	if (!enemy->anime)
 		return (free_enemy(enemy));
-	ft_printf("success enemy create\n");
 	enemy->health = make_health_bar(mlx, 3);
 	if (!enemy->health)
 		return (free_enemy(enemy));

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 20:44:51 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/10 21:33:13 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/11 00:11:29 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,9 @@ int	add_symbol(t_writer *writer, char ch, char *image_path)
 	if (last)
 	{
 		last->next = make_symbol(writer->mlx, ch, image_path);
-		if (last->next)
-			ft_printf("# symbol %c added!\n", last->next->symbol);
 		return (last->next == NULL);
 	}
 	writer->symbols = make_symbol(writer->mlx, ch, image_path);
-	if (writer->symbols)
-		ft_printf("# symbol %c added!\n", writer->symbols->symbol);
 	return (writer->symbols == NULL);
 }
 

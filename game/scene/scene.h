@@ -6,14 +6,14 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:32:11 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/10 23:10:56 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/11 00:09:08 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCENE_H
 # define SCENE_H
 
-# include "../../mlx/mlx.h"
+# include "../../utils/mlx_provider/mlx_provider.h"
 # include "../../utils/anime/anime.h"
 # include "../../utils/collider/collider.h"
 # include "../../utils/image/image.h"

@@ -6,7 +6,7 @@
 #    By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/30 14:16:32 by tmazitov          #+#    #+#              #
-#    Updated: 2023/12/10 23:20:56 by tmazitov         ###   ########.fr        #
+#    Updated: 2023/12/11 00:23:50 by tmazitov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,7 +98,6 @@ SRC =	cmd/main.c \
 		utils/mlx_font_print/writer_symbol.c \
 		utils/mlx_font_print/writer_handler.c \
 		
-
 OBJ = $(SRC:.c=.o)
 
 CC = gcc
@@ -106,12 +105,17 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
 MLX = cd mlx && make
+MLX_LIN = cd mlx_linux && make
 
 $(NAME): $(OBJ) 
-		$(MLX)
-		gcc $(CFLAGS) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME) -fsanitize=address -g
+	$(MLX)
+	gcc $(CFLAGS) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME) -fsanitize=address -g
 
 all: $(NAME)
+
+lin: $(OBJ) 
+	$(MLX_LIN)
+	gcc $(CFLAGS) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 clean:
 		rm -f $(OBJ)

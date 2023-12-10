@@ -1,34 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image.h                                            :+:      :+:    :+:   */
+/*   mlx_provider.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/30 15:19:38 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/11 00:09:15 by tmazitov         ###   ########.fr       */
+/*   Created: 2023/12/11 00:07:36 by tmazitov          #+#    #+#             */
+/*   Updated: 2023/12/11 00:17:28 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IMAGE_H
-# define IMAGE_H
+#ifndef MLX_PROVIDE_H
+# define MLX_PROVIDE_H
 
-# include "../../utils/mlx_provider/mlx_provider.h"
-# include <stdlib.h>
+// #include "../../mlx/mlx.h"
+#include "../../mlx_linux/mlx.h"
 
-typedef struct s_image
-{
-	void	*content;
-	int		pixel_bits;
-	int		line_bytes;
-	int		endian;
-	int		height;
-	int		width;
-	void	*mlx;
-}			t_image;
-
-t_image		*make_image(void *mlx, int height, int width);
-t_image		*make_image_v2(void *mlx, char *path);
-void		*free_image(t_image *image);
-
-#endif // !IMAGE_H
+#endif // !MLX_PROVIDE_H

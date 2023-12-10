@@ -6,14 +6,14 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:45:01 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/10 21:48:46 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/11 00:09:11 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ANIME_H
 # define ANIME_H
 
-# include "../../mlx/mlx.h"
+# include "../../utils/mlx_provider/mlx_provider.h"
 # include "../printf/ft_printf.h"
 # include <math.h>
 # include <stdlib.h>

@@ -6,13 +6,13 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:07:26 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/10 21:06:01 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/11 00:09:00 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLAYER_H
 # define PLAYER_H
-# include "../../mlx/mlx.h"
+# include "../../utils/mlx_provider/mlx_provider.h"
 # include "../../utils/anime/anime.h"
 # include "../../utils/collider/collider.h"
 # include "../health_bar/health_bar.h"

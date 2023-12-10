@@ -32,7 +32,8 @@
     "enemy_behavior.h": "c",
     "game.h": "c",
     "enemy.h": "c",
-    "player_behavior.h": "c"
+    "player_behavior.h": "c",
+    "mlx_provider.h": "c"
   },
   "cmake.configureOnOpen": true,
   "C_Cpp_Runner.cCompilerPath": "clang",

@@ -6,14 +6,14 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:52:22 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/10 23:07:08 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/11 00:08:50 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_H
 # define GAME_H
 
-# include "../mlx/mlx.h"
+# include "../utils/mlx_provider/mlx_provider.h"
 # include "../utils/mlx_font_print/mlx_font_print.h"
 # include "../utils/printf/ft_printf.h"
 # include "../utils/anime/anime.h"

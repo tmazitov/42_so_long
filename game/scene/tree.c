@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 13:20:36 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/10 21:22:00 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/11 00:10:46 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ int	make_player_way(t_scene *scene)
 	scene->player_way = calc_path(src, dest, scene->game_objs_points);
 	free_a_point(src);
 	free_a_point(dest);
-	printf("way %p\n", scene->player_way);
 	return (scene->player_way == NULL);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:18:21 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/10 21:21:43 by tmazitov         ###   ########.fr       */
+/*   Updated: 2023/12/11 00:11:08 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,5 @@ int	make_road_textures(void *mlx, t_scene_textures *t)
 	counter = 0;
 	while (t->roads[counter])
 		counter++;
-	printf("counter : %d\n", counter);
 	return (counter != 22);
 }
