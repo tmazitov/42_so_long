@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:58:47 by tmazitov          #+#    #+#             */
-/*   Updated: 2024/03/13 16:17:49 by tmazitov         ###   ########.fr       */
+/*   Updated: 2024/03/13 16:27:00 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ void	player_exit_handler(t_game *game)
 	t_collider	*player_coll;
 	int			inter;
 
+	inter = 0;
+	while (game->scene->chests[inter])
+		if (game->scene->chests[inter++]->money != 0)
+			return ;
 	player_coll = game->player->coll;
 	exit_coll = game->scene->exit->obj->coll;
 	inter = check_intersection(player_coll, exit_coll, OPEN_CHEST, 0);
