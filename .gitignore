@@ -1,3 +1,5 @@
 *.o
 */*.o
 */*/*.o
+so_long
+norm_check.sh
