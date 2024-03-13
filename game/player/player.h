@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 15:07:26 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/11 00:09:00 by tmazitov         ###   ########.fr       */
+/*   Updated: 2024/03/13 16:17:56 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ enum						e_move_keycode
 	BUTTON_BACK = 0,
 	BUTTON_SPACE = 49,
 	BUTTON_SHIFT = 257,
+	BUTTON_EXIT = 53
 };
 
 // Task action

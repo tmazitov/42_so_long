@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:32:54 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/10 21:22:19 by tmazitov         ###   ########.fr       */
+/*   Updated: 2024/03/13 16:16:35 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,11 @@ t_map	*make_map(char *file_path)
 	row_count = 0;
 	raw_list = make_raw_list(file_path, &row_count);
 	if (!raw_list || row_count == 0)
-		return (parser_error("can not to read file"), free_map(map));
+		return (free_map(map));
 	map->content = convert_to_map(raw_list, row_count);
 	free_node(raw_list);
 	if (!map->content)
-		return (parser_error("can not to create map"), free_map(map));
+		return (free_map(map));
 	if (map_validate(map) != 0)
 		return (free_map(map));
 	map->width = ft_strlen(map->content[0]);

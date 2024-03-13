@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:08:30 by tmazitov          #+#    #+#             */
-/*   Updated: 2024/03/13 15:00:36 by tmazitov         ###   ########.fr       */
+/*   Updated: 2024/03/13 16:10:23 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,14 @@ int	map_validate(t_map *map)
 	if (!map)
 		return (1);
 	if (map_count_of_char(map, 'C') == 0)
-		return (parser_error("collectable count is 0"));
+		return (1);
 	if (map_count_of_char(map, 'P') != 1)
-		return (parser_error("player start position is undefined"));
+		return (1);
 	if (map_count_of_char(map, 'E') != 1)
-		return (parser_error("exit position is undefined"));
+		return (1);
 	if (map_check_length(map) != 0)
-		return (parser_error("map is not rectangle"));
+		return (1);
 	if (map_check_walls(map) != 0)
-		return (parser_error("map is not bordered by walls"));
+		return (1);
 	return (0);
 }

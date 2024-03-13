@@ -6,7 +6,7 @@
 #    By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/30 14:16:32 by tmazitov          #+#    #+#              #
-#    Updated: 2024/03/13 13:07:17 by tmazitov         ###   ########.fr        #
+#    Updated: 2024/03/13 16:09:59 by tmazitov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,6 @@ SRC =	cmd/main.c \
 		game/parser/parser.c \
 		game/parser/parser_node.c \
 		game/parser/parser_utils.c \
-		game/parser/parser_error.c \
 		game/parser/parser_validation.c \
 		utils/image/image.c \
 		utils/path/a_star.c \

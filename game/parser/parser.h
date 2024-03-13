@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:32:59 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/06 14:54:33 by tmazitov         ###   ########.fr       */
+/*   Updated: 2024/03/13 16:16:38 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ t_raw_node				*make_node(char *data);
 void					*free_node(t_raw_node *node);
 
 // UTILS
-int						parser_error(char *str);
 int						ft_strlen(const char *str);
 char					*ft_strnstr(const char *big, const char *little,
 							size_t len);

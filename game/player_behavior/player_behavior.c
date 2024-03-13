@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 19:58:47 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/10 23:29:56 by tmazitov         ###   ########.fr       */
+/*   Updated: 2024/03/13 16:17:49 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,10 @@ int	player_control_hook(int keycode, t_game *game)
 		player_attack_handler(player);
 	if (keycode == BUTTON_SHIFT)
 		shift_handler(game);
+	if (keycode == BUTTON_EXIT) 
+	{
+		free_game(game);
+		exit(EXIT_SUCCESS);
+	}
 	return (0);
 }
