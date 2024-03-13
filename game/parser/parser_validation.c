@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 12:08:30 by tmazitov          #+#    #+#             */
-/*   Updated: 2023/12/10 21:23:00 by tmazitov         ###   ########.fr       */
+/*   Updated: 2024/03/13 15:00:36 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ int	file_check(char *file_path)
 	char	*resolution;
 
 	resolution = ft_strnstr(file_path, ".ber", ft_strlen(file_path));
-	return (resolution && ft_strlen(resolution) == 4);
+	return (resolution && ft_strlen(resolution) == 4 
+		&& file_path != resolution);
 }
 
 int	map_validate(t_map *map)

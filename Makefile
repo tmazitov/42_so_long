@@ -6,7 +6,7 @@
 #    By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/30 14:16:32 by tmazitov          #+#    #+#              #
-#    Updated: 2023/12/11 02:38:12 by tmazitov         ###   ########.fr        #
+#    Updated: 2024/03/13 13:07:17 by tmazitov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,7 @@ SRC =	cmd/main.c \
 		utils/path/a_star.c \
 		utils/path/a_star_check.c \
 		utils/path/path.c \
+		utils/path/path_utils.c \
 		utils/path/point.c \
 		utils/path/point_node.c \
 		utils/path/point_path.c \
@@ -110,7 +111,7 @@ MLX_LIN = cd mlx_linux && make
 
 $(NAME): $(OBJ) 
 	$(MLX)
-	gcc $(CFLAGS) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME) -fsanitize=address -g
+	gcc $(CFLAGS) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 all: $(NAME)
 
