@@ -1,6 +1,0 @@
-[submodule "utils/gnl"]
-	path = utils/gnl
-	url = https://github.com/tmazitov/42_get_next_line
-[submodule "utils/printf"]
-	path = utils/printf
-	url = git@github.com:tmazitov/42_printf.git

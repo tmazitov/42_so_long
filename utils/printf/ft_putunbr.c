@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   path_utils.c                                       :+:      :+:    :+:   */
+/*   ft_putunbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 12:14:51 by tmazitov          #+#    #+#             */
-/*   Updated: 2024/03/13 16:56:22 by tmazitov         ###   ########.fr       */
+/*   Created: 2023/07/16 18:45:51 by tmazitov          #+#    #+#             */
+/*   Updated: 2023/08/02 15:50:37 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "path.h"
+#include "ft_printf.h"
 
-void	print_path(t_path *path)
+int	ft_putunbr(unsigned int num)
 {
-	if (!path)
-		return ;
-	ft_printf("path length : %d\n", path->length);
-	ft_printf("-----------------\n");
-	print_point_list(path->point_list);
+	int	result;
+
+	result = 0;
+	if (num / 10 > 0)
+		result += ft_putunbr(num / 10);
+	result += ft_putchar('0' + num % 10);
+	return (result);
 }

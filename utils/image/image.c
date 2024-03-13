@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:19:31 by tmazitov          #+#    #+#             */
-/*   Updated: 2024/03/13 16:49:22 by tmazitov         ###   ########.fr       */
+/*   Updated: 2024/03/13 16:59:33 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_image	*make_image_v2(void *mlx, char *path)
 	return (image);
 }
 
-void	*™free_image(t_image *image)
+void	*free_image(t_image *image)
 {
 	if (!image)
 		return (NULL);

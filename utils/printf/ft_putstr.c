@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   path_utils.c                                       :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 12:14:51 by tmazitov          #+#    #+#             */
-/*   Updated: 2024/03/13 16:56:22 by tmazitov         ###   ########.fr       */
+/*   Created: 2023/07/12 12:46:17 by tmazitov          #+#    #+#             */
+/*   Updated: 2023/07/17 15:29:13 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "path.h"
+#include "ft_printf.h"
 
-void	print_path(t_path *path)
+int	ft_putstr(char *s)
 {
-	if (!path)
-		return ;
-	ft_printf("path length : %d\n", path->length);
-	ft_printf("-----------------\n");
-	print_point_list(path->point_list);
+	int	result;
+
+	result = 0;
+	if (!s)
+		return (ft_putstr("(null)"));
+	while (*s)
+		result += ft_putchar(*s++);
+	return (result);
 }

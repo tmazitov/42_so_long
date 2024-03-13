@@ -6,7 +6,7 @@
 /*   By: tmazitov <tmazitov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 16:07:14 by tmazitov          #+#    #+#             */
-/*   Updated: 2024/03/13 12:32:13 by tmazitov         ###   ########.fr       */
+/*   Updated: 2024/03/13 17:00:39 by tmazitov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	lst_add_point(t_point_list *list, t_a_point *point)
 	return (0);
 }
 
-void	print_point_list(t_point_list *list) 
+void	print_point_list(t_point_list *list)
 {
 	t_point_node	*node;
 	int				counter;
@@ -75,7 +75,7 @@ void	print_point_list(t_point_list *list)
 	counter = 1;
 	while (node)
 	{
-		ft_printf("%d) node : %d %d\n", counter, node->point->x/64, node->point->y/64);
+		ft_printf("%d) %d %d\n", counter, node->point->x, node->point->y);
 		node = node->next;
 		counter += 1;
 	}
